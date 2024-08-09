@@ -1,0 +1,80 @@
+2021-04-09T05:31:16.182415Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2021-04-09T05:31:16.183414Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2021-04-09T05:31:16.184414Z 0 [ERROR] Cannot open Windows EventLog; check privileges, or start server with --log_syslog=0
+2021-04-09T05:31:16.184414Z 0 [Note] E:\MySQL_5_7\mysql-5.7\bin\mysqld.exe (mysqld 5.7.11) starting as process 6584 ...
+2021-04-09T05:34:58.736949Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2021-04-09T05:34:58.736949Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2021-04-09T05:34:58.736949Z 0 [ERROR] Cannot open Windows EventLog; check privileges, or start server with --log_syslog=0
+2021-04-09T05:34:58.736949Z 0 [Note] E:\MySQL_5_7\mysql-5.7\bin\mysqld.exe (mysqld 5.7.11) starting as process 5148 ...
+2021-04-09T05:38:01.218255Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2021-04-09T05:38:01.218255Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2021-04-09T05:38:01.218255Z 0 [ERROR] Cannot open Windows EventLog; check privileges, or start server with --log_syslog=0
+2021-04-09T05:38:01.218255Z 0 [Note] E:\MySQL_5_7\mysql-5.7\bin\mysqld.exe (mysqld 5.7.11) starting as process 10152 ...
+2021-04-09T05:42:29.454666Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2021-04-09T05:42:29.454666Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2021-04-09T05:42:29.454666Z 0 [ERROR] Cannot open Windows EventLog; check privileges, or start server with --log_syslog=0
+2021-04-09T05:42:29.454666Z 0 [Note] E:\MySQL_5_7\mysql-5.7\bin\mysqld.exe (mysqld 5.7.11) starting as process 4640 ...
+2021-04-09T05:43:22.169308Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2021-04-09T05:43:22.169308Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2021-04-09T05:43:22.169308Z 0 [ERROR] Cannot open Windows EventLog; check privileges, or start server with --log_syslog=0
+2021-04-09T05:43:22.169308Z 0 [Note] E:\MySQL_5_7\mysql-5.7\bin\mysqld.exe (mysqld 5.7.11) starting as process 6376 ...
+2021-04-09T05:44:47.610221Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2021-04-09T05:44:47.610221Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2021-04-09T05:44:47.611221Z 0 [ERROR] Cannot open Windows EventLog; check privileges, or start server with --log_syslog=0
+2021-04-09T05:44:47.611221Z 0 [Note] E:\MySQL_5_7\mysql-5.7\bin\mysqld.exe (mysqld 5.7.11) starting as process 8060 ...
+2021-04-09T05:46:43.034563Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2021-04-09T05:46:43.034563Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2021-04-09T05:46:43.035563Z 0 [ERROR] Cannot open Windows EventLog; check privileges, or start server with --log_syslog=0
+2021-04-09T05:46:43.035563Z 0 [Note] E:\MySQL_5_7\mysql-5.7\bin\mysqld.exe (mysqld 5.7.11) starting as process 4948 ...
+2021-04-09T05:49:34.276992Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2021-04-09T05:49:34.276992Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2021-04-09T05:49:34.276992Z 0 [ERROR] Cannot open Windows EventLog; check privileges, or start server with --log_syslog=0
+2021-04-09T05:49:34.276992Z 0 [Note] E:\MySQL_5_7\mysql-5.7\bin\mysqld.exe (mysqld 5.7.11) starting as process 5556 ...
+2021-04-09T05:52:59.621479Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2021-04-09T05:52:59.621479Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2021-04-09T05:52:59.621479Z 0 [ERROR] Cannot open Windows EventLog; check privileges, or start server with --log_syslog=0
+2021-04-09T05:52:59.621479Z 0 [Note] E:\MySQL_5_7\mysql-5.7\bin\mysqld.exe (mysqld 5.7.11) starting as process 12028 ...
+2021-04-09T05:54:08.150052Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2021-04-09T05:54:08.150052Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2021-04-09T05:54:08.151038Z 0 [ERROR] Cannot open Windows EventLog; check privileges, or start server with --log_syslog=0
+2021-04-09T05:54:08.151038Z 0 [Note] E:\MySQL_5_7\mysql-5.7\bin\mysqld.exe (mysqld 5.7.11) starting as process 11064 ...
+2021-04-09T05:54:27.074370Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2021-04-09T05:54:27.074370Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2021-04-09T05:54:27.075369Z 0 [ERROR] Cannot open Windows EventLog; check privileges, or start server with --log_syslog=0
+2021-04-09T05:54:27.075369Z 0 [Note] E:\MySQL_5_7\mysql-5.7\bin\mysqld.exe (mysqld 5.7.11) starting as process 7284 ...
+2021-04-09T05:54:36.945775Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2021-04-09T05:54:36.945775Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2021-04-09T05:54:36.947093Z 0 [ERROR] Cannot open Windows EventLog; check privileges, or start server with --log_syslog=0
+2021-04-09T05:54:36.947093Z 0 [Note] E:\MySQL_5_7\mysql-5.7\bin\mysqld.exe (mysqld 5.7.11) starting as process 11384 ...
+2021-04-09T05:54:49.056065Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2021-04-09T05:54:49.056065Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2021-04-09T05:54:49.056984Z 0 [ERROR] Cannot open Windows EventLog; check privileges, or start server with --log_syslog=0
+2021-04-09T05:54:49.056984Z 0 [Note] E:\MySQL_5_7\mysql-5.7\bin\mysqld.exe (mysqld 5.7.11) starting as process 11704 ...
+2021-04-09T05:55:00.369389Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2021-04-09T05:55:00.369389Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2021-04-09T05:55:00.369389Z 0 [ERROR] Cannot open Windows EventLog; check privileges, or start server with --log_syslog=0
+2021-04-09T05:55:00.369389Z 0 [Note] E:\MySQL_5_7\mysql-5.7\bin\mysqld.exe (mysqld 5.7.11) starting as process 2316 ...
+2021-04-09T05:55:10.150282Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2021-04-09T05:55:10.150282Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2021-04-09T05:55:10.151268Z 0 [ERROR] Cannot open Windows EventLog; check privileges, or start server with --log_syslog=0
+2021-04-09T05:55:10.151268Z 0 [Note] E:\MySQL_5_7\mysql-5.7\bin\mysqld.exe (mysqld 5.7.11) starting as process 11744 ...
+2021-04-09T05:56:11.813532Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2021-04-09T05:56:11.813532Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2021-04-09T05:56:11.813532Z 0 [ERROR] Cannot open Windows EventLog; check privileges, or start server with --log_syslog=0
+2021-04-09T05:56:11.813532Z 0 [Note] E:\MySQL_5_7\mysql-5.7\bin\mysqld.exe (mysqld 5.7.11) starting as process 2620 ...
+2021-04-09T05:56:29.157126Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2021-04-09T05:56:29.157126Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2021-04-09T05:56:29.157126Z 0 [ERROR] Cannot open Windows EventLog; check privileges, or start server with --log_syslog=0
+2021-04-09T05:56:29.157126Z 0 [Note] E:\MySQL_5_7\mysql-5.7\bin\mysqld.exe (mysqld 5.7.11) starting as process 1756 ...
+2021-04-09T05:58:01.144656Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2021-04-09T05:58:01.144656Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2021-04-09T05:58:01.144656Z 0 [ERROR] Cannot open Windows EventLog; check privileges, or start server with --log_syslog=0
+2021-04-09T05:58:01.144656Z 0 [Note] E:\MySQL_5_7\mysql-5.7\bin\mysqld.exe (mysqld 5.7.11) starting as process 7108 ...
+2021-04-09T05:58:16.579395Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2021-04-09T05:58:16.579395Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2021-04-09T05:58:16.595023Z 0 [ERROR] Cannot open Windows EventLog; check privileges, or start server with --log_syslog=0
+2021-04-09T05:58:16.595023Z 0 [Note] E:\MySQL_5_7\mysql-5.7\bin\mysqld.exe (mysqld 5.7.11) starting as process 148 ...
+2021-04-09T06:01:05.808844Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2021-04-09T06:01:05.809844Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2021-04-09T06:01:05.809844Z 0 [ERROR] Cannot open Windows EventLog; check privileges, or start server with --log_syslog=0
+2021-04-09T06:01:05.809844Z 0 [Note] E:\MySQL_5_7\mysql-5.7\bin\mysqld.exe (mysqld 5.7.11) starting as process 12072 ...

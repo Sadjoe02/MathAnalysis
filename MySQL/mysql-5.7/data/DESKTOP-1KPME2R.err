@@ -1,0 +1,638 @@
+2023-02-15T07:30:22.706594Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2023-02-15T07:30:22.706594Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2023-02-15T07:30:22.800874Z 0 [Note] C:\Users\Acer\Desktop\управление данными\программы\MySQL_5_7\mysql-5.7\bin\mysqld.exe (mysqld 5.7.11) starting as process 13872 ...
+2023-03-01T06:40:20.749786Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2023-03-01T06:40:20.750948Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2023-03-01T06:40:20.754147Z 0 [Note] C:\Users\Acer\Desktop\управление данными\программы\MySQL_5_7\mysql-5.7\bin\mysqld.exe (mysqld 5.7.11) starting as process 14356 ...
+2023-03-15T06:40:49.770443Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2023-03-15T06:40:49.770443Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2023-03-15T06:40:49.786067Z 0 [Note] C:\Users\Acer\Desktop\управление данными\программы\MySQL_5_7\mysql-5.7\bin\mysqld.exe (mysqld 5.7.11) starting as process 5896 ...
+2023-03-15T08:25:32.602232Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2023-03-15T08:25:32.602232Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2023-03-15T08:25:32.620883Z 0 [Note] C:\Users\Acer\Desktop\управление данными\программы\MySQL_5_7\mysql-5.7\bin\mysqld.exe (mysqld 5.7.11) starting as process 11896 ...
+2023-03-17T10:00:39.576500Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2023-03-17T10:00:39.576500Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2023-03-17T10:00:39.592124Z 0 [Note] C:\Users\Acer\Desktop\управление данными\программы\MySQL_5_7\mysql-5.7\bin\mysqld.exe (mysqld 5.7.11) starting as process 12712 ...
+2023-03-17T15:26:36.370344Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2023-03-17T15:26:36.370344Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2023-03-17T15:26:36.373348Z 0 [Note] C:\Users\Acer\Desktop\управление данными\программы\MySQL_5_7\mysql-5.7\bin\mysqld.exe (mysqld 5.7.11) starting as process 9632 ...
+2023-03-19T14:44:14.141843Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2023-03-19T14:44:14.141843Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2023-03-19T14:44:14.142980Z 0 [Note] C:\Users\Acer\Desktop\управление данными\программы\MySQL_5_7\mysql-5.7\bin\mysqld.exe (mysqld 5.7.11) starting as process 7416 ...
+2023-03-19T14:45:13.007279Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2023-03-19T14:45:13.007279Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2023-03-19T14:45:13.017437Z 0 [Note] C:\Users\Acer\Desktop\управление данными\программы\MySQL_5_7\mysql-5.7\bin\mysqld.exe (mysqld 5.7.11) starting as process 2696 ...
+2023-03-19T14:45:20.384122Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2023-03-19T14:45:20.384122Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2023-03-19T14:45:20.387114Z 0 [Note] C:\Users\Acer\Desktop\управление данными\программы\MySQL_5_7\mysql-5.7\bin\mysqld.exe (mysqld 5.7.11) starting as process 13924 ...
+2023-03-29T06:35:34.644629Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2023-03-29T06:35:34.644629Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2023-03-29T06:35:34.644629Z 0 [Note] C:\Users\Acer\Desktop\управление данными\программы\MySQL_5_7\mysql-5.7\bin\mysqld.exe (mysqld 5.7.11) starting as process 8056 ...
+2023-04-05T03:08:38.626225Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2023-04-05T03:08:38.626225Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2023-04-05T03:08:38.626225Z 0 [Note] C:\Users\Acer\Desktop\управление данными\программы\MySQL_5_7\mysql-5.7\bin\mysqld.exe (mysqld 5.7.11) starting as process 1696 ...
+2023-04-12T06:36:37.939408Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2023-04-12T06:36:37.939408Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2023-04-12T06:36:37.955026Z 0 [Note] C:\Users\Acer\Desktop\управление данными\программы\MySQL_5_7\mysql-5.7\bin\mysqld.exe (mysqld 5.7.11) starting as process 3308 ...
+2023-04-26T06:32:23.113250Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2023-04-26T06:32:23.113250Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2023-04-26T06:32:23.113250Z 0 [Note] C:\Users\Acer\Desktop\управление данными\программы\MySQL_5_7\mysql-5.7\bin\mysqld.exe (mysqld 5.7.11) starting as process 2452 ...
+2023-05-10T06:17:40.191854Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2023-05-10T06:17:40.191854Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2023-05-10T06:17:40.191854Z 0 [Note] C:\Users\Acer\Desktop\управление данными\программы\MySQL_5_7\mysql-5.7\bin\mysqld.exe (mysqld 5.7.11) starting as process 12236 ...
+2023-05-16T07:12:56.950463Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2023-05-16T07:12:56.950463Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2023-05-16T07:12:56.950463Z 0 [Note] C:\Users\Acer\Desktop\управление данными\программы\MySQL_5_7\mysql-5.7\bin\mysqld.exe (mysqld 5.7.11) starting as process 8368 ...
+2023-05-17T04:28:37.019638Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2023-05-17T04:28:37.019638Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2023-05-17T04:28:37.019638Z 0 [Note] C:\Users\Acer\Desktop\управление данными\программы\MySQL_5_7\mysql-5.7\bin\mysqld.exe (mysqld 5.7.11) starting as process 6444 ...
+2023-05-17T13:57:54.165331Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2023-05-17T13:57:54.165331Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2023-05-17T13:57:54.165331Z 0 [Note] C:\Users\Acer\Desktop\управление данными\программы\MySQL_5_7\mysql-5.7\bin\mysqld.exe (mysqld 5.7.11) starting as process 5644 ...
+2023-05-19T10:10:07.760604Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2023-05-19T10:10:07.760604Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2023-05-19T10:10:07.760604Z 0 [Note] C:\Users\Acer\Desktop\управление данными\программы\MySQL_5_7\mysql-5.7\bin\mysqld.exe (mysqld 5.7.11) starting as process 6544 ...
+2023-05-20T10:36:14.546183Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2023-05-20T10:36:14.546183Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2023-05-20T10:36:14.561805Z 0 [Note] C:\Users\Acer\Desktop\управление данными\программы\MySQL_5_7\mysql-5.7\bin\mysqld.exe (mysqld 5.7.11) starting as process 11196 ...
+2023-05-20T17:32:17.771753Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2023-05-20T17:32:17.771753Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2023-05-20T17:32:17.787390Z 0 [Note] C:\Users\Acer\Desktop\управление данными\программы\MySQL_5_7\mysql-5.7\bin\mysqld.exe (mysqld 5.7.11) starting as process 9252 ...
+2023-05-21T08:55:56.995420Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2023-05-21T08:55:56.995420Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2023-05-21T08:55:56.995420Z 0 [Note] C:\Users\Acer\Desktop\управление данными\программы\MySQL_5_7\mysql-5.7\bin\mysqld.exe (mysqld 5.7.11) starting as process 11804 ...
+2023-05-22T12:43:01.994521Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2023-05-22T12:43:01.994521Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2023-05-22T12:43:01.994521Z 0 [Note] C:\Users\Acer\Desktop\управление данными\программы\MySQL_5_7\mysql-5.7\bin\mysqld.exe (mysqld 5.7.11) starting as process 7380 ...
+2023-05-23T16:17:37.308139Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2023-05-23T16:17:37.308139Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2023-05-23T16:17:37.308139Z 0 [Note] C:\Users\Acer\Desktop\управление данными\программы\MySQL_5_7\mysql-5.7\bin\mysqld.exe (mysqld 5.7.11) starting as process 9820 ...
+2023-05-24T06:20:44.968295Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2023-05-24T06:20:44.983916Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2023-05-24T06:20:44.983916Z 0 [Note] C:\Users\Acer\Desktop\управление данными\программы\MySQL_5_7\mysql-5.7\bin\mysqld.exe (mysqld 5.7.11) starting as process 15344 ...
+2023-05-26T08:29:18.662834Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2023-05-26T08:29:18.664827Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2023-05-26T08:29:18.673803Z 0 [Note] C:\Users\Acer\Desktop\управление данными\программы\MySQL_5_7\mysql-5.7\bin\mysqld.exe (mysqld 5.7.11) starting as process 6828 ...
+2023-05-27T02:43:49.763201Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2023-05-27T02:43:49.763201Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2023-05-27T02:43:49.765196Z 0 [Note] C:\Users\Acer\Desktop\управление данными\программы\MySQL_5_7\mysql-5.7\bin\mysqld.exe (mysqld 5.7.11) starting as process 7332 ...
+2023-05-28T17:55:00.729617Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2023-05-28T17:55:00.730613Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2023-05-28T17:55:00.742930Z 0 [Note] C:\Users\Acer\Desktop\управление данными\программы\MySQL_5_7\mysql-5.7\bin\mysqld.exe (mysqld 5.7.11) starting as process 4180 ...
+2023-05-29T02:39:22.949082Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2023-05-29T02:39:22.949082Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2023-05-29T02:39:22.964677Z 0 [Note] C:\Users\Acer\Desktop\управление данными\программы\MySQL_5_7\mysql-5.7\bin\mysqld.exe (mysqld 5.7.11) starting as process 11840 ...
+2023-05-29T07:57:22.880202Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2023-05-29T07:57:22.880202Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2023-05-29T07:57:22.895797Z 0 [Note] C:\Users\Acer\Desktop\управление данными\программы\MySQL_5_7\mysql-5.7\bin\mysqld.exe (mysqld 5.7.11) starting as process 1744 ...
+2023-05-30T08:50:42.426334Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2023-05-30T08:50:42.426334Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2023-05-30T08:50:42.429683Z 0 [Note] C:\Users\Acer\Desktop\управление данными\программы\MySQL_5_7\mysql-5.7\bin\mysqld.exe (mysqld 5.7.11) starting as process 12216 ...
+2023-05-31T04:47:37.136243Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2023-05-31T04:47:37.138366Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2023-05-31T04:47:37.144351Z 0 [Note] C:\Users\Acer\Desktop\управление данными\программы\MySQL_5_7\mysql-5.7\bin\mysqld.exe (mysqld 5.7.11) starting as process 14080 ...
+2023-05-31T17:34:15.415040Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2023-05-31T17:34:15.416062Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2023-05-31T17:34:15.445953Z 0 [Note] C:\Users\Acer\Desktop\Курсовая 1 семестр 3 курс — копия\versia_probnaia\versia1\MySQL\mysql-5.7\bin\mysqld.exe (mysqld 5.7.11) starting as process 7428 ...
+2023-05-31T20:18:47.700971Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2023-05-31T20:18:47.700971Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2023-05-31T20:18:47.711942Z 0 [Note] C:\Users\Acer\Desktop\Курсовая 1 семестр 3 курс — копия\versia_probnaia\versia1\MySQL\mysql-5.7\bin\mysqld.exe (mysqld 5.7.11) starting as process 2620 ...
+2023-06-01T09:46:25.920585Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2023-06-01T09:46:25.920585Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2023-06-01T09:46:25.920585Z 0 [Note] C:\Users\Acer\Desktop\Курсовая 1 семестр 3 курс — копия\versia_probnaia\versia1\MySQL\mysql-5.7\bin\mysqld.exe (mysqld 5.7.11) starting as process 11688 ...
+2023-06-02T11:22:08.593737Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2023-06-02T11:22:08.597726Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2023-06-02T11:22:08.642606Z 0 [Note] C:\Users\Acer\Desktop\Курсовая 1 семестр 3 курс — копия\versia_probnaia\versia1\MySQL\mysql-5.7\bin\mysqld.exe (mysqld 5.7.11) starting as process 8140 ...
+2023-06-03T08:09:37.177005Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2023-06-03T08:09:37.179000Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2023-06-03T08:09:37.196951Z 0 [Note] C:\Users\Acer\Desktop\Курсовая 1 семестр 3 курс — копия\versia_probnaia\versia1\MySQL\mysql-5.7\bin\mysqld.exe (mysqld 5.7.11) starting as process 7552 ...
+2023-06-04T13:18:43.658742Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2023-06-04T13:18:43.661735Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2023-06-04T13:18:43.668716Z 0 [Note] C:\Users\Acer\Desktop\Курсовая 1 семестр 3 курс — копия\versia_probnaia\versia1\MySQL\mysql-5.7\bin\mysqld.exe (mysqld 5.7.11) starting as process 14428 ...
+2023-06-05T08:12:51.061871Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2023-06-05T08:12:51.063866Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2023-06-05T08:12:51.067855Z 0 [Note] C:\Users\Acer\Desktop\Курсовая 1 семестр 3 курс — копия\versia_probnaia\versia1\MySQL\mysql-5.7\bin\mysqld.exe (mysqld 5.7.11) starting as process 9008 ...
+2023-06-06T19:21:07.173330Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2023-06-06T19:21:07.173330Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2023-06-06T19:21:07.178355Z 0 [Note] C:\Users\Acer\Desktop\Курсовая 1 семестр 3 курс — копия\versia_probnaia\versia1\MySQL\mysql-5.7\bin\mysqld.exe (mysqld 5.7.11) starting as process 13652 ...
+2023-06-07T06:06:44.053420Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2023-06-07T06:06:44.053420Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2023-06-07T06:06:44.053420Z 0 [Note] C:\Users\Acer\Desktop\Курсовая 1 семестр 3 курс — копия\versia_probnaia\versia1\MySQL\mysql-5.7\bin\mysqld.exe (mysqld 5.7.11) starting as process 14736 ...
+2023-06-07T16:25:33.614320Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2023-06-07T16:25:33.614320Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2023-06-07T16:25:33.626287Z 0 [Note] C:\Users\Acer\Desktop\Курсовая 1 семестр 3 курс — копия\versia_probnaia\versia1\MySQL\mysql-5.7\bin\mysqld.exe (mysqld 5.7.11) starting as process 10880 ...
+2023-06-07T18:55:47.765102Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2023-06-07T18:55:47.765102Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2023-06-07T18:55:47.774078Z 0 [Note] C:\Users\Acer\Desktop\Курсовая 1 семестр 3 курс — копия\versia_probnaia — копия (5)\versia1\MySQL\mysql-5.7\bin\mysqld.exe (mysqld 5.7.11) starting as process 15032 ...
+2023-06-07T18:57:02.350104Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2023-06-07T18:57:02.350104Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2023-06-07T18:57:02.351095Z 0 [Note] C:\Users\Acer\Desktop\Курсовая 1 семестр 3 курс — копия\Финальная версия\versia1\MySQL\mysql-5.7\bin\mysqld.exe (mysqld 5.7.11) starting as process 2788 ...
+2023-06-08T02:32:22.749852Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2023-06-08T02:32:22.749852Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2023-06-08T02:32:22.749852Z 0 [Note] C:\Users\Acer\Desktop\Курсовая 1 семестр 3 курс — копия\Финальная версия\versia1\MySQL\mysql-5.7\bin\mysqld.exe (mysqld 5.7.11) starting as process 7312 ...
+2023-06-08T04:20:42.513280Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2023-06-08T04:20:42.513280Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2023-06-08T04:20:42.513280Z 0 [Note] C:\Users\Acer\Desktop\Курсовая 1 семестр 3 курс — копия\Финальная версия\versia1\MySQL\mysql-5.7\bin\mysqld.exe (mysqld 5.7.11) starting as process 11296 ...
+2023-06-08T12:46:28.284310Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2023-06-08T12:46:28.284310Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2023-06-08T12:46:28.285307Z 0 [Note] C:\Users\Acer\Desktop\Курсовая 1 семестр 3 курс — копия\Финальная версия\versia1\MySQL\mysql-5.7\bin\mysqld.exe (mysqld 5.7.11) starting as process 9128 ...
+2023-06-09T08:42:51.432924Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2023-06-09T08:42:51.435917Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2023-06-09T08:42:51.508719Z 0 [Note] C:\Users\Acer\Desktop\Курсовая 1 семестр 3 курс — копия\Финальная версия\versia1\MySQL\mysql-5.7\bin\mysqld.exe (mysqld 5.7.11) starting as process 1364 ...
+2023-06-10T01:39:55.361751Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2023-06-10T01:39:55.363714Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2023-06-10T01:39:55.370695Z 0 [Note] C:\Users\Acer\Desktop\Курсовая 1 семестр 3 курс — копия\на диск\Исходные коды\Код программы\versia1\MySQL\mysql-5.7\bin\mysqld.exe (mysqld 5.7.11) starting as process 10700 ...
+2023-06-10T01:39:55.613048Z 0 [ERROR] Can't open shared library 'C:\Users\Acer\Desktop\Курсовая 1 семестр 3 курс — копия\на диск\Исходные коды\Код программы\versia1\MySQL\mysql-5.7\lib\plugin\keyring_file.dll' (errno: 126 Не найден указанный модуль.)
+2023-06-10T01:39:55.617037Z 0 [ERROR] Couldn't load plugin named 'keyring_file' with soname 'keyring_file.dll'.
+2023-06-10T01:39:55.620029Z 0 [Note] InnoDB: Mutexes and rw_locks use Windows interlocked functions
+2023-06-10T01:39:55.621026Z 0 [Note] InnoDB: Uses event mutexes
+2023-06-10T01:39:55.622939Z 0 [Note] InnoDB: Memory barrier is not used
+2023-06-10T01:39:55.648952Z 0 [Note] InnoDB: Compressed tables use zlib 1.2.3
+2023-06-10T01:39:55.652942Z 0 [Note] InnoDB: Number of pools: 1
+2023-06-10T01:39:55.654936Z 0 [Note] InnoDB: Not using CPU crc32 instructions
+2023-06-10T01:39:55.938792Z 0 [Note] InnoDB: Initializing buffer pool, total size = 128M, instances = 1, chunk size = 128M
+2023-06-10T01:39:56.066835Z 0 [Note] InnoDB: Completed initialization of buffer pool
+2023-06-10T01:39:56.221421Z 0 [Note] InnoDB: Highest supported file format is Barracuda.
+2023-06-10T01:39:56.226564Z 0 [Note] InnoDB: Log scan progressed past the checkpoint lsn 11779018
+2023-06-10T01:39:56.228402Z 0 [Note] InnoDB: Doing recovery: scanned up to log sequence number 11779027
+2023-06-10T01:39:56.230398Z 0 [Note] InnoDB: Doing recovery: scanned up to log sequence number 11779027
+2023-06-10T01:39:56.232392Z 0 [Note] InnoDB: Database was not shutdown normally!
+2023-06-10T01:39:56.233534Z 0 [Note] InnoDB: Starting crash recovery.
+2023-06-10T01:39:56.441162Z 0 [ERROR] InnoDB: Operating system error number 3 in a file operation.
+2023-06-10T01:39:56.442829Z 0 [ERROR] InnoDB: The error means the system cannot find the path specified.
+2023-06-10T01:39:56.443826Z 0 [ERROR] InnoDB: If you are installing InnoDB, remember that you must create directories yourself, InnoDB does not create them.
+2023-06-10T01:39:56.446818Z 0 [ERROR] InnoDB: Cannot open datafile for read-only: '.\goodsmanager\goods_catalog.ibd' OS error: 103
+2023-06-10T01:39:56.448813Z 0 [ERROR] InnoDB: Operating system error number 203 in a file operation.
+2023-06-10T01:39:56.450100Z 0 [Note] InnoDB: Some operating system error numbers are described at http://dev.mysql.com/doc/refman/5.7/en/operating-system-error-codes.html
+2023-06-10T01:39:56.454797Z 0 [ERROR] InnoDB: Could not find a valid tablespace file for `goodsmanager/goods_catalog`. Please refer to http://dev.mysql.com/doc/refman/5.7/en/innodb-troubleshooting-datadict.html for how to resolve the issue.
+2023-06-10T01:39:56.465767Z 0 [Warning] InnoDB: Ignoring tablespace `goodsmanager/goods_catalog` because it could not be opened.
+2023-06-10T01:39:56.468123Z 0 [ERROR] InnoDB: Operating system error number 3 in a file operation.
+2023-06-10T01:39:56.470076Z 0 [ERROR] InnoDB: The error means the system cannot find the path specified.
+2023-06-10T01:39:56.472010Z 0 [ERROR] InnoDB: If you are installing InnoDB, remember that you must create directories yourself, InnoDB does not create them.
+2023-06-10T01:39:56.474745Z 0 [ERROR] InnoDB: Cannot open datafile for read-only: '.\goodsmanager\op_goods_list.ibd' OS error: 103
+2023-06-10T01:39:56.476512Z 0 [ERROR] InnoDB: Operating system error number 203 in a file operation.
+2023-06-10T01:39:56.477735Z 0 [Note] InnoDB: Some operating system error numbers are described at http://dev.mysql.com/doc/refman/5.7/en/operating-system-error-codes.html
+2023-06-10T01:39:56.481725Z 0 [ERROR] InnoDB: Could not find a valid tablespace file for `goodsmanager/op_goods_list`. Please refer to http://dev.mysql.com/doc/refman/5.7/en/innodb-troubleshooting-datadict.html for how to resolve the issue.
+2023-06-10T01:39:56.484620Z 0 [Warning] InnoDB: Ignoring tablespace `goodsmanager/op_goods_list` because it could not be opened.
+2023-06-10T01:39:56.486712Z 0 [ERROR] InnoDB: Operating system error number 3 in a file operation.
+2023-06-10T01:39:56.489453Z 0 [ERROR] InnoDB: The error means the system cannot find the path specified.
+2023-06-10T01:39:56.490701Z 0 [ERROR] InnoDB: If you are installing InnoDB, remember that you must create directories yourself, InnoDB does not create them.
+2023-06-10T01:39:56.493253Z 0 [ERROR] InnoDB: Cannot open datafile for read-only: '.\goodsmanager\operations.ibd' OS error: 103
+2023-06-10T01:39:56.494690Z 0 [ERROR] InnoDB: Operating system error number 203 in a file operation.
+2023-06-10T01:39:56.495688Z 0 [Note] InnoDB: Some operating system error numbers are described at http://dev.mysql.com/doc/refman/5.7/en/operating-system-error-codes.html
+2023-06-10T01:39:56.498771Z 0 [ERROR] InnoDB: Could not find a valid tablespace file for `goodsmanager/operations`. Please refer to http://dev.mysql.com/doc/refman/5.7/en/innodb-troubleshooting-datadict.html for how to resolve the issue.
+2023-06-10T01:39:56.506659Z 0 [Warning] InnoDB: Ignoring tablespace `goodsmanager/operations` because it could not be opened.
+2023-06-10T01:39:56.508956Z 0 [ERROR] InnoDB: Operating system error number 3 in a file operation.
+2023-06-10T01:39:56.512029Z 0 [ERROR] InnoDB: The error means the system cannot find the path specified.
+2023-06-10T01:39:56.513640Z 0 [ERROR] InnoDB: If you are installing InnoDB, remember that you must create directories yourself, InnoDB does not create them.
+2023-06-10T01:39:56.516439Z 0 [ERROR] InnoDB: Cannot open datafile for read-only: '.\goodsmanager\storage.ibd' OS error: 103
+2023-06-10T01:39:56.517742Z 0 [ERROR] InnoDB: Operating system error number 203 in a file operation.
+2023-06-10T01:39:56.519681Z 0 [Note] InnoDB: Some operating system error numbers are described at http://dev.mysql.com/doc/refman/5.7/en/operating-system-error-codes.html
+2023-06-10T01:39:56.522616Z 0 [ERROR] InnoDB: Could not find a valid tablespace file for `goodsmanager/storage`. Please refer to http://dev.mysql.com/doc/refman/5.7/en/innodb-troubleshooting-datadict.html for how to resolve the issue.
+2023-06-10T01:39:56.529117Z 0 [Warning] InnoDB: Ignoring tablespace `goodsmanager/storage` because it could not be opened.
+2023-06-10T01:39:56.532645Z 0 [ERROR] InnoDB: Operating system error number 3 in a file operation.
+2023-06-10T01:39:56.534584Z 0 [ERROR] InnoDB: The error means the system cannot find the path specified.
+2023-06-10T01:39:56.536579Z 0 [ERROR] InnoDB: If you are installing InnoDB, remember that you must create directories yourself, InnoDB does not create them.
+2023-06-10T01:39:56.539572Z 0 [ERROR] InnoDB: Cannot open datafile for read-only: '.\goodsmanager\storage_description.ibd' OS error: 103
+2023-06-10T01:39:56.541565Z 0 [ERROR] InnoDB: Operating system error number 203 in a file operation.
+2023-06-10T01:39:56.569491Z 0 [Note] InnoDB: Some operating system error numbers are described at http://dev.mysql.com/doc/refman/5.7/en/operating-system-error-codes.html
+2023-06-10T01:39:56.573481Z 0 [ERROR] InnoDB: Could not find a valid tablespace file for `goodsmanager/storage_description`. Please refer to http://dev.mysql.com/doc/refman/5.7/en/innodb-troubleshooting-datadict.html for how to resolve the issue.
+2023-06-10T01:39:56.578653Z 0 [Warning] InnoDB: Ignoring tablespace `goodsmanager/storage_description` because it could not be opened.
+2023-06-10T01:39:56.580461Z 0 [ERROR] InnoDB: Operating system error number 3 in a file operation.
+2023-06-10T01:39:56.582458Z 0 [ERROR] InnoDB: The error means the system cannot find the path specified.
+2023-06-10T01:39:56.584451Z 0 [ERROR] InnoDB: If you are installing InnoDB, remember that you must create directories yourself, InnoDB does not create them.
+2023-06-10T01:39:56.633320Z 0 [ERROR] InnoDB: Cannot open datafile for read-only: '.\goodsmanager\storage_transfers.ibd' OS error: 103
+2023-06-10T01:39:56.635455Z 0 [ERROR] InnoDB: Operating system error number 203 in a file operation.
+2023-06-10T01:39:56.636673Z 0 [Note] InnoDB: Some operating system error numbers are described at http://dev.mysql.com/doc/refman/5.7/en/operating-system-error-codes.html
+2023-06-10T01:39:56.639105Z 0 [ERROR] InnoDB: Could not find a valid tablespace file for `goodsmanager/storage_transfers`. Please refer to http://dev.mysql.com/doc/refman/5.7/en/innodb-troubleshooting-datadict.html for how to resolve the issue.
+2023-06-10T01:39:56.641784Z 0 [Warning] InnoDB: Ignoring tablespace `goodsmanager/storage_transfers` because it could not be opened.
+2023-06-10T01:39:56.643747Z 0 [ERROR] InnoDB: Operating system error number 3 in a file operation.
+2023-06-10T01:39:56.644871Z 0 [ERROR] InnoDB: The error means the system cannot find the path specified.
+2023-06-10T01:39:56.646285Z 0 [ERROR] InnoDB: If you are installing InnoDB, remember that you must create directories yourself, InnoDB does not create them.
+2023-06-10T01:39:56.666231Z 0 [ERROR] InnoDB: Cannot open datafile for read-only: '.\goodsmanager\suppliers_catalog.ibd' OS error: 103
+2023-06-10T01:39:56.669224Z 0 [ERROR] InnoDB: Operating system error number 203 in a file operation.
+2023-06-10T01:39:56.672216Z 0 [Note] InnoDB: Some operating system error numbers are described at http://dev.mysql.com/doc/refman/5.7/en/operating-system-error-codes.html
+2023-06-10T01:39:56.674884Z 0 [ERROR] InnoDB: Could not find a valid tablespace file for `goodsmanager/suppliers_catalog`. Please refer to http://dev.mysql.com/doc/refman/5.7/en/innodb-troubleshooting-datadict.html for how to resolve the issue.
+2023-06-10T01:39:56.678403Z 0 [Warning] InnoDB: Ignoring tablespace `goodsmanager/suppliers_catalog` because it could not be opened.
+2023-06-10T01:39:56.680392Z 0 [ERROR] InnoDB: Operating system error number 3 in a file operation.
+2023-06-10T01:39:56.682189Z 0 [ERROR] InnoDB: The error means the system cannot find the path specified.
+2023-06-10T01:39:56.683186Z 0 [ERROR] InnoDB: If you are installing InnoDB, remember that you must create directories yourself, InnoDB does not create them.
+2023-06-10T01:39:56.685181Z 0 [ERROR] InnoDB: Cannot open datafile for read-only: '.\goodsmanager\transfer_items.ibd' OS error: 103
+2023-06-10T01:39:56.703134Z 0 [ERROR] InnoDB: Operating system error number 203 in a file operation.
+2023-06-10T01:39:56.704130Z 0 [Note] InnoDB: Some operating system error numbers are described at http://dev.mysql.com/doc/refman/5.7/en/operating-system-error-codes.html
+2023-06-10T01:39:56.707123Z 0 [ERROR] InnoDB: Could not find a valid tablespace file for `goodsmanager/transfer_items`. Please refer to http://dev.mysql.com/doc/refman/5.7/en/innodb-troubleshooting-datadict.html for how to resolve the issue.
+2023-06-10T01:39:56.710114Z 0 [Warning] InnoDB: Ignoring tablespace `goodsmanager/transfer_items` because it could not be opened.
+2023-06-10T01:39:56.717096Z 0 [ERROR] InnoDB: Operating system error number 3 in a file operation.
+2023-06-10T01:39:56.719091Z 0 [ERROR] InnoDB: The error means the system cannot find the path specified.
+2023-06-10T01:39:56.720417Z 0 [ERROR] InnoDB: If you are installing InnoDB, remember that you must create directories yourself, InnoDB does not create them.
+2023-06-10T01:39:56.722717Z 0 [ERROR] InnoDB: Cannot open datafile for read-only: '.\goodsmanager\type_goods.ibd' OS error: 103
+2023-06-10T01:39:56.745022Z 0 [ERROR] InnoDB: Operating system error number 203 in a file operation.
+2023-06-10T01:39:56.747015Z 0 [Note] InnoDB: Some operating system error numbers are described at http://dev.mysql.com/doc/refman/5.7/en/operating-system-error-codes.html
+2023-06-10T01:39:56.749011Z 0 [ERROR] InnoDB: Could not find a valid tablespace file for `goodsmanager/type_goods`. Please refer to http://dev.mysql.com/doc/refman/5.7/en/innodb-troubleshooting-datadict.html for how to resolve the issue.
+2023-06-10T01:39:56.753001Z 0 [Warning] InnoDB: Ignoring tablespace `goodsmanager/type_goods` because it could not be opened.
+2023-06-10T01:39:57.705454Z 0 [Note] InnoDB: Removed temporary tablespace data file: "ibtmp1"
+2023-06-10T01:39:57.707331Z 0 [Note] InnoDB: Creating shared tablespace for temporary tables
+2023-06-10T01:39:57.708570Z 0 [Note] InnoDB: Setting file '.\ibtmp1' size to 12 MB. Physically writing the file full; Please wait ...
+2023-06-10T01:39:57.727395Z 0 [Note] InnoDB: File '.\ibtmp1' size is now 12 MB.
+2023-06-10T01:39:57.747341Z 0 [Note] InnoDB: 96 redo rollback segment(s) found. 96 redo rollback segment(s) are active.
+2023-06-10T01:39:57.750334Z 0 [Note] InnoDB: 32 non-redo rollback segment(s) are active.
+2023-06-10T01:39:57.752328Z 0 [Note] InnoDB: Waiting for purge to start
+2023-06-10T01:39:57.765293Z 0 [ERROR] InnoDB: Failed to find tablespace for table `goodsmanager`.`op_goods_list` in the cache. Attempting to load the tablespace with space id 90
+2023-06-10T01:39:57.768408Z 0 [ERROR] InnoDB: Operating system error number 3 in a file operation.
+2023-06-10T01:39:57.772274Z 0 [ERROR] InnoDB: The error means the system cannot find the path specified.
+2023-06-10T01:39:57.775267Z 0 [ERROR] InnoDB: Cannot open datafile for read-only: '.\goodsmanager\op_goods_list.ibd' OS error: 103
+2023-06-10T01:39:57.777318Z 0 [ERROR] InnoDB: Operating system error number 203 in a file operation.
+2023-06-10T01:39:57.780255Z 0 [Note] InnoDB: Some operating system error numbers are described at http://dev.mysql.com/doc/refman/5.7/en/operating-system-error-codes.html
+2023-06-10T01:39:57.783245Z 0 [ERROR] InnoDB: Could not find a valid tablespace file for `goodsmanager/op_goods_list`. Please refer to http://dev.mysql.com/doc/refman/5.7/en/innodb-troubleshooting-datadict.html for how to resolve the issue.
+2023-06-10T01:39:57.828691Z 0 [Note] InnoDB: 5.7.11 started; log sequence number 11779027
+2023-06-10T01:39:57.833112Z 0 [Note] Plugin 'FEDERATED' is disabled.
+2023-06-10T01:39:57.863119Z 0 [Note] InnoDB: Loading buffer pool(s) from C:\Users\Acer\Desktop\Курсовая 1 семестр 3 курс — копия\на диск\Исходные коды\Код программы\versia1\MySQL\mysql-5.7\data\ib_buffer_pool
+2023-06-10T01:39:57.891955Z 0 [Note] InnoDB: Buffer pool(s) load completed at 230610  8:39:57
+2023-06-10T01:39:57.933842Z 0 [Warning] Failed to set up SSL because of the following SSL library error: SSL context is not usable without certificate and private key
+2023-06-10T01:39:57.963763Z 0 [Note] Server hostname (bind-address): '*'; port: 3306
+2023-06-10T01:39:57.965757Z 0 [Note] IPv6 is available.
+2023-06-10T01:39:57.968817Z 0 [Note]   - '::' resolves to '::';
+2023-06-10T01:39:57.970149Z 0 [Note] Server socket created on IP: '::'.
+2023-06-10T01:40:01.854362Z 0 [Note] Event Scheduler: Loaded 0 events
+2023-06-10T01:40:01.855544Z 0 [Note] C:\Users\Acer\Desktop\Курсовая 1 семестр 3 курс — копия\на диск\Исходные коды\Код программы\versia1\MySQL\mysql-5.7\bin\mysqld.exe: ready for connections.
+Version: '5.7.11'  socket: ''  port: 3306  MySQL Community Server (GPL)
+2023-06-10T01:53:57.611495Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2023-06-10T01:53:57.614486Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2023-06-10T01:53:57.620471Z 0 [Note] C:\Users\Acer\Desktop\Курсовая 1 семестр 3 курс — копия\на диск\Исходные коды\Код программы\versia1\MySQL\mysql-5.7\bin\mysqld.exe (mysqld 5.7.11) starting as process 11372 ...
+2023-06-10T04:25:40.936547Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2023-06-10T04:25:40.937226Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2023-06-10T04:25:40.955497Z 0 [Note] C:\Users\Acer\Desktop\Курсовая 1 семестр 3 курс — копия\на диск\Исходные коды\versia1\MySQL\mysql-5.7\bin\mysqld.exe (mysqld 5.7.11) starting as process 5140 ...
+2023-06-10T04:30:35.994635Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2023-06-10T04:30:35.994635Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2023-06-10T04:30:35.995633Z 0 [Note] C:\Users\Acer\Desktop\Курсовая 1 семестр 3 курс — копия\на диск\Программа\MySQL\mysql-5.7\bin\mysqld.exe (mysqld 5.7.11) starting as process 9748 ...
+2023-06-10T04:34:36.118145Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2023-06-10T04:34:36.118145Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2023-06-10T04:34:36.118963Z 0 [Note] C:\Users\Acer\Desktop\Курсовая 1 семестр 3 курс — копия\на диск\Программа\MySQL\mysql-5.7\bin\mysqld.exe (mysqld 5.7.11) starting as process 7076 ...
+2023-06-10T04:34:46.733910Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2023-06-10T04:34:46.733910Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2023-06-10T04:34:46.734907Z 0 [Note] C:\Users\Acer\Desktop\Курсовая 1 семестр 3 курс — копия\на диск\Программа\MySQL\mysql-5.7\bin\mysqld.exe (mysqld 5.7.11) starting as process 6968 ...
+2023-08-21T19:58:57.383321Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2023-08-21T19:58:57.383321Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2023-08-21T19:58:57.387548Z 0 [Note] C:\Users\Acer\Desktop\курсовая зотин\Программа по обучению математическому анализу\versia1\MySQL\mysql-5.7\bin\mysqld.exe (mysqld 5.7.11) starting as process 11088 ...
+2023-10-15T14:12:31.508614Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2023-10-15T14:12:31.508614Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2023-10-15T14:12:31.512618Z 0 [Note] C:\Users\Acer\Desktop\курсовая зотин\Программа по обучению математическому анализу\versia1\MySQL\mysql-5.7\bin\mysqld.exe (mysqld 5.7.11) starting as process 12988 ...
+2023-10-15T18:15:11.841366Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2023-10-15T18:15:11.841366Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2023-10-15T18:15:11.845357Z 0 [Note] C:\Users\Acer\Desktop\курсовая зотин\Программа по обучению математическому анализу\versia1\MySQL\mysql-5.7\bin\mysqld.exe (mysqld 5.7.11) starting as process 16152 ...
+2023-10-16T05:58:21.980604Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2023-10-16T05:58:21.980604Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2023-10-16T05:58:21.996225Z 0 [Note] C:\Users\Acer\Desktop\курсовая зотин\Программа по обучению математическому анализу\versia1\MySQL\mysql-5.7\bin\mysqld.exe (mysqld 5.7.11) starting as process 3692 ...
+2024-01-02T11:01:30.259512Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2024-01-02T11:01:30.259512Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2024-01-02T11:01:30.271634Z 0 [Note] C:\Users\Acer\Desktop\Диплом\Программа по обучению математическому анализу\versia1\MySQL\mysql-5.7\bin\mysqld.exe (mysqld 5.7.11) starting as process 6516 ...
+2024-01-02T11:04:07.719549Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2024-01-02T11:04:07.719549Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2024-01-02T11:04:07.723569Z 0 [Note] C:\Users\Acer\Desktop\Диплом\Программа по обучению математическому анализу\versia1\MySQL\mysql-5.7\bin\mysqld.exe (mysqld 5.7.11) starting as process 15080 ...
+2024-01-02T11:10:36.276719Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2024-01-02T11:10:36.276719Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2024-01-02T11:10:36.280724Z 0 [Note] C:\Users\Acer\Desktop\Диплом\Диплом программа\versia1\MySQL\mysql-5.7\bin\mysqld.exe (mysqld 5.7.11) starting as process 14960 ...
+2024-01-03T15:18:01.558582Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2024-01-03T15:18:01.558582Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2024-01-03T15:18:01.558582Z 0 [Note] C:\Users\Acer\Desktop\Диплом\Диплом программа\versia1\MySQL\mysql-5.7\bin\mysqld.exe (mysqld 5.7.11) starting as process 14136 ...
+2024-01-04T14:03:15.617410Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2024-01-04T14:03:15.617410Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2024-01-04T14:03:15.617410Z 0 [Note] C:\Users\Acer\Desktop\Диплом\Диплом программа\versia1\MySQL\mysql-5.7\bin\mysqld.exe (mysqld 5.7.11) starting as process 13812 ...
+2024-01-27T15:15:24.432885Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2024-01-27T15:15:24.433882Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2024-01-27T15:15:24.438870Z 0 [Note] C:\Users\Acer\Desktop\Диплом\Диплом программа\versia1\MySQL\mysql-5.7\bin\mysqld.exe (mysqld 5.7.11) starting as process 19584 ...
+2024-02-06T14:57:21.304918Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2024-02-06T14:57:21.304918Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2024-02-06T14:57:21.307898Z 0 [Note] C:\Users\Acer\Desktop\Диплом\Диплом программа\versia1\MySQL\mysql-5.7\bin\mysqld.exe (mysqld 5.7.11) starting as process 22512 ...
+2024-03-04T08:20:51.614842Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2024-03-04T08:20:51.614842Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2024-03-04T08:20:51.614842Z 0 [Note] C:\Users\Acer\Desktop\Диплом\Диплом программа\versia1\MySQL\mysql-5.7\bin\mysqld.exe (mysqld 5.7.11) starting as process 2788 ...
+2024-03-04T10:06:18.200489Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2024-03-04T10:06:18.202477Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2024-03-04T10:06:18.209459Z 0 [Note] C:\Users\Acer\Desktop\Диплом\Диплом программа\versia1\MySQL\mysql-5.7\bin\mysqld.exe (mysqld 5.7.11) starting as process 2508 ...
+2024-03-04T16:51:25.979958Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2024-03-04T16:51:25.979958Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2024-03-04T16:51:25.995578Z 0 [Note] C:\Users\Acer\Desktop\Диплом\Диплом программа\versia1\MySQL\mysql-5.7\bin\mysqld.exe (mysqld 5.7.11) starting as process 8080 ...
+2024-03-05T06:13:01.162395Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2024-03-05T06:13:01.162395Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2024-03-05T06:13:01.178016Z 0 [Note] C:\Users\Acer\Desktop\Диплом\Диплом программа\versia1\MySQL\mysql-5.7\bin\mysqld.exe (mysqld 5.7.11) starting as process 2300 ...
+2024-03-05T13:25:21.067995Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2024-03-05T13:25:21.067995Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2024-03-05T13:25:21.083625Z 0 [Note] C:\Users\Acer\Desktop\Диплом\Диплом программа\versia1\MySQL\mysql-5.7\bin\mysqld.exe (mysqld 5.7.11) starting as process 5076 ...
+2024-03-06T06:31:09.463629Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2024-03-06T06:31:09.463629Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2024-03-06T06:31:09.479162Z 0 [Note] C:\Users\Acer\Desktop\Диплом\Диплом программа\versia1\MySQL\mysql-5.7\bin\mysqld.exe (mysqld 5.7.11) starting as process 14592 ...
+2024-03-06T09:26:43.612646Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2024-03-06T09:26:43.612646Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2024-03-06T09:26:43.612646Z 0 [Note] C:\Users\Acer\Desktop\Диплом\Диплом программа\versia1\MySQL\mysql-5.7\bin\mysqld.exe (mysqld 5.7.11) starting as process 7748 ...
+2024-03-11T08:59:29.393705Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2024-03-11T08:59:29.394705Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2024-03-11T08:59:29.407666Z 0 [Note] C:\Users\Acer\Desktop\Диплом\Диплом программа\versia1\MySQL\mysql-5.7\bin\mysqld.exe (mysqld 5.7.11) starting as process 15860 ...
+2024-03-12T09:29:23.733028Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2024-03-12T09:29:23.733028Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2024-03-12T09:29:23.740009Z 0 [Note] C:\Users\Acer\Desktop\Диплом\Диплом программа\versia1\MySQL\mysql-5.7\bin\mysqld.exe (mysqld 5.7.11) starting as process 10964 ...
+2024-03-13T01:05:50.850510Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2024-03-13T01:05:50.850510Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2024-03-13T01:05:50.850510Z 0 [Note] C:\Users\Acer\Desktop\Диплом\Диплом программа\versia1\MySQL\mysql-5.7\bin\mysqld.exe (mysqld 5.7.11) starting as process 8092 ...
+2024-03-13T13:47:26.628628Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2024-03-13T13:47:26.628628Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2024-03-13T13:47:26.644247Z 0 [Note] C:\Users\Acer\Desktop\Диплом\Диплом программа\versia1\MySQL\mysql-5.7\bin\mysqld.exe (mysqld 5.7.11) starting as process 15844 ...
+2024-03-14T15:00:36.734502Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2024-03-14T15:00:36.734502Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2024-03-14T15:00:36.734502Z 0 [Note] C:\Users\Acer\Desktop\Диплом\Диплом программа\versia1\MySQL\mysql-5.7\bin\mysqld.exe (mysqld 5.7.11) starting as process 7632 ...
+2024-03-15T12:25:26.634342Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2024-03-15T12:25:26.634342Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2024-03-15T12:25:26.649964Z 0 [Note] C:\Users\Acer\Desktop\Диплом\Диплом программа\versia1\MySQL\mysql-5.7\bin\mysqld.exe (mysqld 5.7.11) starting as process 13628 ...
+2024-03-16T12:06:37.580336Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2024-03-16T12:06:37.580336Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2024-03-16T12:06:37.595944Z 0 [Note] C:\Users\Acer\Desktop\Диплом\Диплом программа\versia1\MySQL\mysql-5.7\bin\mysqld.exe (mysqld 5.7.11) starting as process 14200 ...
+2024-03-17T09:33:14.590020Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2024-03-17T09:33:14.590020Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2024-03-17T09:33:14.590020Z 0 [Note] C:\Users\Acer\Desktop\Диплом\Диплом программа\versia1\MySQL\mysql-5.7\bin\mysqld.exe (mysqld 5.7.11) starting as process 8776 ...
+2024-03-18T08:18:24.707471Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2024-03-18T08:18:24.707471Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2024-03-18T08:18:24.723104Z 0 [Note] C:\Users\Acer\Desktop\Диплом\Диплом программа\versia1\MySQL\mysql-5.7\bin\mysqld.exe (mysqld 5.7.11) starting as process 5508 ...
+2024-03-18T09:56:48.487917Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2024-03-18T09:56:48.487917Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2024-03-18T09:56:48.487917Z 0 [Note] C:\Users\Acer\Desktop\Диплом\Диплом программа\versia1\MySQL\mysql-5.7\bin\mysqld.exe (mysqld 5.7.11) starting as process 7512 ...
+2024-03-18T09:56:48.519574Z 0 [ERROR] Can't open shared library 'C:\Users\Acer\Desktop\Диплом\Диплом программа\versia1\MySQL\mysql-5.7\lib\plugin\keyring_file.dll' (errno: 126 Не найден указанный модуль.)
+2024-03-18T09:56:48.519574Z 0 [ERROR] Couldn't load plugin named 'keyring_file' with soname 'keyring_file.dll'.
+2024-03-18T09:56:48.519574Z 0 [Note] InnoDB: Mutexes and rw_locks use Windows interlocked functions
+2024-03-18T09:56:48.519574Z 0 [Note] InnoDB: Uses event mutexes
+2024-03-18T09:56:48.535197Z 0 [Note] InnoDB: Memory barrier is not used
+2024-03-18T09:56:48.535197Z 0 [Note] InnoDB: Compressed tables use zlib 1.2.3
+2024-03-18T09:56:48.535197Z 0 [Note] InnoDB: Number of pools: 1
+2024-03-18T09:56:48.535197Z 0 [Note] InnoDB: Not using CPU crc32 instructions
+2024-03-18T09:56:48.691814Z 0 [Note] InnoDB: Initializing buffer pool, total size = 128M, instances = 1, chunk size = 128M
+2024-03-18T09:56:48.707839Z 0 [Note] InnoDB: Completed initialization of buffer pool
+2024-03-18T09:56:48.739086Z 0 [Note] InnoDB: Highest supported file format is Barracuda.
+2024-03-18T09:56:48.754707Z 0 [Note] InnoDB: Log scan progressed past the checkpoint lsn 30629812
+2024-03-18T09:56:48.754707Z 0 [Note] InnoDB: Doing recovery: scanned up to log sequence number 30629821
+2024-03-18T09:56:48.754707Z 0 [Note] InnoDB: Doing recovery: scanned up to log sequence number 30629821
+2024-03-18T09:56:48.754707Z 0 [Note] InnoDB: Database was not shutdown normally!
+2024-03-18T09:56:48.754707Z 0 [Note] InnoDB: Starting crash recovery.
+2024-03-18T09:56:48.975082Z 0 [ERROR] InnoDB: Operating system error number 3 in a file operation.
+2024-03-18T09:56:48.975082Z 0 [ERROR] InnoDB: The error means the system cannot find the path specified.
+2024-03-18T09:56:48.990730Z 0 [ERROR] InnoDB: If you are installing InnoDB, remember that you must create directories yourself, InnoDB does not create them.
+2024-03-18T09:56:48.990730Z 0 [ERROR] InnoDB: Cannot open datafile for read-only: '.\goodsmanager\goods_catalog.ibd' OS error: 103
+2024-03-18T09:56:48.998747Z 0 [ERROR] InnoDB: Operating system error number 203 in a file operation.
+2024-03-18T09:56:48.998747Z 0 [Note] InnoDB: Some operating system error numbers are described at http://dev.mysql.com/doc/refman/5.7/en/operating-system-error-codes.html
+2024-03-18T09:56:48.998747Z 0 [ERROR] InnoDB: Could not find a valid tablespace file for `goodsmanager/goods_catalog`. Please refer to http://dev.mysql.com/doc/refman/5.7/en/innodb-troubleshooting-datadict.html for how to resolve the issue.
+2024-03-18T09:56:49.006802Z 0 [Warning] InnoDB: Ignoring tablespace `goodsmanager/goods_catalog` because it could not be opened.
+2024-03-18T09:56:49.006802Z 0 [ERROR] InnoDB: Operating system error number 3 in a file operation.
+2024-03-18T09:56:49.006802Z 0 [ERROR] InnoDB: The error means the system cannot find the path specified.
+2024-03-18T09:56:49.006802Z 0 [ERROR] InnoDB: If you are installing InnoDB, remember that you must create directories yourself, InnoDB does not create them.
+2024-03-18T09:56:49.006802Z 0 [ERROR] InnoDB: Cannot open datafile for read-only: '.\goodsmanager\op_goods_list.ibd' OS error: 103
+2024-03-18T09:56:49.006802Z 0 [ERROR] InnoDB: Operating system error number 203 in a file operation.
+2024-03-18T09:56:49.006802Z 0 [Note] InnoDB: Some operating system error numbers are described at http://dev.mysql.com/doc/refman/5.7/en/operating-system-error-codes.html
+2024-03-18T09:56:49.006802Z 0 [ERROR] InnoDB: Could not find a valid tablespace file for `goodsmanager/op_goods_list`. Please refer to http://dev.mysql.com/doc/refman/5.7/en/innodb-troubleshooting-datadict.html for how to resolve the issue.
+2024-03-18T09:56:49.006802Z 0 [Warning] InnoDB: Ignoring tablespace `goodsmanager/op_goods_list` because it could not be opened.
+2024-03-18T09:56:49.022433Z 0 [ERROR] InnoDB: Operating system error number 3 in a file operation.
+2024-03-18T09:56:49.022433Z 0 [ERROR] InnoDB: The error means the system cannot find the path specified.
+2024-03-18T09:56:49.022433Z 0 [ERROR] InnoDB: If you are installing InnoDB, remember that you must create directories yourself, InnoDB does not create them.
+2024-03-18T09:56:49.022433Z 0 [ERROR] InnoDB: Cannot open datafile for read-only: '.\goodsmanager\operations.ibd' OS error: 103
+2024-03-18T09:56:49.022433Z 0 [ERROR] InnoDB: Operating system error number 203 in a file operation.
+2024-03-18T09:56:49.022433Z 0 [Note] InnoDB: Some operating system error numbers are described at http://dev.mysql.com/doc/refman/5.7/en/operating-system-error-codes.html
+2024-03-18T09:56:49.022433Z 0 [ERROR] InnoDB: Could not find a valid tablespace file for `goodsmanager/operations`. Please refer to http://dev.mysql.com/doc/refman/5.7/en/innodb-troubleshooting-datadict.html for how to resolve the issue.
+2024-03-18T09:56:49.022433Z 0 [Warning] InnoDB: Ignoring tablespace `goodsmanager/operations` because it could not be opened.
+2024-03-18T09:56:49.022433Z 0 [ERROR] InnoDB: Operating system error number 3 in a file operation.
+2024-03-18T09:56:49.022433Z 0 [ERROR] InnoDB: The error means the system cannot find the path specified.
+2024-03-18T09:56:49.022433Z 0 [ERROR] InnoDB: If you are installing InnoDB, remember that you must create directories yourself, InnoDB does not create them.
+2024-03-18T09:56:49.022433Z 0 [ERROR] InnoDB: Cannot open datafile for read-only: '.\goodsmanager\storage.ibd' OS error: 103
+2024-03-18T09:56:49.022433Z 0 [ERROR] InnoDB: Operating system error number 203 in a file operation.
+2024-03-18T09:56:49.022433Z 0 [Note] InnoDB: Some operating system error numbers are described at http://dev.mysql.com/doc/refman/5.7/en/operating-system-error-codes.html
+2024-03-18T09:56:49.038053Z 0 [ERROR] InnoDB: Could not find a valid tablespace file for `goodsmanager/storage`. Please refer to http://dev.mysql.com/doc/refman/5.7/en/innodb-troubleshooting-datadict.html for how to resolve the issue.
+2024-03-18T09:56:49.038053Z 0 [Warning] InnoDB: Ignoring tablespace `goodsmanager/storage` because it could not be opened.
+2024-03-18T09:56:49.038053Z 0 [ERROR] InnoDB: Operating system error number 3 in a file operation.
+2024-03-18T09:56:49.038053Z 0 [ERROR] InnoDB: The error means the system cannot find the path specified.
+2024-03-18T09:56:49.038053Z 0 [ERROR] InnoDB: If you are installing InnoDB, remember that you must create directories yourself, InnoDB does not create them.
+2024-03-18T09:56:49.038053Z 0 [ERROR] InnoDB: Cannot open datafile for read-only: '.\goodsmanager\storage_description.ibd' OS error: 103
+2024-03-18T09:56:49.038053Z 0 [ERROR] InnoDB: Operating system error number 203 in a file operation.
+2024-03-18T09:56:49.038053Z 0 [Note] InnoDB: Some operating system error numbers are described at http://dev.mysql.com/doc/refman/5.7/en/operating-system-error-codes.html
+2024-03-18T09:56:49.038053Z 0 [ERROR] InnoDB: Could not find a valid tablespace file for `goodsmanager/storage_description`. Please refer to http://dev.mysql.com/doc/refman/5.7/en/innodb-troubleshooting-datadict.html for how to resolve the issue.
+2024-03-18T09:56:49.038053Z 0 [Warning] InnoDB: Ignoring tablespace `goodsmanager/storage_description` because it could not be opened.
+2024-03-18T09:56:49.038053Z 0 [ERROR] InnoDB: Operating system error number 3 in a file operation.
+2024-03-18T09:56:49.038053Z 0 [ERROR] InnoDB: The error means the system cannot find the path specified.
+2024-03-18T09:56:49.038053Z 0 [ERROR] InnoDB: If you are installing InnoDB, remember that you must create directories yourself, InnoDB does not create them.
+2024-03-18T09:56:49.038053Z 0 [ERROR] InnoDB: Cannot open datafile for read-only: '.\goodsmanager\storage_transfers.ibd' OS error: 103
+2024-03-18T09:56:49.053710Z 0 [ERROR] InnoDB: Operating system error number 203 in a file operation.
+2024-03-18T09:56:49.053710Z 0 [Note] InnoDB: Some operating system error numbers are described at http://dev.mysql.com/doc/refman/5.7/en/operating-system-error-codes.html
+2024-03-18T09:56:49.053710Z 0 [ERROR] InnoDB: Could not find a valid tablespace file for `goodsmanager/storage_transfers`. Please refer to http://dev.mysql.com/doc/refman/5.7/en/innodb-troubleshooting-datadict.html for how to resolve the issue.
+2024-03-18T09:56:49.053710Z 0 [Warning] InnoDB: Ignoring tablespace `goodsmanager/storage_transfers` because it could not be opened.
+2024-03-18T09:56:49.053710Z 0 [ERROR] InnoDB: Operating system error number 3 in a file operation.
+2024-03-18T09:56:49.053710Z 0 [ERROR] InnoDB: The error means the system cannot find the path specified.
+2024-03-18T09:56:49.053710Z 0 [ERROR] InnoDB: If you are installing InnoDB, remember that you must create directories yourself, InnoDB does not create them.
+2024-03-18T09:56:49.053710Z 0 [ERROR] InnoDB: Cannot open datafile for read-only: '.\goodsmanager\suppliers_catalog.ibd' OS error: 103
+2024-03-18T09:56:49.053710Z 0 [ERROR] InnoDB: Operating system error number 203 in a file operation.
+2024-03-18T09:56:49.053710Z 0 [Note] InnoDB: Some operating system error numbers are described at http://dev.mysql.com/doc/refman/5.7/en/operating-system-error-codes.html
+2024-03-18T09:56:49.053710Z 0 [ERROR] InnoDB: Could not find a valid tablespace file for `goodsmanager/suppliers_catalog`. Please refer to http://dev.mysql.com/doc/refman/5.7/en/innodb-troubleshooting-datadict.html for how to resolve the issue.
+2024-03-18T09:56:49.053710Z 0 [Warning] InnoDB: Ignoring tablespace `goodsmanager/suppliers_catalog` because it could not be opened.
+2024-03-18T09:56:49.053710Z 0 [ERROR] InnoDB: Operating system error number 3 in a file operation.
+2024-03-18T09:56:49.053710Z 0 [ERROR] InnoDB: The error means the system cannot find the path specified.
+2024-03-18T09:56:49.069327Z 0 [ERROR] InnoDB: If you are installing InnoDB, remember that you must create directories yourself, InnoDB does not create them.
+2024-03-18T09:56:49.069327Z 0 [ERROR] InnoDB: Cannot open datafile for read-only: '.\goodsmanager\transfer_items.ibd' OS error: 103
+2024-03-18T09:56:49.069327Z 0 [ERROR] InnoDB: Operating system error number 203 in a file operation.
+2024-03-18T09:56:49.069327Z 0 [Note] InnoDB: Some operating system error numbers are described at http://dev.mysql.com/doc/refman/5.7/en/operating-system-error-codes.html
+2024-03-18T09:56:49.069327Z 0 [ERROR] InnoDB: Could not find a valid tablespace file for `goodsmanager/transfer_items`. Please refer to http://dev.mysql.com/doc/refman/5.7/en/innodb-troubleshooting-datadict.html for how to resolve the issue.
+2024-03-18T09:56:49.069327Z 0 [Warning] InnoDB: Ignoring tablespace `goodsmanager/transfer_items` because it could not be opened.
+2024-03-18T09:56:49.069327Z 0 [ERROR] InnoDB: Operating system error number 3 in a file operation.
+2024-03-18T09:56:49.069327Z 0 [ERROR] InnoDB: The error means the system cannot find the path specified.
+2024-03-18T09:56:49.069327Z 0 [ERROR] InnoDB: If you are installing InnoDB, remember that you must create directories yourself, InnoDB does not create them.
+2024-03-18T09:56:49.069327Z 0 [ERROR] InnoDB: Cannot open datafile for read-only: '.\goodsmanager\type_goods.ibd' OS error: 103
+2024-03-18T09:56:49.069327Z 0 [ERROR] InnoDB: Operating system error number 203 in a file operation.
+2024-03-18T09:56:49.069327Z 0 [Note] InnoDB: Some operating system error numbers are described at http://dev.mysql.com/doc/refman/5.7/en/operating-system-error-codes.html
+2024-03-18T09:56:49.084913Z 0 [ERROR] InnoDB: Could not find a valid tablespace file for `goodsmanager/type_goods`. Please refer to http://dev.mysql.com/doc/refman/5.7/en/innodb-troubleshooting-datadict.html for how to resolve the issue.
+2024-03-18T09:56:49.084913Z 0 [Warning] InnoDB: Ignoring tablespace `goodsmanager/type_goods` because it could not be opened.
+2024-03-18T09:56:49.226829Z 0 [Note] InnoDB: Removed temporary tablespace data file: "ibtmp1"
+2024-03-18T09:56:49.226829Z 0 [Note] InnoDB: Creating shared tablespace for temporary tables
+2024-03-18T09:56:49.226829Z 0 [Note] InnoDB: Setting file '.\ibtmp1' size to 12 MB. Physically writing the file full; Please wait ...
+2024-03-18T09:56:49.226829Z 0 [Note] InnoDB: File '.\ibtmp1' size is now 12 MB.
+2024-03-18T09:56:49.242449Z 0 [Note] InnoDB: 96 redo rollback segment(s) found. 96 redo rollback segment(s) are active.
+2024-03-18T09:56:49.242449Z 0 [Note] InnoDB: 32 non-redo rollback segment(s) are active.
+2024-03-18T09:56:49.242449Z 0 [Note] InnoDB: Waiting for purge to start
+2024-03-18T09:56:49.305362Z 0 [Note] InnoDB: 5.7.11 started; log sequence number 30629821
+2024-03-18T09:56:49.305362Z 0 [Note] InnoDB: Loading buffer pool(s) from C:\Users\Acer\Desktop\Диплом\Диплом программа\versia1\MySQL\mysql-5.7\data\ib_buffer_pool
+2024-03-18T09:56:49.305362Z 0 [Note] Plugin 'FEDERATED' is disabled.
+2024-03-18T09:56:49.321669Z 0 [Note] InnoDB: Buffer pool(s) load completed at 240318 16:56:49
+2024-03-18T09:56:49.321669Z 0 [Warning] Failed to set up SSL because of the following SSL library error: SSL context is not usable without certificate and private key
+2024-03-18T09:56:49.321669Z 0 [Note] Server hostname (bind-address): '*'; port: 3306
+2024-03-18T09:56:49.336676Z 0 [Note] IPv6 is available.
+2024-03-18T09:56:49.336676Z 0 [Note]   - '::' resolves to '::';
+2024-03-18T09:56:49.336676Z 0 [Note] Server socket created on IP: '::'.
+2024-03-18T09:56:49.462046Z 0 [Note] Event Scheduler: Loaded 0 events
+2024-03-18T09:56:49.462046Z 0 [Note] C:\Users\Acer\Desktop\Диплом\Диплом программа\versia1\MySQL\mysql-5.7\bin\mysqld.exe: ready for connections.
+Version: '5.7.11'  socket: ''  port: 3306  MySQL Community Server (GPL)
+2024-03-18T09:58:04.533070Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2024-03-18T09:58:04.533070Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2024-03-18T09:58:04.533070Z 0 [Note] C:\Users\Acer\Desktop\Диплом\Диплом программа\versia1\MySQL\mysql-5.7\bin\mysqld.exe (mysqld 5.7.11) starting as process 4112 ...
+2024-03-22T10:42:27.697643Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2024-03-22T10:42:27.697643Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2024-03-22T10:42:27.697643Z 0 [Note] C:\Users\Acer\Desktop\Диплом\Диплом программа\versia1\MySQL\mysql-5.7\bin\mysqld.exe (mysqld 5.7.11) starting as process 1528 ...
+2024-03-25T08:22:01.338787Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2024-03-25T08:22:01.338787Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2024-03-25T08:22:01.338787Z 0 [Note] C:\Users\Acer\Desktop\Диплом\Диплом программа\versia1\MySQL\mysql-5.7\bin\mysqld.exe (mysqld 5.7.11) starting as process 16788 ...
+2024-03-26T14:26:32.343779Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2024-03-26T14:26:32.343779Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2024-03-26T14:26:32.359390Z 0 [Note] C:\Users\Acer\Desktop\Диплом\Диплом программа\versia1\MySQL\mysql-5.7\bin\mysqld.exe (mysqld 5.7.11) starting as process 12580 ...
+2024-03-27T09:41:01.131121Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2024-03-27T09:41:01.131121Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2024-03-27T09:41:01.146706Z 0 [Note] C:\Users\Acer\Desktop\Диплом\Диплом программа\versia1\MySQL\mysql-5.7\bin\mysqld.exe (mysqld 5.7.11) starting as process 10084 ...
+2024-03-30T10:19:39.235144Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2024-03-30T10:19:39.235144Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2024-03-30T10:19:39.235144Z 0 [Note] C:\Users\Acer\Desktop\Диплом\Диплом программа\versia1\MySQL\mysql-5.7\bin\mysqld.exe (mysqld 5.7.11) starting as process 4472 ...
+2024-04-01T10:59:09.640647Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2024-04-01T10:59:09.643637Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2024-04-01T10:59:09.655603Z 0 [Note] C:\Users\Acer\Desktop\Диплом\Диплом программа\versia1\MySQL\mysql-5.7\bin\mysqld.exe (mysqld 5.7.11) starting as process 12112 ...
+2024-04-03T06:56:28.278980Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2024-04-03T06:56:28.278980Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2024-04-03T06:56:28.282007Z 0 [Note] C:\Users\Acer\Desktop\Диплом\Диплом программа\versia1\MySQL\mysql-5.7\bin\mysqld.exe (mysqld 5.7.11) starting as process 8712 ...
+2024-04-03T08:10:48.917296Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2024-04-03T08:10:48.917296Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2024-04-03T08:10:48.917296Z 0 [Note] C:\Users\Acer\Desktop\Диплом\Диплом программа\versia1\MySQL\mysql-5.7\bin\mysqld.exe (mysqld 5.7.11) starting as process 12724 ...
+2024-04-04T09:22:41.514460Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2024-04-04T09:22:41.517465Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2024-04-04T09:22:41.527425Z 0 [Note] C:\Users\Acer\Desktop\Диплом\Диплом программа\versia1\MySQL\mysql-5.7\bin\mysqld.exe (mysqld 5.7.11) starting as process 6768 ...
+2024-04-05T08:51:56.524284Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2024-04-05T08:51:56.524284Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2024-04-05T08:51:56.531252Z 0 [Note] C:\Users\Acer\Desktop\Диплом\Диплом программа\versia1\MySQL\mysql-5.7\bin\mysqld.exe (mysqld 5.7.11) starting as process 5620 ...
+2024-04-05T12:31:21.260419Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2024-04-05T12:31:21.263408Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2024-04-05T12:31:21.359153Z 0 [Note] C:\Users\Acer\Desktop\Диплом\Диплом программа\versia1\MySQL\mysql-5.7\bin\mysqld.exe (mysqld 5.7.11) starting as process 3296 ...
+2024-04-05T15:47:39.187277Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2024-04-05T15:47:39.188273Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2024-04-05T15:47:39.208392Z 0 [Note] C:\Users\Acer\Desktop\Диплом\Диплом программа\versia1\MySQL\mysql-5.7\bin\mysqld.exe (mysqld 5.7.11) starting as process 16872 ...
+2024-04-08T18:04:31.834645Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2024-04-08T18:04:31.835661Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2024-04-08T18:04:31.859210Z 0 [Note] C:\Users\Acer\Desktop\Диплом\Диплом программа\versia1\MySQL\mysql-5.7\bin\mysqld.exe (mysqld 5.7.11) starting as process 14068 ...
+2024-04-21T08:16:46.350834Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2024-04-21T08:16:46.352841Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2024-04-21T08:16:46.357827Z 0 [Note] C:\Users\Acer\Desktop\Диплом\Диплом программа\versia1\MySQL\mysql-5.7\bin\mysqld.exe (mysqld 5.7.11) starting as process 16008 ...
+2024-04-22T18:51:33.441368Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2024-04-22T18:51:33.446354Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2024-04-22T18:51:33.467299Z 0 [Note] C:\Users\Acer\Desktop\Диплом\Диплом программа\versia1\MySQL\mysql-5.7\bin\mysqld.exe (mysqld 5.7.11) starting as process 2704 ...
+2024-04-28T10:38:40.029158Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2024-04-28T10:38:40.029158Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2024-04-28T10:38:40.039131Z 0 [Note] C:\Users\Acer\Desktop\Диплом\Диплом программа\versia1\MySQL\mysql-5.7\bin\mysqld.exe (mysqld 5.7.11) starting as process 5844 ...
+2024-05-02T10:02:17.151389Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2024-05-02T10:02:17.154396Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2024-05-02T10:02:17.159194Z 0 [Note] C:\Users\Acer\Desktop\Диплом\Диплом программа\versia1\MySQL\mysql-5.7\bin\mysqld.exe (mysqld 5.7.11) starting as process 14032 ...
+2024-05-10T15:11:12.487881Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2024-05-10T15:11:12.489876Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2024-05-10T15:11:12.500847Z 0 [Note] C:\Users\Acer\Desktop\Диплом\Диплом программа\versia1\MySQL\mysql-5.7\bin\mysqld.exe (mysqld 5.7.11) starting as process 15820 ...
+2024-05-11T09:48:27.490775Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2024-05-11T09:48:27.490775Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2024-05-11T09:48:27.500747Z 0 [Note] C:\Users\Acer\Desktop\Диплом\Диплом программа\versia1\MySQL\mysql-5.7\bin\mysqld.exe (mysqld 5.7.11) starting as process 3856 ...
+2024-05-12T07:47:54.963468Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2024-05-12T07:47:54.969459Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2024-05-12T07:47:55.728423Z 0 [Note] C:\Users\Acer\Desktop\Диплом\Диплом программа\versia1\MySQL\mysql-5.7\bin\mysqld.exe (mysqld 5.7.11) starting as process 11468 ...
+2024-05-13T13:04:49.534748Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2024-05-13T13:04:49.534748Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2024-05-13T13:04:49.550377Z 0 [Note] C:\Users\Acer\Desktop\Диплом\Диплом программа\versia1\MySQL\mysql-5.7\bin\mysqld.exe (mysqld 5.7.11) starting as process 15944 ...
+2024-05-16T00:56:28.991912Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2024-05-16T00:56:28.991912Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2024-05-16T00:56:28.994765Z 0 [Note] C:\Users\Acer\Desktop\Диплом\Диплом программа\versia1\MySQL\mysql-5.7\bin\mysqld.exe (mysqld 5.7.11) starting as process 12140 ...
+2024-05-17T17:33:55.442159Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2024-05-17T17:33:55.442159Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2024-05-17T17:33:55.457680Z 0 [Note] C:\Users\Acer\Desktop\Диплом\Диплом программа\versia1\MySQL\mysql-5.7\bin\mysqld.exe (mysqld 5.7.11) starting as process 13760 ...
+2024-05-18T08:23:25.301110Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2024-05-18T08:23:25.301110Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2024-05-18T08:23:25.316731Z 0 [Note] C:\Users\Acer\Desktop\Диплом\Диплом программа\versia1\MySQL\mysql-5.7\bin\mysqld.exe (mysqld 5.7.11) starting as process 1432 ...
+2024-05-19T13:35:30.434644Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2024-05-19T13:35:30.450266Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2024-05-19T13:35:30.450266Z 0 [Note] C:\Users\Acer\Desktop\Диплом\Диплом программа\versia1\MySQL\mysql-5.7\bin\mysqld.exe (mysqld 5.7.11) starting as process 5176 ...
+2024-05-20T04:38:03.470623Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2024-05-20T04:38:03.470623Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2024-05-20T04:38:03.501866Z 0 [Note] C:\Users\Acer\Desktop\Диплом\Диплом программа\versia1\MySQL\mysql-5.7\bin\mysqld.exe (mysqld 5.7.11) starting as process 5356 ...
+2024-05-20T10:36:49.998257Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2024-05-20T10:36:50.013879Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2024-05-20T10:36:50.013879Z 0 [Note] C:\Users\Acer\Desktop\Диплом\Диплом программа\versia1\MySQL\mysql-5.7\bin\mysqld.exe (mysqld 5.7.11) starting as process 8844 ...
+2024-05-21T15:29:59.950970Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2024-05-21T15:29:59.953964Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2024-05-21T15:29:59.965930Z 0 [Note] C:\Users\Acer\Desktop\Диплом\Диплом программа\versia1\MySQL\mysql-5.7\bin\mysqld.exe (mysqld 5.7.11) starting as process 6600 ...
+2024-05-24T13:15:03.095837Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2024-05-24T13:15:03.095837Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2024-05-24T13:15:03.111479Z 0 [Note] C:\Users\Acer\Desktop\Диплом\Диплом программа\versia1\MySQL\mysql-5.7\bin\mysqld.exe (mysqld 5.7.11) starting as process 10272 ...
+2024-05-25T18:30:46.936083Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2024-05-25T18:30:46.938080Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2024-05-25T18:30:46.947566Z 0 [Note] C:\Users\Acer\Desktop\Диплом\Диплом программа\versia1\MySQL\mysql-5.7\bin\mysqld.exe (mysqld 5.7.11) starting as process 16264 ...
+2024-05-26T11:20:32.260658Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2024-05-26T11:20:32.262652Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2024-05-26T11:20:32.275618Z 0 [Note] C:\Users\Acer\Desktop\Диплом\Диплом программа\versia1\MySQL\mysql-5.7\bin\mysqld.exe (mysqld 5.7.11) starting as process 16836 ...
+2024-05-26T11:26:02.928847Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2024-05-26T11:26:02.930843Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2024-05-26T11:26:02.935840Z 0 [Note] C:\Users\Acer\Desktop\Диплом\Диплом программа\versia1\MySQL\mysql-5.7\bin\mysqld.exe (mysqld 5.7.11) starting as process 8524 ...
+2024-05-26T12:15:57.810145Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2024-05-26T12:15:57.814147Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2024-05-26T12:15:57.844799Z 0 [Note] C:\Users\Acer\Desktop\Диплом\Диплом программа\versia1\MySQL\mysql-5.7\bin\mysqld.exe (mysqld 5.7.11) starting as process 15516 ...
+2024-05-26T12:21:21.652649Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2024-05-26T12:21:21.652649Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2024-05-26T12:21:21.657628Z 0 [Note] C:\Users\Acer\Desktop\Диплом\Диплом программа\versia1\MySQL\mysql-5.7\bin\mysqld.exe (mysqld 5.7.11) starting as process 6112 ...
+2024-05-26T12:37:50.890308Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2024-05-26T12:37:50.893299Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2024-05-26T12:37:50.901277Z 0 [Note] C:\Users\Acer\Desktop\Диплом\Диплом программа\versia1\MySQL\mysql-5.7\bin\mysqld.exe (mysqld 5.7.11) starting as process 10564 ...
+2024-05-26T15:20:50.871414Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2024-05-26T15:20:50.874417Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2024-05-26T15:20:50.893422Z 0 [Note] C:\Users\Acer\Desktop\Диплом\Диплом программа\versia1\MySQL\mysql-5.7\bin\mysqld.exe (mysqld 5.7.11) starting as process 19180 ...
+2024-05-26T15:21:10.356066Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2024-05-26T15:21:10.357062Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2024-05-26T15:21:10.358580Z 0 [Note] C:\Users\Acer\Desktop\Диплом\Диплом программа\versia1\MySQL\mysql-5.7\bin\mysqld.exe (mysqld 5.7.11) starting as process 11920 ...
+2024-05-26T15:55:52.903098Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2024-05-26T15:55:52.903098Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2024-05-26T15:55:52.908364Z 0 [Note] C:\Users\Acer\Desktop\Диплом\Диплом программа\versia1\MySQL\mysql-5.7\bin\mysqld.exe (mysqld 5.7.11) starting as process 17784 ...
+2024-05-27T17:04:21.482930Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2024-05-27T17:04:21.484925Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2024-05-27T17:04:21.502877Z 0 [Note] C:\Users\Acer\Desktop\Диплом\Диплом программа\versia1\MySQL\mysql-5.7\bin\mysqld.exe (mysqld 5.7.11) starting as process 4716 ...
+2024-05-27T18:55:12.641448Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2024-05-27T18:55:12.642445Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2024-05-27T18:55:12.648429Z 0 [Note] C:\Users\Acer\Desktop\Диплом\Диплом программа\versia1\MySQL\mysql-5.7\bin\mysqld.exe (mysqld 5.7.11) starting as process 13412 ...
+2024-05-27T19:50:55.755743Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2024-05-27T19:50:55.755743Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2024-05-27T19:50:55.755743Z 0 [Note] C:\Users\Acer\Desktop\Диплом\Диплом программа\versia1\MySQL\mysql-5.7\bin\mysqld.exe (mysqld 5.7.11) starting as process 8916 ...
+2024-05-29T10:46:17.952743Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2024-05-29T10:46:17.954736Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2024-05-29T10:46:17.967701Z 0 [Note] C:\Users\Acer\Desktop\Диплом\Диплом программа\versia1\MySQL\mysql-5.7\bin\mysqld.exe (mysqld 5.7.11) starting as process 9140 ...
+2024-06-01T18:39:13.175006Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2024-06-01T18:39:13.177002Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2024-06-01T18:39:13.206924Z 0 [Note] C:\Users\Acer\Desktop\Диплом\Диплом программа\versia1\MySQL\mysql-5.7\bin\mysqld.exe (mysqld 5.7.11) starting as process 2632 ...
+2024-06-02T15:03:11.818982Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2024-06-02T15:03:11.827946Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2024-06-02T15:03:11.843902Z 0 [Note] C:\Users\Acer\Desktop\Диплом\Диплом программа\versia1\MySQL\mysql-5.7\bin\mysqld.exe (mysqld 5.7.11) starting as process 16764 ...
+2024-06-02T15:28:01.320396Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2024-06-02T15:28:01.323390Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2024-06-02T15:28:01.333361Z 0 [Note] C:\Users\Acer\Desktop\Диплом\Диплом программа\versia1\MySQL\mysql-5.7\bin\mysqld.exe (mysqld 5.7.11) starting as process 1272 ...
+2024-06-05T06:21:25.175926Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2024-06-05T06:21:25.175926Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2024-06-05T06:21:25.175926Z 0 [Note] C:\Users\Acer\Desktop\Диплом\Диплом программа\versia1\MySQL\mysql-5.7\bin\mysqld.exe (mysqld 5.7.11) starting as process 4848 ...
+2024-06-05T08:58:20.832247Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2024-06-05T08:58:20.832754Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2024-06-05T08:58:20.844287Z 0 [Note] C:\Users\Acer\Desktop\Диплом\Диплом программа\versia1\MySQL\mysql-5.7\bin\mysqld.exe (mysqld 5.7.11) starting as process 12596 ...
+2024-06-05T13:39:07.210441Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2024-06-05T13:39:07.211439Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2024-06-05T13:39:07.222955Z 0 [Note] C:\Users\Acer\Desktop\Диплом\Диплом программа\versia1\MySQL\mysql-5.7\bin\mysqld.exe (mysqld 5.7.11) starting as process 9564 ...
+2024-06-11T19:05:21.925948Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2024-06-11T19:05:21.925948Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2024-06-11T19:05:21.925948Z 0 [Note] C:\Users\Acer\Desktop\Диплом\Диплом программа\versia1\MySQL\mysql-5.7\bin\mysqld.exe (mysqld 5.7.11) starting as process 13896 ...
+2024-06-12T19:35:32.099836Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2024-06-12T19:35:32.099836Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2024-06-12T19:35:32.115444Z 0 [Note] C:\Users\Acer\Desktop\Диплом\Диплом программа\versia1\MySQL\mysql-5.7\bin\mysqld.exe (mysqld 5.7.11) starting as process 17132 ...
+2024-06-13T10:59:30.292210Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2024-06-13T10:59:30.292210Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2024-06-13T10:59:30.292210Z 0 [Note] C:\Users\Acer\Desktop\Диплом\Диплом программа\versia1\MySQL\mysql-5.7\bin\mysqld.exe (mysqld 5.7.11) starting as process 4524 ...
+2024-06-14T13:46:46.528161Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2024-06-14T13:46:46.528161Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2024-06-14T13:46:46.543782Z 0 [Note] C:\Users\Acer\Desktop\Диплом\Диплом программа\versia1\MySQL\mysql-5.7\bin\mysqld.exe (mysqld 5.7.11) starting as process 19152 ...
+2024-06-17T14:26:46.356475Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2024-06-17T14:26:46.356475Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2024-06-17T14:26:46.371435Z 0 [Note] C:\Users\Acer\Desktop\Диплом\Диплом программа полная версия\versia1\MySQL\mysql-5.7\bin\mysqld.exe (mysqld 5.7.11) starting as process 13288 ...
+2024-06-17T15:07:23.049390Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2024-06-17T15:07:23.050389Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2024-06-17T15:07:23.057377Z 0 [Note] C:\Users\Acer\Desktop\Диплом\Диплом программа полная версия\versia1\MySQL\mysql-5.7\bin\mysqld.exe (mysqld 5.7.11) starting as process 4964 ...
+2024-08-09T13:00:52.834903Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2024-08-09T13:00:52.836898Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2024-08-09T13:00:52.847868Z 0 [Note] C:\Users\Acer\Desktop\Диплом\Диплом программа полная версия\versia1\MySQL\mysql-5.7\bin\mysqld.exe (mysqld 5.7.11) starting as process 4964 ...
+2024-08-09T16:05:47.633610Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2024-08-09T16:05:47.634608Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2024-08-09T16:05:47.655550Z 0 [Note] C:\Users\Acer\Desktop\Диплом\Диплом программа полная версия\MySQL\mysql-5.7\bin\mysqld.exe (mysqld 5.7.11) starting as process 3228 ...
+2024-08-09T16:07:50.286631Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2024-08-09T16:07:50.286631Z 0 [Warning] Insecure configuration for --secure-file-priv: Current value does not restrict location of generated files. Consider setting it to a valid, non-empty path.
+2024-08-09T16:07:50.289624Z 0 [Note] C:\Users\Acer\Desktop\Диплом\Диплом программа полная версия\MySQL\mysql-5.7\bin\mysqld.exe (mysqld 5.7.11) starting as process 15180 ...

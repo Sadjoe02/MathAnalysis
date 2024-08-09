@@ -1,0 +1,3285 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Редактор формул</title>
+
+  <script type="text/javascript">
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: true,
+
+        processEnvironments: true,
+        packages: { '[+]': ['noerrors', 'text'] },
+      },
+      options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+      }
+    };
+  </script>
+  <script type="text/javascript" async src="MathJax/es5/tex-svg.js"></script>
+  <script src="js/canvg.min.js"></script>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 10px;
+      background-color: #f0f0f0;
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+      margin-bottom: 5px;
+      margin-top: 5px;
+
+    }
+
+    .editor-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .symbol-sections {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 10px;
+      max-width: 1200px;
+      flex-wrap: wrap;
+    }
+
+    .symbol-section {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 1px;
+      align-items: center;
+
+    }
+
+    .symbol-section h2 {
+      font-size: 17px;
+      margin-bottom: 3px;
+      margin-top: 3px;
+      text-align: center;
+      width: 100%;
+    }
+
+    .symbol-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+      margin: 0 2px;
+      gap: 0.5px;
+    }
+
+    .symbol-buttons button {
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+      padding: 1px;
+      box-sizing: border-box;
+      border: 2px solid #aaa;
+      border-radius: 5px;
+      transition: transform 0.2s ease-in-out, background-color 0.3s ease-in-out, border-color 0.3s ease-in-out;
+      overflow: hidden;
+      position: relative;
+      font-size: 15px;
+      background-color: #ffffff;
+      font-family: Georgia;
+      color: #454545;
+    }
+
+    .symbol-buttons button:hover {
+      border-color: #555;
+      transform: scale(1.05);
+    }
+
+    .icon-wrapper {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    .icon-wrapper img {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    .icon-button {
+      position: relative;
+      vertical-align: middle;
+    }
+
+    .icon-button:hover::before {
+      content: attr(title);
+      position: absolute;
+      bottom: 100%;
+      right: 0;
+      background-color: #333;
+      color: #fff;
+      padding: 5px;
+      border-radius: 5px;
+      white-space: nowrap;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease-in-out;
+    }
+
+    .icon-button:hover::before {
+      opacity: 1;
+    }
+
+
+    .dropdown {
+      position: relative;
+      display: inline-block;
+      font-size: 4px;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      min-width: auto;
+      box-shadow: 0px 8px 8px 0px rgba(181, 181, 181, 0.219);
+      z-index: 1;
+      flex-wrap: wrap;
+      background-color: #d4d4d4d1;
+      font-size: 14px;
+      font-family: Georgia;
+      white-space: normal;
+      overflow-y: auto;
+      max-height: 100px;
+      padding-bottom: 2px;
+      padding-left: 2px;
+      width: calc(100% + 18px);
+    }
+
+    .dropdown-content button {
+      background-color: #ffffff;
+      gap: 0, 5px;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: flex;
+      gap: 1px;
+      justify-content: flex-start;
+    }
+
+    .extended_buttons {
+      font-size: 4px;
+    }
+
+    .extended_buttons button {
+      width: 60px;
+    }
+
+    .extended_buttons_2 {
+      font-size: 4px;
+    }
+
+    .extended_buttons_2 button {
+      width: 70px;
+    }
+
+    .extended_buttons_3 {
+      font-size: 4px;
+    }
+
+    .extended_buttons_3 button {
+      width: 50px;
+    }
+
+    .extended_buttons_4 {
+      font-size: 4px;
+    }
+
+    .extended_buttons_4 button {
+      width: 50px;
+      height: 50px;
+    }
+
+    .font_magnification button {
+      font-size: 20px;
+    }
+
+    .font_magnification_2 button {
+      font-size: 24px;
+    }
+
+    #equationInput {
+      width: 95%;
+      height: 100px;
+      margin-top: 40px;
+      margin-bottom: 10px;
+      padding: 5px;
+      font-size: 16px;
+      background-color: #ffffff;
+    }
+
+    #renderedEquation {
+      text-align: center;
+      border: 1px solid #ddd;
+      padding: 10px;
+      width: 95%;
+      margin-top: 10px;
+      margin-left: auto;
+      margin-right: auto;
+      background-color: #ffffff;
+      font-size: 20px;
+      height: 120px;
+      overflow: auto;
+      overflow-y: auto;
+    }
+
+    .save-button {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin: 0 2px;
+      gap: 0.5px;
+    }
+
+    .save-button button {
+      width: 230px;
+      height: 30px;
+      cursor: pointer;
+      padding: 1px;
+      box-sizing: border-box;
+      border: 2px solid #aaa;
+      border-radius: 5px;
+      transition: transform 0.2s ease-in-out, background-color 0.3s ease-in-out, border-color 0.3s ease-in-out;
+      overflow: hidden;
+      position: relative;
+      font-size: 16px;
+      background-color: #ffffff;
+      font-family: Georgia;
+      color: #454545;
+    }
+
+    .save-button button:hover {
+      border-color: #555;
+      transform: scale(1.05);
+    }
+
+    .main-section {
+      max-width: 360px;
+      position: relative;
+    }
+
+    .main-section_2 {
+      max-width: 180px;
+      position: relative;
+    }
+
+    .main-section_2 h2 {
+      font-size: 17px;
+      margin-bottom: 2px;
+      margin-top: 2px;
+      text-align: center;
+      width: 100%;
+      cursor: pointer;
+    }
+
+    .main-section h2 {
+      font-size: 17px;
+      margin-bottom: 2px;
+      margin-top: 2px;
+      text-align: center;
+      width: 100%;
+      cursor: pointer;
+    }
+
+    .show-button {
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    .section-content {
+      width: calc(100% + 4px);
+      display: none;
+      position: absolute;
+      top: 101%;
+      left: 0;
+      z-index: 1;
+      background-color: #d4d4d4f8;
+      box-shadow: 0px 8px 8px 0px rgba(181, 181, 181, 0.219);
+      max-height: 250px;
+      overflow-y: auto;
+    }
+
+    .subsection-content {
+      display: none;
+      margin-left: 5px;
+      margin-right: 3px;
+      max-height: 160px;
+      overflow-y: auto;
+      margin-bottom: 2px;
+      font-size: 3px;
+      font-family: Georgia;
+      overflow-x: hidden;
+      padding-bottom: 3px;
+      padding-left: 1px;
+      overflow-x: hidden;
+
+    }
+
+    .subsection-content_1 {
+      padding-left: 2px;
+      padding-bottom: 2px;
+      margin-right: 2px;
+      font-size: 3px;
+      overflow-x: hidden;
+      display: block;
+    }
+
+    .subsection-content_2 {
+      font-size: 3px;
+      overflow-x: hidden;
+      display: none;
+      padding-left: 2px;
+      padding-bottom: 2px;
+      margin-right: 2px;
+
+    }
+
+    .subsection-title {
+      font-family: Georgia;
+      font-size: 14px;
+      margin-bottom: 2px;
+      margin-top: 2px;
+      text-align: left;
+      width: calc(100%-3px);
+      cursor: pointer;
+      margin-left: 3px;
+      background-color: #a3a3a334;
+    }
+
+    .subsection-title_2 {
+      font-family: Georgia;
+      font-size: 14px;
+      text-align: left;
+      width: 100%;
+      cursor: pointer;
+      margin-left: 2px;
+      color: #333;
+    }
+
+    .buttons_main {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5px;
+    }
+
+    .buttons_main button {
+      width: 25px;
+      height: 25px;
+      font-size: 19px;
+      cursor: pointer;
+      padding: 1px;
+      box-sizing: border-box;
+      border: 2px solid #aaa;
+      border-radius: 5px;
+      transition: transform 0.2s ease-in-out, background-color 0.3s ease-in-out, border-color 0.3s ease-in-out;
+      overflow: hidden;
+      position: relative;
+      background-color: #ffffff;
+      font-family: Georgia;
+      color: #454545;
+      vertical-align: middle;
+    }
+
+    .buttons_main button:hover {
+      border-color: #555;
+      transform: scale(1.1);
+      z-index: 1;
+    }
+
+    small {
+      font-size: 14px;
+    }
+
+    size_1 {
+      font-size: 6.6px;
+    }
+
+    size_2 {
+      font-size: 9.3px;
+    }
+
+    size_3 {
+      font-size: 12px;
+    }
+
+    size_4 {
+      font-size: 15.9px;
+    }
+
+    size_5 {
+      font-size: 19.1px;
+    }
+
+    size_6 {
+      font-size: 20px;
+    }
+
+    size_7 {
+      font-size: 22px;
+    }
+
+    size_8 {
+      font-size: 23.5px;
+    }
+
+    .main-section_2 {
+      max-width: 202px;
+      position: relative;
+    }
+
+    .main-section_2 h2 {
+      font-size: 15px;
+      margin-bottom: 2px;
+      margin-top: 2px;
+      text-align: center;
+      width: 100%;
+      cursor: pointer;
+    }
+
+    .buttons_main_2 {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5px;
+    }
+
+    .buttons_main_2 button {
+      width: 50px;
+      height: 25px;
+      font-size: 19px;
+      cursor: pointer;
+      padding: 1px;
+      box-sizing: border-box;
+      border: 2px solid #aaa;
+      border-radius: 5px;
+      transition: transform 0.2s ease-in-out, background-color 0.3s ease-in-out, border-color 0.3s ease-in-out;
+      overflow: hidden;
+      position: relative;
+      background-color: #ffffff;
+      font-family: Georgia;
+      color: #454545;
+      vertical-align: middle;
+    }
+
+    .buttons_main_2 button:hover {
+      border-color: #555;
+      transform: scale(1.1);
+      z-index: 1;
+    }
+
+    .buttons_main_3 {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5px;
+    }
+
+    .buttons_main_3 button {
+      width: 100px;
+      height: 25px;
+      font-size: 19px;
+      cursor: pointer;
+      padding: 1px;
+      box-sizing: border-box;
+      border: 2px solid #aaa;
+      border-radius: 5px;
+      transition: transform 0.2s ease-in-out, background-color 0.3s ease-in-out, border-color 0.3s ease-in-out;
+      overflow: hidden;
+      position: relative;
+      background-color: #ffffff;
+      font-family: Georgia;
+      color: #454545;
+      vertical-align: middle;
+    }
+
+    .buttons_main_3 button:hover {
+      border-color: #555;
+      transform: scale(1.1);
+      z-index: 1;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="editor-container">
+    <div class="symbol-sections">
+      <div class="symbol-section">
+        <h2>Дробь и индексы</h2>
+        <div class="symbol-buttons">
+          <button class="icon-button" onclick="InserFraction('\\frac')" title="Вертикальная простая дробь">
+            <div class="icon-wrapper">
+              <img src="img/usual fraction.png" alt="Дробь">
+            </div>
+          </button>
+          <button class="icon-button" onclick="InserDegree('^{ }')" title="Верхний индекс">
+            <div class="icon-wrapper">
+              <img src="img/superscript.png" alt="Верхний индекс">
+            </div>
+          </button>
+          <button class="icon-button" onclick="insertSymbolAfter('_{ }')" title="Нижний индекс">
+            <div class="icon-wrapper">
+              <img src="img/subscript.png" alt="Нижний инжекс">
+            </div>
+          </button>
+          <button class="icon-button" onclick="InsertUpperLowerIndexesLeft()" title="Нижний и верхний индексы слева">
+            <div class="icon-wrapper">
+              <img src="img/upper and lower indexes on the left.png" alt="Верхний и нижний индекс слева">
+            </div>
+          </button>
+          <button class="icon-button" onclick="insertSymbolAfter('_{ }^{ }')" title="Нижний и верхний индексы">
+            <div class="icon-wrapper">
+              <img src="img/upper and lower indexes on the right.png" alt="Верхний и нижний индекс справа">
+            </div>
+          </button>
+        </div>
+      </div>
+
+      <div class="symbol-section">
+        <h2>Корень</h2>
+        <div class="symbol-buttons">
+          <button class="icon-button" onclick="InserRoot('\\sqrt')" title="Квадратный корень">
+            <div class="icon-wrapper">
+              <img src="img/root without degree.png" alt="Корень без степени">
+            </div>
+          </button>
+          <div class="dropdown-content-sqrt">
+            <button class="icon-button" onclick="InserRootWithDegree('\\sqrt[ ]')" title="Корень n-ой степени">
+              <div class="icon-wrapper">
+                <img src="img/a root with a degree.png" alt="Корень со степенью">
+              </div>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="symbol-section">
+        <h2>Интегралы</h2>
+        <div class="symbol-buttons">
+          <div class="dropdown">
+            <button class="icon-button" onclick="insertSymbol('\\int ')" title="Интеграл">∫
+              <div class="icon-wrapper">
+                <img src="img/indefinite integral.png" alt="Неопределённый интеграл">
+              </div>
+            </button>
+            <button class="icon-button" onclick="insertSymbol('\\iint ')" title="Двойной интеграл">
+              <div class="icon-wrapper">
+                <img src="img/double integral.png" alt="Двойной интеграл">
+              </div>
+            </button>
+            <button class="icon-button" onclick="insertSymbol('\\iiint ')" title="Тройной интеграл">
+              <div class="icon-wrapper">
+                <img src="img/triple integral.png" alt="Тройной интеграл">
+              </div>
+            </button>
+            <button class="icon-button" onclick="insertSymbol('\\,dx ')" title="Дифференциал dx"><em>dx</em>
+            </button>
+            <div class="dropdown-content">
+              <button class="icon-button" onclick="insertSymbol('\\int_{ }^{ } ')" title="Интеграл с пределами">
+                <div class="icon-wrapper">
+                  <img src="img/definite integral.png" alt="Определённый интеграл">
+                </div>
+              </button>
+              <button class="icon-button" onclick="insertSymbol('\\iint_{ }^{ } ')"
+                title="Двойной интеграл с пределами">
+                <div class="icon-wrapper">
+                  <img src="img/double integral with limits.png" alt="Двойной интеграл с пределами">
+                </div>
+              </button>
+              <button class="icon-button" onclick="insertSymbol('\\iiint_{ }^{ } ')"
+                title="Тройной интеграл с пределами">
+                <div class="icon-wrapper">
+                  <img src="img/triple integral with limits.png" alt="Тройной интеграл с пределами">
+                </div>
+              </button>
+              <button class="icon-button" onclick="insertSymbol('\\,dy ')" title="Дифференциал dy"> <em>dy</em>
+              </button>
+              <button class="icon-button" onclick="insertSymbol('\\int\\limits_{ }^{ } ')"
+                title="Интеграл с пределами с накоплением">
+                <div class="icon-wrapper">
+                  <img src="img/integral with limits with accumulation.png" alt="Интеграл с пределами с накоплением">
+                </div>
+              </button>
+              <button class="icon-button" onclick="insertSymbol('\\iint\\limits_{ }^{ } ')"
+                title="Двойной интеграл с пределами с накоплением">
+                <div class="icon-wrapper">
+                  <img src="img/double integral with limits with accumulation.png"
+                    alt="Двойной интеграл с пределами с накоплением">
+                </div>
+              </button>
+              <button class="icon-button" onclick="insertSymbol('\\iiint\\limits_{ }^{ } ')"
+                title="Тройной интеграл с пределами с накоплением">
+                <div class="icon-wrapper">
+                  <img src="img/triple integral with limits with accumulation.png"
+                    alt="Тройной интеграл с пределами с накоплением">
+                </div>
+              </button>
+              <button class="icon-button" onclick="insertSymbol('\\,d\\theta ')" title="Дифференциал dθ"> <em>dθ</em>
+              </button>
+              Контурные интегралы
+              <button class="icon-button" onclick="insertSymbol('\\oint ')" title="Контурный интеграл">
+                <div class="icon-wrapper">
+                  <img src="img/contour integral.png" alt="Контурный интеграл">
+                </div>
+              </button>
+              <button class="icon-button" onclick="insertSymbol('{\\huge\\unicode{x222F}} ')"
+                title="Поверхностный интеграл">
+                <div class="icon-wrapper">
+                  <img src="img/surface integral.png" alt="Поверхностный интеграл">
+                </div>
+              </button>
+              <button class="icon-button" onclick="insertSymbol('{\\huge\\unicode{x2230}} ')" title="Объёмный интеграл">
+                <div class="icon-wrapper">
+                  <img src="img/volume integral.png" alt="Объёмный интеграл">
+                </div>
+              </button>
+              <button class="icon-button" onclick="insertSymbol('{\\huge\\unicode{x2230}}_{ }^{ } ')"
+                title="Объёмный интеграл с пределами">
+                <div class="icon-wrapper">
+                  <img src="img/volume integral with limits.png" alt="Объёмный интеграл с пределами">
+                </div>
+              </button>
+              <button class="icon-button" onclick="insertSymbol('\\oint_{ }^{ } ')"
+                title="Контурный интеграл с пределами">
+                <div class="icon-wrapper">
+                  <img src="img/contour integral with limits.png" alt="Контурный интеграл с пределами">
+                </div>
+              </button>
+              <button class="icon-button" onclick="insertSymbol('{\\huge\\unicode{x222F}}_{ }^{ } ')"
+                title="Поверхностный интеграл с пределами">
+                <div class="icon-wrapper">
+                  <img src="img/surface integral with limits.png" alt="Поверхностный интеграл с пределами">
+                </div>
+              </button>
+              <button class="icon-button" onclick="insertSymbol('\\oint\\limits_{ }^{ } ')"
+                title="Контурный интеграл с пределами в столбик">
+                <div class="icon-wrapper">
+                  <img src="img/contour integral with column limits.png" alt="Контурный интеграл с пределами в столбик">
+                </div>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="symbol-section">
+        <h2>Предел и логарифмы</h2>
+        <div class="symbol-buttons">
+          <div class="dropdown">
+            <div class="extended_buttons_3">
+              <button class="icon-button" onclick="insertSymbolTrig_Lim_log('\\log_{}')"
+                title="Логарифм с пустым основанием">log<sub>▢</sub>▢
+              </button>
+              <button class="icon-button" onclick="insertSymbolTrig_Lim_log('\\log ')"
+                title="Логарифм без основания">log▢
+              </button>
+              <button class="icon-button" onclick="insertSymbolTrig_Lim_log('\\lim_{}')" title="Предел">
+                <div class="icon-wrapper">
+                  <img src="img/limit.png" alt="Предел">
+                </div>
+              </button>
+              <button class="icon-button" onclick="insertSymbolTrig_Lim_log('\\ln ')" title="Натуральный логарифм">ln▢
+              </button>
+            </div>
+            <div class="dropdown-content">
+              <div class="extended_buttons_3">
+                <button class="icon-button" onclick="insertSymbolTrig_Lim_log('\\lg ')" title="Десятичный логарифм">lg▢
+                </button>
+                <button class="icon-button" onclick="insertSymbolTrig_Lim_log('\\min_{}')" title="Минимум">
+                  <div class="icon-wrapper">
+                    <img src="img/min.png" alt="Минимум">
+                  </div>
+                </button>
+                <button class="icon-button" onclick="insertSymbolTrig_Lim_log('\\max_{}')" title="Максимум">
+                  <div class="icon-wrapper">
+                    <img src="img/max.png" alt="Максимум">
+                  </div>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="symbol-section">
+        <h2>Скобки</h2>
+        <div class="symbol-buttons">
+          <div class="dropdown">
+            <button class="icon-button" onclick="addLeftRight('()')" title="Скобки">(▢)
+            </button>
+            <button class="icon-button" onclick="addLeftRight('[]')" title="Квадратные скобки">[▢]
+            </button>
+            <button class="icon-button" onclick="addLeftRightBraces()" title="Фигурные скобки">{▢}
+            </button>
+            <button class="icon-button" onclick="addLeftRight('||')" title="Вертикальные полосы">|▢|
+            </button>
+            <div class="dropdown-content">
+              <button class="icon-button" onclick="addLeftRightDoubleVerticalStripes()"
+                title="Двойные вертикальные черты">‖▢‖
+              </button>
+              <button class="icon-button" onclick="addLeftRightAngleBrackets()" title="Угловые скобки">⟨▢⟩
+              </button>
+              <button class="icon-button" onclick="addLeftRightsemiSquareBottom()" title="Полуквадратные скобки">
+                <div class="icon-wrapper">
+                  <img src="img/semi-square brackets are lower.png" alt="Полуквадратные скобки">
+                </div>
+              </button>
+              <button class="icon-button" onclick="addLeftRightsemiSquareUpper()" title="Полуквадратные скобки">
+                <div class="icon-wrapper">
+                  <img src="img/upper semicircular brackets.png" alt="Полуквадратные скобки">
+                </div>
+              </button>
+              <button class="icon-button" onclick="addLeftRight('[[')"
+                title="Заполнитель между двумя левыми скобками">[▢[
+              </button>
+              <button class="icon-button" onclick="addLeftRight(']]')"
+                title="Заполнитель между двумя правыми скобками">]▢]
+              </button>
+              <button class="icon-button" onclick="addLeftRight('][')" title="Перевёрнутые скобки">]▢[
+              </button>
+              Скобки и разделители
+              <button class="icon-button" onclick="insertSymbol('\\left(  |  \\right)')" title="Скобки с разделителем">
+                <div class="icon-wrapper">
+                  <img src="img/brackets and separators.png" alt="Скобки с разделителем">
+                </div>
+              </button>
+              <button class="icon-button" onclick="insertSymbol('\\left\\{  |  \\right\\}')"
+                title="Фигурные скобки с разделителем">
+                <div class="icon-wrapper">
+                  <img src="img/curly braces with a separator.png" alt="Фигурные скобки с разделителем">
+                </div>
+              </button>
+              <button class="icon-button" onclick="insertSymbol('\\left\\langle  |  \\right\\rangle')"
+                title="Угловые скобки с разделителем">
+                <div class="icon-wrapper">
+                  <img src="img/angle brackets with a separator.png" alt="Угловые скобки с разделителем">
+                </div>
+              </button>
+              <button class="icon-button" onclick="insertSymbol('\\left\\langle  |  |  \\right\\rangle')"
+                title="Угловые скобки с двумя разделителями">
+                <div class="icon-wrapper">
+                  <img src="img/angle brackets with two separators.png" alt="Угловые скобки с двумя разделителями">
+                </div>
+              </button>
+              Наборы условий и стопки
+              <button class="icon-button"
+                onclick="insertSymbol('f(n) = \n\\begin{cases} \n n \\&#92\ \n n \n\\end{cases}')"
+                title="Набор условий(два условия)">
+                <div class="icon-wrapper">
+                  <img src="img/set of two conditions.png" alt="Набор условий(два условия)">
+                </div>
+              </button>
+              <button class="icon-button"
+                onclick="insertSymbol('f(n) = \n\\begin{cases} \n n \\&#92\ \n n \\&#92\ \n n \n\\end{cases}')"
+                title="Набор условий(три условия)">
+                <div class="icon-wrapper">
+                  <img src="img/set of three conditions.png" alt="Набор условий(три условия)">
+                </div>
+              </button>
+              <button class="icon-button" onclick="insertSymbol('\\binom{ }{ }')" title="Стопка в скобках">
+                <div class="icon-wrapper">
+                  <img src="img/stack in parentheses.png" alt="Стопка в скобках">
+                </div>
+              </button>
+              Одинарные скобкиㅤㅤ
+              <button class="icon-button" onclick="insertSymbol('( ')" title="Одинарная скобка левая"> (
+              </button>
+              <button class="icon-button" onclick="insertSymbolAfter(' )')" title="Одинарная скобка правая"> )
+              </button>
+              <button class="icon-button" onclick="insertSymbol('[ ')" title="Одинарная квадратная скобка левая"> [
+              </button>
+              <button class="icon-button" onclick="insertSymbolAfter(' ]')" title="Одинарная квадратная скобка правая">
+                ]
+              </button>
+              <button class="icon-button" onclick="insertSymbol('\\{ ')" title="Одинарная фигурная скобка левая"> {
+              </button>
+              <button class="icon-button" onclick="insertSymbolAfter(' \\}')" title="Одинарная фигурная скобка правая">
+                }
+              </button>
+              <button class="icon-button" onclick="insertSymbol('\\langle ')" title="Одинарная угловая скобка левая"> ⟨
+              </button>
+              <button class="icon-button" onclick="insertSymbolAfter(' \\rangle')"
+                title="Одинарная угловая скобка правая"> ⟩
+              </button>
+              <button class="icon-button" onclick="insertSymbol('\\lfloor ')"
+                title="Одинарная полуквадратная скобка левая"> ⎣
+              </button>
+              <button class="icon-button" onclick="insertSymbolAfter(' \\rfloor')"
+                title="Одинарная полуквадратная скобка правая"> ⎦
+              </button>
+              <button class="icon-button" onclick="insertSymbol('\\lceil ')"
+                title="Одинарная полуквадратная скобка левая"> ⎡
+              </button>
+              <button class="icon-button" onclick="insertSymbolAfter(' \\rceil')"
+                title="Одинарная полуквадратная скобка правая"> ⎤
+              </button>
+              <button class="icon-button" onclick="insertSymbol('| ')" title="Одинарная вертикальная полоса левая">
+                |
+              </button>
+              <button class="icon-button" onclick="insertSymbolAfter(' |')"
+                title="Одинарная вертикальная полоса правая">
+                |
+              </button>
+              <button class="icon-button" onclick="insertSymbol('\\| ')"
+                title="Одинарная двойная вертикальная черта левая"> ‖
+              </button>
+              <button class="icon-button" onclick="insertSymbolAfter(' \\|')"
+                title="Одинарная двойная вертикальная черта правая"> ‖
+              </button>
+              Скобки побольшеㅤㅤㅤ
+              <button class="icon-button" onclick="addBrackets('\\big(', '\\big)')" title="Скобки побольше версия 1">
+                <div class="icon-wrapper">
+                  <img src="img/brackets are bigger1.png" alt="Скобки побольше версия 1">
+                </div>
+              </button>
+              <button class="icon-button" onclick="addBrackets('\\Big(', '\\Big)')" title="Скобки побольше версия 2">
+                <div class="icon-wrapper">
+                  <img src="img/brackets are bigger2.png" alt="Скобки побольше версия 2">
+                </div>
+              </button>
+              <button class="icon-button" onclick="addBrackets('\\bigg(', '\\bigg)')" title="Скобки побольше версия 3">
+                <div class="icon-wrapper">
+                  <img src="img/brackets are bigger3.png" alt="Скобки побольше версия 3">
+                </div>
+              </button>
+              <button class="icon-button" onclick="addBrackets('\\Bigg(', '\\Bigg)')" title="Скобки побольше версия 4">
+                <div class="icon-wrapper">
+                  <img src="img/brackets are bigger4.png" alt="Скобки побольше версия 4">
+                </div>
+              </button>
+              <button class="icon-button" onclick="addBrackets('\\big[', '\\big]')"
+                title="Квадратные скобки побольше версия 1">
+                <div class="icon-wrapper">
+                  <img src="img/bigger1 square brackets.png" alt="Квадратные скобки побольше версия 1">
+                </div>
+              </button>
+              <button class="icon-button" onclick="addBrackets('\\Big[', '\\Big]')"
+                title="Квадратные скобки побольше версия 2">
+                <div class="icon-wrapper">
+                  <img src="img/bigger2 square brackets.png" alt="Квадратные скобки побольше версия 2">
+                </div>
+              </button>
+              <button class="icon-button" onclick="addBrackets('\\bigg[', '\\bigg]')"
+                title="Квадратные скобки побольше версия 3">
+                <div class="icon-wrapper">
+                  <img src="img/bigger3 square brackets.png" alt="Квадратные скобки побольше версия 3">
+                </div>
+              </button>
+              <button class="icon-button" onclick="addBrackets('\\Bigg[', '\\Bigg]')"
+                title="Квадратные скобки побольше версия 4">
+                <div class="icon-wrapper">
+                  <img src="img/bigger4 square brackets.png" alt="Квадратные скобки побольше версия 4">
+                </div>
+              </button>
+              <button class="icon-button" onclick="addBrackets('\\big\\{', '\\big\\}')"
+                title="Фигурные скобки побольше версия 1">
+                <div class="icon-wrapper">
+                  <img src="img/bigger1 curly braces.png" alt="Фигурные скобки побольше версия 1">
+                </div>
+              </button>
+              <button class="icon-button" onclick="addBrackets('\\Big\\{', '\\Big\\}')"
+                title="Фигурные скобки побольше версия 2">
+                <div class="icon-wrapper">
+                  <img src="img/bigger2 curly braces.png" alt="Фигурные скобки побольше версия 2">
+                </div>
+              </button>
+              <button class="icon-button" onclick="addBrackets('\\bigg\\{', '\\bigg\\}')"
+                title="Фигурные скобки побольше версия 3">
+                <div class="icon-wrapper">
+                  <img src="img/bigger3 curly braces.png" alt="Фигурные скобки побольше версия 3">
+                </div>
+              </button>
+              <button class="icon-button" onclick="addBrackets('\\Bigg\\{', '\\Bigg\\}')"
+                title="Фигурные скобки побольше версия 4">
+                <div class="icon-wrapper">
+                  <img src="img/bigger4 curly braces.png" alt="Фигурные скобки побольше версия 4">
+                </div>
+              </button>
+              <button class="icon-button" onclick="addBrackets('\\big\\langle', '\\big\\rangle')"
+                title="Угловые скобки побольше версия 1">
+                <div class="icon-wrapper">
+                  <img src="img/bigger1 angle brackets.png" alt="Угловые скобки побольше версия 1">
+                </div>
+              </button>
+              <button class="icon-button" onclick="addBrackets('\\Big\\langle', '\\Big\\rangle')"
+                title="Угловые скобки побольше версия 2">
+                <div class="icon-wrapper">
+                  <img src="img/bigger2 angle brackets.png" alt="Угловые скобки побольше версия 2">
+                </div>
+              </button>
+              <button class="icon-button" onclick="addBrackets('\\bigg\\langle', '\\bigg\\rangle')"
+                title="Угловые скобки побольше версия 3">
+                <div class="icon-wrapper">
+                  <img src="img/bigger3 angle brackets.png" alt="Угловые скобки побольше версия 3">
+                </div>
+              </button>
+              <button class="icon-button" onclick="addBrackets('\\Bigg\\langle', '\\Bigg\\rangle')"
+                title="Угловые скобки побольше версия 4">
+                <div class="icon-wrapper">
+                  <img src="img/bigger4 angle brackets.png" alt="Угловые скобки побольше версия 4">
+                </div>
+              </button>
+              <button class="icon-button" onclick="addBrackets('\\big\\lfloor', '\\big\\rfloor')"
+                title="Полуквадратные скобки побольше версия 1">
+                <div class="icon-wrapper">
+                  <img src="img/semi-square brackets bottom larger1.png" alt="Полуквадратные скобки побольше версия 1">
+                </div>
+              </button>
+              <button class="icon-button" onclick="addBrackets('\\Big\\lfloor', '\\Big\\rfloor')"
+                title="Полуквадратные скобки побольше версия 2">
+                <div class="icon-wrapper">
+                  <img src="img/semi-square brackets bottom larger2.png" alt="Полуквадратные скобки побольше версия 2">
+                </div>
+              </button>
+              <button class="icon-button" onclick="addBrackets('\\bigg\\lfloor', '\\bigg\\rfloor')"
+                title="Полуквадратные скобки побольше версия 3">
+                <div class="icon-wrapper">
+                  <img src="img/semi-square brackets bottom larger3.png" alt="Полуквадратные скобки побольше версия 3">
+                </div>
+              </button>
+              <button class="icon-button" onclick="addBrackets('\\Bigg\\lfloor', '\\Bigg\\rfloor')"
+                title="Полуквадратные скобки побольше версия 4">
+                <div class="icon-wrapper">
+                  <img src="img/semi-square brackets bottom larger4.png" alt="Полуквадратные скобки побольше версия 4">
+                </div>
+              </button>
+              <button class="icon-button" onclick="addBrackets('\\big\\lceil', '\\big\\rceil')"
+                title="Полуквадратные скобки побольше версия 1">
+                <div class="icon-wrapper">
+                  <img src="img/semi-square brackets top bigger1.png" alt="Полуквадратные скобки побольше версия 1">
+                </div>
+              </button>
+              <button class="icon-button" onclick="addBrackets('\\Big\\lceil', '\\Big\\rceil')"
+                title="Полуквадратные скобки побольше версия 2">
+                <div class="icon-wrapper">
+                  <img src="img/semi-square brackets top bigger2.png" alt="Полуквадратные скобки побольше версия 2">
+                </div>
+              </button>
+              <button class="icon-button" onclick="addBrackets('\\bigg\\lceil', '\\bigg\\rceil')"
+                title="Полуквадратные скобки побольше версия 3">
+                <div class="icon-wrapper">
+                  <img src="img/semi-square brackets top bigger3.png" alt="Полуквадратные скобки побольше версия 3">
+                </div>
+              </button>
+              <button class="icon-button" onclick="addBrackets('\\Bigg\\lceil', '\\Bigg\\rceil')"
+                title="Полуквадратные скобки побольше версия 4">
+                <div class="icon-wrapper">
+                  <img src="img/semi-square brackets top bigger4.png" alt="Полуквадратные скобки побольше версия 4">
+                </div>
+              </button>
+              <button class="icon-button" onclick="addBrackets('\\big|', '\\big|')"
+                title="Вертикальные полосы побольше версия 1">
+                <div class="icon-wrapper">
+                  <img src="img/vertical stripes are bigger1.png" alt="Вертикальные полосы побольше версия 1">
+                </div>
+              </button>
+              <button class="icon-button" onclick="addBrackets('\\Big|', '\\Big|')"
+                title="Вертикальные полосы побольше версия 2">
+                <div class="icon-wrapper">
+                  <img src="img/vertical stripes are bigger2.png" alt="Вертикальные полосы побольше версия 2">
+                </div>
+              </button>
+              <button class="icon-button" onclick="addBrackets('\\bigg|', '\\bigg|')"
+                title="Вертикальные полосы побольше версия 3">
+                <div class="icon-wrapper">
+                  <img src="img/vertical stripes are bigger3.png" alt="Вертикальные полосы побольше версия 3">
+                </div>
+              </button>
+              <button class="icon-button" onclick="addBrackets('\\Bigg|', '\\Bigg|')"
+                title="Вертикальные полосы побольше версия 4">
+                <div class="icon-wrapper">
+                  <img src="img/vertical stripes are bigger4.png" alt="Вертикальные полосы побольше версия 4">
+                </div>
+              </button>
+              <button class="icon-button" onclick="addBrackets('\\big\\|', '\\big\\|')"
+                title="Двойные вертикальные черты побольше версия 1">
+                <div class="icon-wrapper">
+                  <img src="img/double vertical lines bigger1.png" alt="Двойные вертикальные черты побольше версия 1">
+                </div>
+              </button>
+              <button class="icon-button" onclick="addBrackets('\\Big\\|', '\\Big\\|')"
+                title="Двойные вертикальные черты побольше версия 2">
+                <div class="icon-wrapper">
+                  <img src="img/double vertical lines bigger2.png" alt="Двойные вертикальные черты побольше версия 2">
+                </div>
+              </button>
+              <button class="icon-button" onclick="addBrackets('\\bigg\\|', '\\bigg\\|')"
+                title="Двойные вертикальные черты побольше версия 3">
+                <div class="icon-wrapper">
+                  <img src="img/double vertical lines bigger3.png" alt="Двойные вертикальные черты побольше версия 3">
+                </div>
+              </button>
+              <button class="icon-button" onclick="addBrackets('\\Bigg\\|', '\\Bigg\\|')"
+                title="Двойные вертикальные черты побольше версия 4">
+                <div class="icon-wrapper">
+                  <img src="img/double vertical lines bigger4.png" alt="Двойные вертикальные черты побольше версия 4">
+                </div>
+              </button>
+              <button class="icon-button" onclick="addBrackets('\\big[', '\\big[')"
+                title="Заполнитель между 2-мя левыми скобками побольше версия 1">
+                <div class="icon-wrapper">
+                  <img src="img/placeholder between the two left brackets is larger1.png"
+                    alt="Заполнитель между двумя левыми скобками побольше версия 1">
+                </div>
+              </button>
+              <button class="icon-button" onclick="addBrackets('\\Big[', '\\Big[')"
+                title="Заполнитель между 2-мя левыми скобками побольше версия 2">
+                <div class="icon-wrapper">
+                  <img src="img/placeholder between the two left brackets is larger2.png"
+                    alt="Заполнитель между 2-мя левыми скобками побольше версия 2">
+                </div>
+              </button>
+              <button class="icon-button" onclick="addBrackets('\\bigg[', '\\bigg[')"
+                title="Заполнитель между 2-мя левыми скобками побольше версия 3">
+                <div class="icon-wrapper">
+                  <img src="img/placeholder between the two left brackets is larger3.png"
+                    alt="Заполнитель между 2-мя левыми скобками побольше версия 3">
+                </div>
+              </button>
+              <button class="icon-button" onclick="addBrackets('\\Bigg[', '\\Bigg[')"
+                title="Заполнитель между 2-мя левыми скобками побольше версия 4">
+                <div class="icon-wrapper">
+                  <img src="img/placeholder between the two left brackets is larger4.png"
+                    alt="Заполнитель между 2-мя левыми скобками побольше версия 4">
+                </div>
+              </button>
+              <button class="icon-button" onclick="addBrackets('\\big]', '\\big]')"
+                title="Заполнитель между 2-мя правыми скобками побольше версия 1">
+                <div class="icon-wrapper">
+                  <img src="img/placeholder between the two right brackets is larger1.png"
+                    alt="Заполнитель между двумя правыми скобками побольше версия 1">
+                </div>
+              </button>
+              <button class="icon-button" onclick="addBrackets('\\Big]', '\\Big]')"
+                title="Заполнитель между 2-мя правыми скобками побольше версия 2">
+                <div class="icon-wrapper">
+                  <img src="img/placeholder between the two right brackets is larger2.png"
+                    alt="Заполнитель между 2-мя правыми скобками побольше версия 2">
+                </div>
+              </button>
+              <button class="icon-button" onclick="addBrackets('\\bigg]', '\\bigg]')"
+                title="Заполнитель между 2-мя правыми скобками побольше версия 3">
+                <div class="icon-wrapper">
+                  <img src="img/placeholder between the two right brackets is larger3.png"
+                    alt="Заполнитель между 2-мя правыми скобками побольше версия 3">
+                </div>
+              </button>
+              <button class="icon-button" onclick="addBrackets('\\Bigg]', '\\Bigg]')"
+                title="Заполнитель между 2-мя правыми скобками побольше версия 4">
+                <div class="icon-wrapper">
+                  <img src="img/placeholder between the two right brackets is larger4.png"
+                    alt="Заполнитель между 2-мя правыми скобками побольше версия 4">
+                </div>
+              </button>
+              <button class="icon-button" onclick="addBrackets('\\big]', '\\big[')"
+                title="Перевёрнутые скобки побольше версия 1">
+                <div class="icon-wrapper">
+                  <img src="img/inverted brackets are bigger1.png" alt="Перевёрнутые скобки побольше версия 1">
+                </div>
+              </button>
+              <button class="icon-button" onclick="addBrackets('\\Big]', '\\Big[')"
+                title="Перевёрнутые скобки побольше версия 2">
+                <div class="icon-wrapper">
+                  <img src="img/inverted brackets are bigger2.png" alt="Перевёрнутые скобки побольше версия 2">
+                </div>
+              </button>
+              <button class="icon-button" onclick="addBrackets('\\bigg]', '\\bigg[')"
+                title="Перевёрнутые скобки побольше версия 3">
+                <div class="icon-wrapper">
+                  <img src="img/inverted brackets are bigger3.png" alt="Перевёрнутые скобки побольше версия 3">
+                </div>
+              </button>
+              <button class="icon-button" onclick="addBrackets('\\Bigg]', '\\Bigg[')"
+                title="Перевёрнутые скобки побольше версия 4">
+                <div class="icon-wrapper">
+                  <img src="img/inverted brackets are bigger4.png" alt="Перевёрнутые скобки побольше версия 4">
+                </div>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="symbol-section">
+        <h2>Крупные операторы</h2>
+        <div class="symbol-buttons">
+          <div class="dropdown">
+            <div class="font_magnification">
+              <button class="icon-button" onclick="insertSymbol('\\sum ')" title="Сумма">∑□
+              </button>
+              <button class="icon-button" onclick="insertSymbol('\\prod ')" title="Произведение">∏□
+              </button>
+              <button class="icon-button" onclick="insertSymbol('\\bigcup ')" title="Объединение">∪□
+              </button>
+              <button class="icon-button" onclick="insertSymbol('\\bigvee ')" title="Логическое ИЛИ">∨□
+              </button>
+            </div>
+            <div class="dropdown-content">
+              <button class="icon-button" onclick="insertSymbol('\\sum_{ }^{ } ')" title="Суммирование с пределами">
+                <div class="icon-wrapper">
+                  <img src="img/summation with limits.png" alt="Суммирование с пределами">
+                </div>
+              </button>
+              <button class="icon-button" onclick="insertSymbol('\\prod_{ }^{ } ')" title="Произведение с пределом">
+                <div class="icon-wrapper">
+                  <img src="img/multiplication with limits.png" alt="Произведение с пределом">
+                </div>
+              </button>
+              <button class="icon-button" onclick="insertSymbol('\\bigcup_{ }^{ } ')" title="Объединение с пределами">
+                <div class="icon-wrapper">
+                  <img src="img/merging with the limits.png" alt="Объединение с пределами">
+                </div>
+              </button>
+              <button class="icon-button" onclick="insertSymbol('\\bigvee_{ }^{ } ')"
+                title="Логическое ИЛИ с пределами">
+                <div class="icon-wrapper">
+                  <img src="img/logical or with limits.png" alt="Логическое ИЛИ с пределами">
+                </div>
+              </button>
+              <div class="font_magnification">
+                <button class="icon-button" onclick="insertSymbol('\\coprod  ')" title="Сопроизведение">∐□
+                </button>
+              </div>
+              <button class="icon-button" onclick="insertSymbol('\\coprod_{ }^{ } ')"
+                title="Сопроизведение с пределами">
+                <div class="icon-wrapper">
+                  <img src="img/coprod with limits.png" alt="Сопроизведение с пределами">
+                </div>
+              </button>
+              <div class="font_magnification">
+                <button class="icon-button" onclick="insertSymbol('\\bigwedge ')" title="Логическое И">∧□
+                </button>
+              </div>
+              <button class="icon-button" onclick="insertSymbol('\\bigwedge_{ }^{ } ')"
+                title="Логическое И с пределами">
+                <div class="icon-wrapper">
+                  <img src="img/logical and with limits.png" alt="Логическое И с пределами">
+                </div>
+              </button>
+              <div class="font_magnification">
+                <button class="icon-button" onclick="insertSymbol('\\bigcap ')" title="Пересечение">∩□
+                </button>
+              </div>
+              <button class="icon-button" onclick="insertSymbol('\\bigcap_{ }^{ } ')" title="Пересечение с пределами">
+                <div class="icon-wrapper">
+                  <img src="img/intersection with the limits.png" alt="Пересечение с пределами">
+                </div>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="symbol-section">
+        <h2>Функции</h2>
+        <div class="symbol-buttons">
+          <div class="dropdown">
+            <button class="icon-button" onclick="insertSymbolTrig_Lim_log('\\sin ')" title="Синус">sin▢
+            </button>
+            <button class="icon-button" onclick="insertSymbolTrig_Lim_log('\\cos ')" title="Косинус">cos▢
+            </button>
+            <button class="icon-button" onclick="insertSymbolTrig_Lim_log('\\operatorname{tg} ')" title="Тангенс">tg▢
+            </button>
+            <button class="icon-button" onclick="insertSymbolTrig_Lim_log('\\operatorname{ctg} ')"
+              title="Котангенс">ctg▢
+            </button>
+            <div class="dropdown-content">
+              <button class="icon-button" onclick="insertSymbolTrig_Lim_log('\\csc ')" title="Косеканс">csc▢
+              </button>
+              <button class="icon-button" onclick="insertSymbolTrig_Lim_log('\\sec ')" title="Секанс">sec▢
+              </button>
+              Обратные функции
+              <div class="extended_buttons">
+                <button class="icon-button" onclick="insertSymbolTrig_Lim_log('\\arcsin ')" title="Арксинус">arcsin▢
+                </button>
+                <button class="icon-button" onclick="insertSymbolTrig_Lim_log('\\arccos ')" title="Арккосинус">arccos▢
+                </button>
+                <button class="icon-button" onclick="insertSymbolTrig_Lim_log('\\operatorname{arctg} ')"
+                  title="Арктангенс">arctg▢
+                </button>
+                <button class="icon-button" onclick="insertSymbolTrig_Lim_log('\\operatorname{arcctg} ')"
+                  title="Арккотангенс">arcctg▢
+                </button>
+                <button class="icon-button" onclick="insertSymbolTrig_Lim_log('\\csc^{-1} ')" title="Арккосеканс">csc⁻¹▢
+                </button>
+                <button class="icon-button" onclick="insertSymbolTrig_Lim_log('\\sec^{-1} ')" title="Арксеканс">sec⁻¹▢
+                </button>
+              </div>
+              Гиперболические функции
+              <div class="extended_buttons">
+                <button class="icon-button" onclick="insertSymbolTrig_Lim_log('\\sinh ')"
+                  title="Гиперболический синус">sinh▢
+                </button>
+                <button class="icon-button" onclick="insertSymbolTrig_Lim_log('\\cosh ')"
+                  title="Гиперболический косинус">cosh▢
+                </button>
+                <button class="icon-button" onclick="insertSymbolTrig_Lim_log('\\operatorname{tgh} ')"
+                  title="Гиперболический тангенс">tgh▢
+                </button>
+                <button class="icon-button" onclick="insertSymbolTrig_Lim_log('\\operatorname{ctgh} ')"
+                  title="Гиперболический котангенс">ctgh▢
+                </button>
+                <button class="icon-button" onclick="insertSymbolTrig_Lim_log('\\operatorname{csch} ')"
+                  title="Гиперболический косеканс">csch▢
+                </button>
+                <button class="icon-button" onclick="insertSymbolTrig_Lim_log('\\operatorname{sech} ')"
+                  title="Гиперболический секанс">sech▢
+                </button>
+              </div>
+              Обратные гиперболические функции
+              <div class="extended_buttons_2">
+                <button class="icon-button" onclick="insertSymbolTrig_Lim_log('\\operatorname{arcsinh} ')"
+                  title="Гиперболический арксинус">arcsinh▢
+                </button>
+                <button class="icon-button" onclick="insertSymbolTrig_Lim_log('\\operatorname{arccosh} ')"
+                  title="Гиперболический арккосинус">arccosh▢
+                </button>
+                <button class="icon-button" onclick="insertSymbolTrig_Lim_log('\\operatorname{arctgh} ')"
+                  title="Гиперболический арктангенс">arctgh▢
+                </button>
+                <button class="icon-button" onclick="insertSymbolTrig_Lim_log('\\operatorname{arcctgh} ')"
+                  title="Гиперболический арккотангенс">arcctgh▢
+                </button>
+                <button class="icon-button" onclick="insertSymbolTrig_Lim_log('\\operatorname{arccsch} ')"
+                  title="Гиперболический арккосеканс">arccsch▢
+                </button>
+                <button class="icon-button" onclick="insertSymbolTrig_Lim_log('\\operatorname{arcsech} ')"
+                  title="Гиперболический арксеканс">arcsech▢
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="symbol-section">
+        <h2>Диакритические знаки</h2>
+        <div class="symbol-buttons">
+          <div class="dropdown">
+            <button class="icon-button" onclick="insertSymbolDiacrMarks('\\dot')" title="Точка">
+              <div class="icon-wrapper">
+                <img src="img/point.png" alt="Точка">
+              </div>
+            </button>
+            <button class="icon-button" onclick="insertSymbolDiacrMarks('\\ddot')" title="Две точки">
+              <div class="icon-wrapper">
+                <img src="img/two dots.png" alt="Две точки">
+              </div>
+            </button>
+            <button class="icon-button" onclick="insertSymbolDiacrMarks('\\dddot')" title="Три точки">
+              <div class="icon-wrapper">
+                <img src="img/three dots.png" alt="Три точки">
+              </div>
+            </button>
+            <button class="icon-button" onclick="insertSymbolDiacrMarks('\\hat')" title="Крышка">
+              <div class="icon-wrapper">
+                <img src="img/cap.png" alt="Крышка">
+              </div>
+            </button>
+            <div class="dropdown-content">
+              <button class="icon-button" onclick="insertSymbolDiacrMarks('\\check')" title="Галочка">
+                <div class="icon-wrapper">
+                  <img src="img/check mark.png" alt="Галочка">
+                </div>
+              </button>
+              <button class="icon-button" onclick="insertSymbolDiacrMarks('\\acute')" title="Ударение">
+                <div class="icon-wrapper">
+                  <img src="img/accent.png" alt="Ударение">
+                </div>
+              </button>
+              <button class="icon-button" onclick="insertSymbolDiacrMarks('\\grave')" title="Обратное ударение">
+                <div class="icon-wrapper">
+                  <img src="img/reverse stress.png" alt="Обратное ударение">
+                </div>
+              </button>
+              <button class="icon-button" onclick="insertSymbolDiacrMarks('\\breve')" title="Знак краткости">
+                <div class="icon-wrapper">
+                  <img src="img/meaning of brevity.png" alt="Знак краткости">
+                </div>
+              </button>
+              <button class="icon-button" onclick="insertSymbolDiacrMarks('\\tilde')" title="Тильда">
+                <div class="icon-wrapper">
+                  <img src="img/tilda.png" alt="Тильда">
+                </div>
+              </button>
+              <button class="icon-button" onclick="insertSymbolDiacrMarks('\\bar')" title="Черта">
+                <div class="icon-wrapper">
+                  <img src="img/line.png" alt="Черта">
+                </div>
+              </button>
+              <button class="icon-button" onclick="insertSymbolDiacrMarksGroup('\\overbrace','^{}')"
+                title="Группирующий знак сверху">
+                <div class="icon-wrapper">
+                  <img src="img/grouping sign at the top.png" alt="Группирующий знак сверху">
+                </div>
+              </button>
+              <button class="icon-button" onclick="insertSymbolDiacrMarksGroup('\\underbrace','_{}')"
+                title="Группирующий знак снизу">
+                <div class="icon-wrapper">
+                  <img src="img/grouping sign at the bottom.png" alt="Группирующий знак снизу">
+                </div>
+              </button>
+              <button class="icon-button" onclick="insertSymbolDiacrMarks('\\overleftarrow')"
+                title="Стрелка влево сверху">
+                <div class="icon-wrapper">
+                  <img src="img/left arrow from the top.png" alt="Стрелка влево сверху">
+                </div>
+              </button>
+              <button class="icon-button" onclick="insertSymbolDiacrMarks('\\overrightarrow')"
+                title="Стрелка вправо сверху">
+                <div class="icon-wrapper">
+                  <img src="img/top right arrow.png" alt="Стрелка вправо сверху">
+                </div>
+              </button>
+              <button class="icon-button" onclick="insertSymbolDiacrMarks('\\vec')" title="Вектор">
+                <div class="icon-wrapper">
+                  <img src="img/vector.png" alt="Вектор">
+                </div>
+              </button>
+              Черты сверху и снизу
+              <button class="icon-button" onclick="insertSymbolDiacrMarks('\\overline')" title="Черта сверху">
+                <div class="icon-wrapper">
+                  <img src="img/line from above.png" alt="Черта сверху">
+                </div>
+              </button>
+              <button class="icon-button" onclick="insertSymbolDiacrMarks('\\underline')" title="Черта снизу">
+                <div class="icon-wrapper">
+                  <img src="img/line from below.png" alt="Черта снизу">
+                </div>
+              </button>
+              Удлиняющиеся знаки
+              <div class="extended_buttons">
+                <button class="icon-button" onclick="insertSymbolDiacrMarks('\\overrightarrow')"
+                  title="Удлинённая стрелка вправо сверху">
+                  <div class="icon-wrapper">
+                    <img src="img/extended arrow to the right from the top.png" alt="Удлинённая стрелка вправо сверху">
+                  </div>
+                </button>
+                <button class="icon-button" onclick="insertSymbolDiacrMarks('\\overleftarrow')"
+                  title="Удлинённая стрелка влево сверху">
+                  <div class="icon-wrapper">
+                    <img src="img/elongated arrow to the left from the top.png" alt="Удлинённая стрелка влево сверху">
+                  </div>
+                </button>
+                <button class="icon-button" onclick="insertSymbolDiacrMarks('\\overbrace')"
+                  title="Удлинённая фигурная скобка сверху">
+                  <div class="icon-wrapper">
+                    <img src="img/elongated curly brace on top.png" alt="Удлинённая фигурная скобка сверху">
+                  </div>
+                </button>
+                <button class="icon-button" onclick="insertSymbolDiacrMarks('\\underbrace')"
+                  title="Удлинённая фигурная скобка снизу">
+                  <div class="icon-wrapper">
+                    <img src="img/elongated curly brace at the bottom.png" alt="Удлинённая фигурная скобка снизу">
+                  </div>
+                </button>
+                <button class="icon-button" onclick="insertSymbolDiacrMarksGroup('\\overbrace','^{}')"
+                  title="Удлинённый группирующий знак сверху">
+                  <div class="icon-wrapper">
+                    <img src="img/elongated grouping sign at the top.png" alt="Удлинённый группирующий знак сверху">
+                  </div>
+                </button>
+                <button class="icon-button" onclick="insertSymbolDiacrMarksGroup('\\underbrace','_{}')"
+                  title="Удлинённый группирующий знак снизу">
+                  <div class="icon-wrapper">
+                    <img src="img/elongated grouping sign at the bottom.png" alt="Удлинённый группирующий знак снизу">
+                  </div>
+                </button>
+                <button class="icon-button" onclick="insertSymbolDiacrMarks('\\widetilde')" title="Удлинённая тильда">
+                  <div class="icon-wrapper">
+                    <img src="img/elongated tilde.png" alt="Удлинённая тильда">
+                  </div>
+                </button>
+                <button class="icon-button" onclick="insertSymbolDiacrMarks('\\overline')"
+                  title="Удлинённая черта сверху">
+                  <div class="icon-wrapper">
+                    <img src="img/elongated line at the top.png" alt="Удлинённая черта сверху">
+                  </div>
+                </button>
+                <button class="icon-button" onclick="insertSymbolDiacrMarks('\\underline')"
+                  title="Удлинённая черта снизу">
+                  <div class="icon-wrapper">
+                    <img src="img/elongated line at the bottom.png" alt="Удлинённая черта снизу">
+                  </div>
+                </button>
+                <button class="icon-button" onclick="insertSymbolDiacrMarks('\\widehat')" title="Удлинённая крышка">
+                  <div class="icon-wrapper">
+                    <img src="img/extended cover.png" alt="Удлинённая крышка">
+                  </div>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="symbol-section">
+        <h2>Матрицы</h2>
+        <div class="symbol-buttons">
+          <div class="dropdown">
+            <button class="icon-button" onclick="addMatrix('matrix')" title="Пустая матрица">
+              <div class="icon-wrapper">
+                <img src="img/empty matrix.png" alt="Пустая матрица">
+              </div>
+            </button>
+            <button class="icon-button" onclick="addMatrix('pmatrix')" title="Пустая матрица в скобках">
+              <div class="icon-wrapper">
+                <img src="img/empty matrix in parentheses.png" alt="Пустая матрица в скобках">
+              </div>
+            </button>
+            <button class="icon-button" onclick="addMatrix('bmatrix')" title="Пустая матрица в квадратных скобках">
+              <div class="icon-wrapper">
+                <img src="img/empty matrix in square brackets.png" alt="Пустая матрица в квадратных скобках">
+              </div>
+            </button>
+            <button class="icon-button" onclick="addMatrix('vmatrix')" title="Пустой определитель">
+              <div class="icon-wrapper">
+                <img src="img/empty determinant.png" alt="Пустой определитель">
+              </div>
+            </button>
+            <div class="dropdown-content">
+              <button class="icon-button" onclick="addMatrix('Bmatrix')" title="Пустая матрица в фигурных скобках">
+                <div class="icon-wrapper">
+                  <img src="img/empty matrix in curly brackets.png" alt="Пустая матрица в фигурных скобках">
+                </div>
+              </button>
+              <button class="icon-button" onclick="addMatrix('Vmatrix')"
+                title="Пустая матрица в двойных вертикальных чертах">
+                <div class="icon-wrapper">
+                  <img src="img/empty matrix in double vertical lines.png"
+                    alt="Пустая матрица в двойных вертикальных чертах">
+                </div>
+              </button>
+              Единичная матрицаㅤㅤ
+              <button class="icon-button" onclick="addSingle_matrix('matrix')" title="Единичная матрица">
+                <div class="icon-wrapper">
+                  <img src="img/single matrix.png" alt="Единичная матрица">
+                </div>
+              </button>
+              <button class="icon-button" onclick="addSingle_matrix('pmatrix')" title="Единичная матрица в скобках">
+                <div class="icon-wrapper">
+                  <img src="img/unit matrix in parentheses.png" alt="Единичная матрица в скобках">
+                </div>
+              </button>
+              <button class="icon-button" onclick="addSingle_matrix('bmatrix')"
+                title="Единичная матрица в квадратных скобках">
+                <div class="icon-wrapper">
+                  <img src="img/single matrix in square brackets.png" alt="Единичная матрица в квадратных скобках">
+                </div>
+              </button>
+              <button class="icon-button" onclick="addSingle_matrix('vmatrix')"
+                title="Единичная матрица в вертикальных чертах">
+                <div class="icon-wrapper">
+                  <img src="img/single matrix in vertical lines.png" alt="Единичная матрица в вертикальных чертах">
+                </div>
+              </button>
+              <button class="icon-button" onclick="addSingle_matrix('Bmatrix')"
+                title="Единичная матрица в фигурных скобках">
+                <div class="icon-wrapper">
+                  <img src="img/single matrix in curly brackets.png" alt="Единичная матрица в фигурных скобках">
+                </div>
+              </button>
+              <button class="icon-button" onclick="addSingle_matrix('Vmatrix')"
+                title="Единичная матрица в двойных вертикальных чертах">
+                <div class="icon-wrapper">
+                  <img src="img/single matrix in double vertical lines.png"
+                    alt="Единичная матрица в двойных вертикальных чертах">
+                </div>
+              </button>
+              Точкиㅤㅤㅤㅤㅤㅤㅤ
+              <button class="icon-button" onclick="insertSymbol('\\cdots')" title="Точки посередине">⋯
+              </button>
+              <button class="icon-button" onclick="insertSymbol('\\ldots')" title="Точки по опорной линии">⋯
+              </button>
+              <button class="icon-button" onclick="insertSymbol('\\vdots')" title="Точки по вертикали">⋮
+              </button>
+              <button class="icon-button" onclick="insertSymbol('\\ddots')" title="Точки по диагонали">⋱
+              </button>
+              Разреженные матрицы
+              <div class="extended_buttons_4">
+                <button class="icon-button" onclick="addSparse_matrix('matrix')" title="Разреженная матрица">
+                  <div class="icon-wrapper">
+                    <img src="img/sparse matrix.png" alt="Разреженная матрица">
+                  </div>
+                </button>
+                <button class="icon-button" onclick="addSparse_matrix('pmatrix')" title="Разреженная матрица в скобках">
+                  <div class="icon-wrapper">
+                    <img src="img/sparse matrix in parentheses.png" alt="Разреженная матрица в скобках">
+                  </div>
+                </button>
+                <button class="icon-button" onclick="addSparse_matrix('bmatrix')"
+                  title="Разреженная матрица в квадратных скобках">
+                  <div class="icon-wrapper">
+                    <img src="img/sparse matrix in square brackets.png" alt="Разреженная матрица в квадратных скобках">
+                  </div>
+                </button>
+                <button class="icon-button" onclick="addSparse_matrix('vmatrix')"
+                  title="Разреженная матрица в вертикальных четах">
+                  <div class="icon-wrapper">
+                    <img src="img/sparse matrix in vertical lines.png" alt="Разреженная матрица в вертикальных четах">
+                  </div>
+                </button>
+                <button class="icon-button" onclick="addSparse_matrix('Bmatrix')"
+                  title="Разреженная матрица в фигурных скобках">
+                  <div class="icon-wrapper">
+                    <img src="img/sparse matrix in curly brackets.png" alt="Разреженная матрица в фигурных скобках">
+                  </div>
+                </button>
+                <button class="icon-button" onclick="addSparse_matrix('Vmatrix')"
+                  title="Разреженная матрица в двойных вертикальных чертах">
+                  <div class="icon-wrapper">
+                    <img src="img/sparse matrix in double vertical lines.png"
+                      alt="Разреженная матрица в двойных вертикальных чертах">
+                  </div>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="symbol-section">
+        <h2>Операторы</h2>
+        <div class="symbol-buttons">
+          <div class="dropdown">
+            <div class="font_magnification_2">
+              <button class="icon-button" onclick="insertSymbolAfter('\\overset{\\mathrm{def}}{=}')"
+                title="Равно по определению">≝
+              </button>
+              <button class="icon-button" onclick="insertSymbolAfter('\\triangleq ')" title="Дельта равна">≜
+              </button>
+              <button class="icon-button" onclick="insertSymbolAfter('\\overset{\\mathrm{m}}{=}')"
+                title="Единица измерения">≞
+              </button>
+              <button class="icon-button" onclick="InsertOperator('\\underset','{\\leftarrow}')"
+                title="Стрелка влево сверху">
+                <div class="icon-wrapper">
+                  <img src="img/left arrow from top.png" alt="Стрелка влево сверху">
+                </div>
+              </button>
+            </div>
+            <div class="dropdown-content">
+              <button class="icon-button" onclick="InsertOperator('\\underset','{\\rightarrow}')"
+                title="Стрелка вправо сверху">
+                <div class="icon-wrapper">
+                  <img src="img/right arrow top.png" alt="Стрелка вправо сверху">
+                </div>
+              </button>
+              <button class="icon-button" onclick="InsertOperator('\\overset','{\\leftarrow}')"
+                title="Стрелка влево снизу">
+                <div class="icon-wrapper">
+                  <img src="img/left arrow from bottom.png" alt="Стрелка влево снизу">
+                </div>
+              </button>
+              <button class="icon-button" onclick="InsertOperator('\\overset','{\\rightarrow}')"
+                title="Стрелка вправо снизу">
+                <div class="icon-wrapper">
+                  <img src="img/bottom right arrow.png" alt="Стрелка вправо снизу">
+                </div>
+              </button>
+              <button class="icon-button" onclick="InsertOperator('\\underset','{\\Leftarrow}')"
+                title="Двойная стрелка влево сверху">
+                <div class="icon-wrapper">
+                  <img src="img/double arrow left from top.png" alt="Двойная стрелка влево сверху">
+                </div>
+              </button>
+              <button class="icon-button" onclick="InsertOperator('\\underset','{\\Rightarrow}')"
+                title="Двойная стрелка вправо сверху">
+                <div class="icon-wrapper">
+                  <img src="img/double arrow right top.png" alt="Двойная стрелка вправо сверху">
+                </div>
+              </button>
+              <button class="icon-button" onclick="InsertOperator('\\overset','{\\Leftarrow}')"
+                title="Двойная стрелка влево снизу">
+                <div class="icon-wrapper">
+                  <img src="img/double arrow left from bottom.png" alt="Двойная стрелка влево снизу">
+                </div>
+              </button>
+              <button class="icon-button" onclick="InsertOperator('\\overset','{\\Rightarrow}')"
+                title="Двойная стрелка вправо снизу">
+                <div class="icon-wrapper">
+                  <img src="img/double arrow right bottom.png" alt="Двойная стрелка вправо снизу">
+                </div>
+              </button>
+              <button class="icon-button" onclick="InsertOperator('\\underset','{\\leftrightarrow}')"
+                title="Стрелка влево-вправо сверху">
+                <div class="icon-wrapper">
+                  <img src="img/left-right arrow from the top.png" alt="Стрелка влево-вправо сверху">
+                </div>
+              </button>
+              <button class="icon-button" onclick="InsertOperator('\\overset','{\\leftrightarrow}')"
+                title="Стрелка влево-вправо снизу">
+                <div class="icon-wrapper">
+                  <img src="img/left-right arrow from the bottom.png" alt="Стрелка влево-вправо снизу">
+                </div>
+              </button>
+              <button class="icon-button" onclick="InsertOperator('\\underset','{\\Leftrightarrow}')"
+                title="Двойная стрелка влево-вправо сверху">
+                <div class="icon-wrapper">
+                  <img src="img/double left-right arrow on top.png" alt="Двойная стрелка влево-вправо сверху">
+                </div>
+              </button>
+              <button class="icon-button" onclick="InsertOperator('\\overset','{\\Leftrightarrow}')"
+                title="Стрелка влево-вправо снизу">
+                <div class="icon-wrapper">
+                  <img src="img/double left-right arrow from the bottom.png" alt="Двойная стрелка влево-вправо снизу">
+                </div>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="main-section">
+        <h2 onclick="toggleSection('symbolSection')">
+          Основные математические символы
+          <span class="show-button" id="buttonsymbolSection">▼</span>
+        </h2>
+        <div class="buttons_main">
+          <button onclick="insertSpecialSymbol('\\pm')" title="Плюс-минус">±</button>
+          <button onclick="insertSpecialSymbol('\\infty')" title="Бесконечность">∞</button>
+          <button onclick="insertSymbol('=')" title="Равно">=</button>
+          <button onclick="insertSpecialSymbol('\\ne')" title="Не равно">≠</button>
+          <button onclick="insertSpecialSymbol('\\sim')" title="Подобно">~</button>
+          <button onclick="insertSpecialSymbol('\\times')" title="Знак умножения">×</button>
+          <button onclick="insertSpecialSymbol('\\div')" title="Знак деления">÷</button>
+          <button onclick="insertSymbol('!')" title="Факториал">!</button>
+          <button onclick="insertSpecialSymbol('\\propto')" title="Пропорционально">∝</button>
+          <button onclick="insertSymbol('<')" title="Меньше">
+            < </button>
+              <button onclick="insertSpecialSymbol('\\ll')" title="Много меньше">≪</button>
+              <button onclick="insertSymbol('>')" title="Больше">></button>
+              <button onclick="insertSpecialSymbol('\\gg')" title="Много больше">≫</button>
+              <button onclick="insertSpecialSymbol('\\le')" title="Меньше или равно">≤</button>
+              <button onclick="insertSpecialSymbol('\\ge')" title="Больше или равно">≥</button>
+              <button onclick="insertSpecialSymbol('\\mp')" title="Минус-плюс">∓</button>
+              <button onclick="insertSpecialSymbol('\\cong')" title="Приблизительно равно">≅</button>
+              <button onclick="insertSpecialSymbol('\\approx')" title="Почти равно">≈</button>
+              <button onclick="insertSpecialSymbol('\\equiv')" title="Тождественно">≡</button>
+              <button onclick="insertSpecialSymbol('\\forall')" title="Для всех">∀</button>
+              <button onclick="insertSpecialSymbol('\\complement')" title="Дополнение">∁</button>
+              <button onclick="insertSpecialSymbol('\\partial')" title="Частный дифференциал">∂</button>
+              <button onclick="insertSpecialSymbol('\\sqrt{}')" title="Знак корня">√</button>
+              <button onclick="insertSpecialSymbol('\\sqrt[3]{}')" title="Кубоческий корень">∛</button>
+              <button onclick="insertSpecialSymbol('\\sqrt[4]{}')" title="Корень четвёртой степени">∜</button>
+              <button onclick="insertSpecialSymbol('\\cup')" title="Объединение">∪</button>
+              <button onclick="insertSpecialSymbol('\\cap')" title="Пересечение">∩</button>
+              <button onclick="insertSpecialSymbol('\\emptyset')" title="Пустое множество">∅</button>
+
+        </div>
+        <div class="section-content" id="symbolSection">
+          <div class="subsection-title" onclick="toggleSection('symbolDop')">
+            Продолжение основных символов <span class="show-button" id="buttonsymbolDop">▲</span>
+          </div>
+          <div class="subsection-content" id="symbolDop" style="display: block;">
+            <div class="buttons_main">
+              <button onclick="insertSpecialSymbol('\\%')" title="Процент">%</button>
+              <button onclick="insertSpecialSymbol('^\\circ')" title="Градусы">°</button>
+              <button onclick="insertSpecialSymbol('^\\circ F')" title="Градусы Фаренгейта">℉</button>
+              <button onclick="insertSpecialSymbol('^\\circ С')" title="Градусы Цельсия">℃</button>
+              <button onclick="insertSpecialSymbol('\\Delta')" title="Приращение">∆</button>
+              <button onclick="insertSpecialSymbol('\\nabla')" title="Набла">∇</button>
+              <button onclick="insertSpecialSymbol('\\exists')" title="Существует">∃</button>
+              <button onclick="insertSpecialSymbol('\\nexists')" title="Не существует">∄</button>
+              <button onclick="insertSpecialSymbol('\\in')" title="Является элементом/принадлежит">∈</button>
+              <button onclick="insertSpecialSymbol('\\notin')" title="Не является элементом/не принадлежит">∉</button>
+              <button onclick="insertSpecialSymbol('\\ni')" title="Содержит как элемент">∋</button>
+              <button onclick="insertSymbol('∌')" title="Не содержит как элемент">∌</button>
+              <button onclick="insertSpecialSymbol('\\gets')" title="Стрелка влево">←</button>
+              <button onclick="insertSpecialSymbol('\\uparrow')" title="Стрелка вверх">↑</button>
+              <button onclick="insertSpecialSymbol('\\to')" title="Стрелка вправо">→</button>
+              <button onclick="insertSpecialSymbol('\\downarrow')" title="Стрелка вниз">↓</button>
+              <button onclick="insertSpecialSymbol('\\leftrightarrow')" title="Стрелка влево-вправо">⟷</button>
+              <button onclick="insertSpecialSymbol('\\therefore')" title="Следовательно">∴</button>
+              <button onclick="insertSpecialSymbol('\\because')" title="Поскольку">∵</button>
+              <button onclick="insertSymbol('+')" title="Плюс">+</button>
+              <button onclick="insertSymbol('-')" title="Минус">−</button>
+              <button onclick="insertSpecialSymbol('\\neg')" title="Знак отрицания">¬</button>
+              <button onclick="insertSpecialSymbol('\\alpha')" title="Альфа">α</button>
+              <button onclick="insertSpecialSymbol('\\beta')" title="Бета">β</button>
+              <button onclick="insertSpecialSymbol('\\gamma')" title="Гамма">γ</button>
+              <button onclick="insertSpecialSymbol('\\delta')" title="Дельта">δ</button>
+              <button onclick="insertSymbol('ε')" title="Эпсилон">ε</button>
+              <button onclick="insertSpecialSymbol('\\epsilon')" title="Эпсилон(вариант)">ϵ</button>
+              <button onclick="insertSpecialSymbol('\\eta')" title="Эта">η</button>
+              <button onclick="insertSpecialSymbol('\\theta')" title="Тета">θ</button>
+              <button onclick="insertSymbol('ϑ')" title="Тета (вариант)">ϑ</button>
+              <button onclick="insertSpecialSymbol('\\mu')" title="Мю">μ</button>
+              <button onclick="insertSpecialSymbol('\\pi')" title="Пи">π</button>
+              <button onclick="insertSpecialSymbol('\\rho')" title="Ро">ρ</button>
+              <button onclick="insertSpecialSymbol('\\sigma')" title="Сигма">σ</button>
+              <button onclick="insertSpecialSymbol('\\tau')" title="Тау">τ</button>
+              <button onclick="insertSpecialSymbol('\\varphi')" title="Фи">φ</button>
+              <button onclick="insertSpecialSymbol('\\omega')" title="Омега">ω</button>
+              <button onclick="insertSymbol('*')" title="Оператор-звёздочка">∗</button>
+              <button onclick="insertSpecialSymbol('\\cdot')" title="Оператор-точка">⋅</button>
+              <button onclick="insertSpecialSymbol('\\vdots')" title="Вертикальное многоточие">⋮</button>
+              <button onclick="insertSpecialSymbol('\\cdots')" title="Горизонтальное многоточие посередине">⋯</button>
+              <button onclick="insertSpecialSymbol('\\ddots')" title="Диагональное многоточие вниз вправо">⋱</button>
+              <button onclick="insertSpecialSymbol('\\aleph')" title="Алеф">ℵ</button>
+              <button onclick="insertSpecialSymbol('\\beth')" title="Бет">ℶ</button>
+              <button onclick="insertSpecialSymbol('\\small\\blacksquare')"
+                title="Что и требовалось доказать">∎</button> 
+            </div>
+          </div>
+          <div class="subsection-title" onclick="toggleSection('greek_letters')">
+            Греческие буквы <span class="show-button" id="buttongreek_letters">▼</span>
+          </div>
+          <div class="subsection-content" id="greek_letters">
+            <div class="subsection-title_2" onclick="toggleSection('lowercase_letters')">
+              Строчные <span class="show-button" id="buttonlowercase_letters">▲</span>
+            </div>
+            <div class="buttons_main">
+              <div class="subsection-content_1" id="lowercase_letters">
+                <button onclick="insertSpecialSymbol('\\alpha')" title="Альфа">α</button>
+                <button onclick="insertSpecialSymbol('\\beta')" title="Бета">β</button>
+                <button onclick="insertSpecialSymbol('\\gamma')" title="Гамма">γ</button>
+                <button onclick="insertSpecialSymbol('\\delta')" title="Дельта">δ</button>
+                <button onclick="insertSymbol('ε')" title="Эпсилон">ε</button>
+                <button onclick="insertSpecialSymbol('\\epsilon')" title="Эпсилон(вариант)">ϵ</button>
+                <button onclick="insertSpecialSymbol('\\zeta')" title="Дзета">ζ</button>
+                <button onclick="insertSpecialSymbol('\\eta')" title="Эта">η</button>
+                <button onclick="insertSpecialSymbol('\\theta')" title="Тета">θ</button>
+                <button onclick="insertSymbol('ϑ')" title="Тета (вариант)">ϑ</button>
+                <button onclick="insertSpecialSymbol('\\iota')" title="Йота">ι</button>
+                <button onclick="insertSpecialSymbol('\\kappa')" title="Каппа">κ</button>
+                <button onclick="insertSpecialSymbol('\\lambda')" title="Лямбда">λ</button>
+                <button onclick="insertSpecialSymbol('\\mu')" title="Мю">μ</button>
+                <button onclick="insertSpecialSymbol('\\nu')" title="Ню">ν</button>
+                <button onclick="insertSpecialSymbol('\\xi')" title="Кси">ξ</button>
+                <button onclick="insertSpecialSymbol('\\mathrm{ο}')" title="Омикрон">ο</button>
+                <button onclick="insertSpecialSymbol('\\pi')" title="Пи">π</button>
+                <button onclick="insertSpecialSymbol('\\varpi')" title="Пи(вариант)">ϖ</button>
+                <button onclick="insertSpecialSymbol('\\rho')" title="Ро">ρ</button>
+                <button onclick="insertSpecialSymbol('\\varrho')" title="Ро(вариант)">ϱ</button>
+                <button onclick="insertSpecialSymbol('\\sigma')" title="Сигма">σ</button>
+                <button onclick="insertSpecialSymbol('\\varsigma')" title="Сигма(вариант)">ϛ</button>
+                <button onclick="insertSpecialSymbol('\\tau')" title="Тау">τ</button>
+                <button onclick="insertSpecialSymbol('\\upsilon')" title="Ипсилон">υ</button>
+                <button onclick="insertSpecialSymbol('\\varphi')" title="Фи">φ</button>
+                <button onclick="insertSpecialSymbol('\\phi')" title="Фи(вариант)">ϕ</button>
+                <button onclick="insertSpecialSymbol('\\chi')" title="Хи">χ</button>
+                <button onclick="insertSpecialSymbol('\\psi')" title="Пси">ψ</button>
+                <button onclick="insertSpecialSymbol('\\omega')" title="Омега">ω</button>
+              </div>
+            </div>
+            <div class="subsection-title_2" onclick="toggleSection('uppercase_letters')">
+              Прописные <span class="show-button" id="buttonuppercase_letters">▼</span>
+            </div>
+            <div class="buttons_main">
+              <div class="subsection-content_2" id="uppercase_letters">
+                <button onclick="insertSpecialSymbol('\\mathrm{A}')" title="Альфа">Α</button>
+                <button onclick="insertSpecialSymbol('\\mathrm{Β}')" title="Бета">Β</button>
+                <button onclick="insertSpecialSymbol('\\Gamma')" title="Гамма">Γ</button>
+                <button onclick="insertSpecialSymbol('\\Delta')" title="Дельта">∆</button>
+                <button onclick="insertSpecialSymbol('\\mathrm{Ε}')" title="Эпсилон">Ε</button>
+                <button onclick="insertSpecialSymbol('\\mathrm{Ζ}')" title="Дзета">Ζ</button>
+                <button onclick="insertSpecialSymbol('\\mathrm{Η}')" title="Эта">Η</button>
+                <button onclick="insertSpecialSymbol('\\Theta')" title="Тета">Θ</button>
+                <button onclick="insertSpecialSymbol('\\mathrm{Ι}')" title="Йота">Ι</button>
+                <button onclick="insertSpecialSymbol('\\mathrm{Κ}')" title="Каппа">Κ</button>
+                <button onclick="insertSpecialSymbol('\\Lambda')" title="Лямбда">Λ</button>
+                <button onclick="insertSpecialSymbol('\\mathrm{Μ}')" title="Мю">Μ</button>
+                <button onclick="insertSpecialSymbol('\\mathrm{Ν}')" title="Ню">Ν</button>
+                <button onclick="insertSpecialSymbol('\\Xi')" title="Кси">Ξ</button>
+                <button onclick="insertSpecialSymbol('\\mathrm{Ο}')" title="Омикрон">Ο</button>
+                <button onclick="insertSpecialSymbol('\\Pi')" title="Пи">Π</button>
+                <button onclick="insertSpecialSymbol('\\mathrm{Ρ}')" title="Ро">Ρ</button>
+                <button onclick="insertSpecialSymbol('\\Sigma')" title="Сигма">Σ</button>
+                <button onclick="insertSpecialSymbol('\\mathrm{Τ}')" title="Тау">Τ</button>
+                <button onclick="insertSpecialSymbol('\\Upsilon')" title="Ипсилон">Υ</button>
+                <button onclick="insertSpecialSymbol('\\Phi')" title="Фи">Φ</button>
+                <button onclick="insertSpecialSymbol('\\chi')" title="Хи">Χ</button>
+                <button onclick="insertSpecialSymbol('\\Psi')" title="Пси">Ψ</button>
+                <button onclick="insertSpecialSymbol('\\Omega')" title="Омега">Ω</button>
+              </div>
+            </div>
+          </div>
+          <div class="subsection-title" onclick="toggleSection('letter_like_characters')">
+            Буквоподобные символы <span class="show-button" id="buttonletter_like_characters">▼</span>
+          </div>
+          <div class="subsection-content" id="letter_like_characters">
+            <div class="buttons_main">
+              <button onclick="insertSpecialSymbol('\\forall')" title="Для всех">∀</button>
+              <button onclick="insertSpecialSymbol('\\complement')" title="Дополнение">∁</button>
+              <button onclick="insertSpecialSymbol('\\mathbb{C}')" title="Прописная С в два подхода">ℂ</button>
+              <button onclick="insertSpecialSymbol('\\partial')" title="Частный дифференциал">∂</button>
+              <button onclick="insertSpecialSymbol('\\eth')" title="Латинская строчная буква Eth">ð</button>
+              <button onclick="insertSpecialSymbol('\\large{ℇ}')" title="Постоянная Эйлера">ℇ</button>
+              <button onclick="insertSpecialSymbol('\\mathrm{F}')" title="Греческая буква дигамма">Ϝ</button>
+              <button onclick="insertSpecialSymbol('\\LARGE\\mathrm{ⅎ}')"
+                title="Перевёрнутая прописная буква F">ⅎ</button>
+              <button onclick="insertSpecialSymbol('\\Large{ℊ}')" title="Рукописная строчная G">ℊ</button>
+              <button onclick="insertSpecialSymbol('\\mathcal{H}')" title="Рукописная прописная H">ℌ</button>
+              <button onclick="insertSpecialSymbol('\\mathfrak{H}')" title="Гильбертово пространство">
+                <div class="icon-wrapper">
+                  <img src="img/gil_prost.png" alt="Гильбертово пространство">
+                </div>
+              </button>
+              <button onclick="insertSymbol(' h ')" title="Постоянная Планка">ℎ</button>
+              <button onclick="insertSpecialSymbol('\\hbar')" title="Постоянная Планка над двумя пи">ℏ</button>
+              <button onclick="insertSpecialSymbol('\\mathrm{\\large{℩}}')"
+                title="Перевёрнутая строчная греческая буква Йота">℩</button>
+              <button onclick="insertSpecialSymbol('\\mathrm{ı}')"
+                title="Латинская строчная буква I без точки">ı</button>
+              <button onclick="insertSpecialSymbol('\\Im')" title="Мнимая часть">ℑ</button>
+              <button onclick="insertSymbol(' j ')" title="Латинская строчная буква J">j</button>
+              <button onclick="insertSpecialSymbol('\\varkappa')" title="Греческий символ каппа">ϰ</button>
+              <button onclick="insertSpecialSymbol('\\mathcal{L}')" title="Преобразование Лапласа">
+                <div class="icon-wrapper">
+                  <img src="img/preob_lapl.png" alt="Преобразование Лапласа">
+                </div>
+              </button>
+              <button onclick="insertSymbol(' ℓ ')" title="Рукописная строчная L">ℓ</button>
+              <button onclick="insertSpecialSymbol('\\mathbb{N}')" title="Натуральное число">ℕ</button>
+              <button onclick="insertSpecialSymbol('\\wp')" title="Эллиптическая функция Вейерштрасса">℘</button>
+              <button onclick="insertSpecialSymbol('\\mathbb{Q}')" title="Множество рациональных чисел">ℚ</button>
+              <button onclick="insertSpecialSymbol('\\mathcal{R}')" title="Интеграл Римана">
+                <div class="icon-wrapper">
+                  <img src="img/int_r.png" alt="Интеграл Римана">
+                </div>
+              </button>
+              <button onclick="insertSpecialSymbol('\\Re')" title="Вещественная часть">ℜ</button>
+              <button onclick="insertSpecialSymbol('\\mathbb{R}')" title="Множество действительных чисел">ℝ</button>
+              <button onclick="insertSpecialSymbol('\\mathbb{Z}')" title="Множество челых чисел">ℤ</button>
+              <button onclick="insertSymbol(' ℧ ')" title="Перевёрнутый знак Ома">℧</button>
+              <button onclick="insertSpecialSymbol('\\mathrm{Å}')" title="Знак ангстрема">Å</button>
+              <button onclick="insertSpecialSymbol('\\mathcal{B}')" title="Функция Бернулли">
+                <div class="icon-wrapper">
+                  <img src="img/fun_ber.png" alt="Функция Бернулли">
+                </div>
+              </button>
+              <button onclick="insertSpecialSymbol('\\Large{℮}')" title="Символ оценки">℮</button>
+              <button onclick="insertSpecialSymbol('\\mathcal{E}')" title="Электродвижущая сила">
+                <div class="icon-wrapper">
+                  <img src="img/el_sil.png" alt="Электродвижущая сила">
+                </div>
+              </button>
+              <button onclick="insertSpecialSymbol('\\exists')" title="Существует">∃</button>
+              <button onclick="insertSpecialSymbol('\\nexists')" title="Не существует">∄</button>
+              <button onclick="insertSpecialSymbol('\\mathcal{F}')" title="Преобразование Фурье">
+                <div class="icon-wrapper">
+                  <img src="img/fur.png" alt="Гильбертово пространствоПреобразование Фурье">
+                </div>
+              </button>
+              <button onclick="insertSpecialSymbol('\\mathcal{M}')" title="М-Матрица">
+                <div class="icon-wrapper">
+                  <img src="img/matr.png" alt="М-Матрица">
+                </div>
+              </button>
+              <button onclick="insertSpecialSymbol('\\aleph')" title="Алеф">ℵ</button>
+              <button onclick="insertSpecialSymbol('\\beth')" title="Бет">ℶ</button>
+              <button onclick="insertSpecialSymbol('\\gimel')"
+                title="Гимел(третье трансфинитное кардинальное число)">ℷ</button>
+              <button onclick="insertSpecialSymbol('\\daleth')"
+                title="Далет(четвёртое трансфинитное кардинальное число)">ℸ</button>
+            </div>
+          </div>
+          <div class="subsection-title" onclick="toggleSection('operators')">
+            Операторы <span class="show-button" id="buttonoperators">▼</span>
+          </div>
+          <div class="subsection-content" id="operators">
+            <div class="subsection-title_2" onclick="toggleSection('common_binary_op')">
+              Обычные бинарные операторы <span class="show-button" id="buttoncommon_binary_op">▲</span>
+            </div>
+            <div class="buttons_main">
+              <div class="subsection-content_1" id="common_binary_op">
+                <button onclick="insertSymbol('+')" title="Плюс">+</button>
+                <button onclick="insertSymbol('-')" title="Минус">−</button>
+                <button onclick="insertSpecialSymbol('\\div')" title="Знак деления">÷</button>
+                <button onclick="insertSpecialSymbol('\\times')" title="Знак умножения">×</button>
+                <button onclick="insertSpecialSymbol('\\pm')" title="Плюс-минус">±</button>
+                <button onclick="insertSpecialSymbol('\\mp')" title="Минус-плюс">∓</button>
+                <button onclick="insertSpecialSymbol('\\propto')" title="Пропорционально">∝</button>
+                <button onclick="insertSymbol('/')" title="Знак деления(косая черта)">/</button>
+                <button onclick="insertSymbol('*')" title="Оператор-звёздочка">∗</button>
+                <button onclick="insertSpecialSymbol('\\circ')" title="Функционал">∘</button>
+                <button onclick="insertSpecialSymbol('\\bullet')" title="Оператор-маркер">∙</button>
+                <button onclick="insertSpecialSymbol('\\cdot')" title="Оператор-точка">⋅</button>
+                <button onclick="insertSpecialSymbol('\\cup')" title="Объединение">∪</button>
+                <button onclick="insertSpecialSymbol('\\cap')" title="Пересечение">∩</button>
+                <button onclick="insertSpecialSymbol('\\uplus')" title="Объединение нескольких множеств">⊎</button>
+                <button onclick="insertSpecialSymbol('\\sqcap')" title="Шапка с квадратным верхом">⊓</button>
+                <button onclick="insertSpecialSymbol('\\sqcup')" title="Квадратная чашка">⊔</button>
+                <button onclick="insertSpecialSymbol('\\wedge')" title="Логическое И">⋀</button>
+                <button onclick="insertSpecialSymbol('\\vee')" title="Логическое ИЛИ">⋁</button>
+              </div>
+            </div>
+            <div class="subsection-title_2" onclick="toggleSection('common_relational_op')">
+              Обычные реляционные операторы <span class="show-button" id="buttoncommon_relational_op">▼</span>
+            </div>
+            <div class="buttons_main">
+              <div class="subsection-content_2" id="common_relational_op">
+                <button onclick="insertSymbol('=')" title="Равно">=</button>
+                <button onclick="insertSpecialSymbol('\\ne')" title="Не равно">≠</button>
+                <button onclick="insertSymbol('<')" title="Меньше">&#60;</button>
+                <button onclick="insertSymbol('>')" title="Больше">></button>
+                <button onclick="insertSpecialSymbol('\\le')" title="Меньше или равно">≤</button>
+                <button onclick="insertSpecialSymbol('\\ge')" title="Больше или равно">≥</button>
+                <button onclick="insertSpecialSymbol('\\nless')" title="Не меньше">
+                  <div class="icon-wrapper">
+                    <img src="img/no less.png" alt="Не меньше">
+                  </div>
+                </button>
+                <button onclick="insertSpecialSymbol('\\nleq')" title="Не меньше и не равно">
+                  <div class="icon-wrapper">
+                    <img src="img/not less and not equal.png" alt="Не меньше и не равно">
+                  </div>
+                </button>
+                <button onclick="insertSpecialSymbol('\\ngtr')" title="Не больше">
+                  <div class="icon-wrapper">
+                    <img src="img/no more.png" alt="Не больше">
+                  </div>
+                </button>
+                <button onclick="insertSpecialSymbol('\\ngeq')" title="Не больше и не равно">
+                  <div class="icon-wrapper">
+                    <img src="img/no more and no equal.png" alt="Не больше и не равно">
+                  </div>
+                </button>
+                <button onclick="insertSpecialSymbol('\\equiv')" title="Тождественно">≡</button>
+                <button onclick="insertSpecialSymbol('\\sim')" title="Подобно">~</button>
+                <button onclick="insertSpecialSymbol('\\simeq')" title="Асимптотически равно">≃</button>
+                <button onclick="insertSpecialSymbol('\\approx')" title="Почти равно">≈</button>
+                <button onclick="insertSpecialSymbol('\\cong')" title="Приблизительно равно">≅</button>
+                <button onclick="insertSpecialSymbol('\\not\\equiv')" title="Не тождественно">
+                  <div class="icon-wrapper">
+                    <img src="img/not identical.png" alt="Не тождественно">
+                  </div>
+                </button>
+                <button onclick="insertSpecialSymbol('\\not\\simeq')" title="Не асимптотически равно">≄</button>
+                <button onclick="insertSpecialSymbol('\\not\\approx')" title="Не почти равно">
+                  <div class="icon-wrapper">
+                    <img src="img/not nearly equal.png" alt="Не почти равно">
+                  </div>
+                </button>
+                <button onclick="insertSpecialSymbol('\\ncong')" title="Не равно ни приблизительно, ни точно">≇</button>
+                <button onclick="insertSpecialSymbol('\\propto')" title="Пропорционально">∝</button>
+                <button onclick="insertSpecialSymbol('\\ll')" title="Много меньше">≪</button>
+                <button onclick="insertSpecialSymbol('\\gg')" title="Много больше">≫</button>
+                <button onclick="insertSpecialSymbol('\\in')" title="Является элементом/принадлежит">∈</button>
+                <button onclick="insertSpecialSymbol('\\notin')" title="Не является элементом/не принадлежит">∉</button>
+                <button onclick="insertSpecialSymbol('\\ni')" title="Содержит как элемент">∋</button>
+                <button onclick="insertSymbol('∌')" title="Не содержит как элемент">∌</button>
+                <button onclick="insertSpecialSymbol('\\subset')" title="Является подмножеством">⊂</button>
+                <button onclick="insertSpecialSymbol('\\supset')" title="Является супермножеством">⊃</button>
+                <button onclick="insertSpecialSymbol('\\subseteq')" title="Является подмножеством или равно">⊆</button>
+                <button onclick="insertSpecialSymbol('\\supseteq')"
+                  title="Является супермножеством или равно">⊇</button>
+                <button onclick="insertSpecialSymbol('\\not\\subset')" title="Не является подмножеством">⊄</button>
+                <button onclick="insertSpecialSymbol('\\not\\supset')" title="Не является супермножеством">⊅</button>
+                <button onclick="insertSpecialSymbol('\\nsubseteq')"
+                  title="Не является подмножеством и не равно">⊈</button>
+                <button onclick="insertSpecialSymbol('\\nsupseteq')"
+                  title="Не является супермножеством и не равно">⊉</button>
+                <button onclick="insertSpecialSymbol('\\prec')" title="Предшествует">≺</button>
+                <button onclick="insertSpecialSymbol('\\succ')" title="Следует">≻</button>
+                <button onclick="insertSpecialSymbol('\\preccurlyeq')" title="Предшествует или равно">≼</button>
+                <button onclick="insertSpecialSymbol('\\succcurlyeq')" title="Следует или равно">≽</button>
+                <button onclick="insertSpecialSymbol('\\nprec')" title="Не предшествует">⊀</button>
+                <button onclick="insertSpecialSymbol('\\nsucc')" title="Не следует">⊁</button>
+                <button onclick="insertSpecialSymbol('\\not\\preccurlyeq')"
+                  title="Не предшествует и не равно">⋠</button>
+                <button onclick="insertSpecialSymbol('\\not\\succcurlyeq')" title="Не следует и не равно">⋡</button>
+                <button onclick="insertSpecialSymbol('\\sqsubset')" title="Является квадратным образом">⊏</button>
+                <button onclick="insertSpecialSymbol('\\sqsupset')" title="Является квадратным оригиналом">⊐</button>
+                <button onclick="insertSpecialSymbol('\\sqsubseteq')"
+                  title="Является квадратным образом или равно">⊑</button>
+                <button onclick="insertSpecialSymbol('\\sqsupseteq')"
+                  title="Является квадратным оригиналом или равно">⊒</button>
+                <button onclick="insertSpecialSymbol('\\parallel')" title="Параллельно">∥</button>
+                <button onclick="insertSpecialSymbol('\\nparallel')" title="Не параллельно">∦</button>
+                <button onclick="insertSpecialSymbol('\\bot')" title="Перпендикулярно(ортогонально)">⊥</button>
+                <button onclick="insertSpecialSymbol('\\vdash')" title="Доказывает(дает вклад)">⊢</button>
+                <button onclick="insertSpecialSymbol('\\dashv')" title="Не дает вклада">⊣</button>
+                <button onclick="insertSpecialSymbol('\\bowtie')" title="Соединение">⋈</button>
+                <button onclick="insertSpecialSymbol('\\asymp')" title="Эквивалентно">≍</button>
+              </div>
+            </div>
+            <div class="subsection-title_2" onclick="toggleSection('basic_N-ary_op')">
+              Основные N-арные операторы <span class="show-button" id="buttonbasic_N-ary_op">▼</span>
+            </div>
+            <div class="buttons_main">
+              <div class="subsection-content_2" id="basic_N-ary_op">
+                <button onclick="insertSpecialSymbol('\\unicode{x2211}}')" title="Знак суммы"><small>∑</small></button>
+                <button onclick="insertSpecialSymbol('\\Large\\unicode{x222B}')"
+                  title="Интеграл"><small>∫</small></button>
+                <button onclick="insertSpecialSymbol('\\Large\\unicode{x222C}')"
+                  title="Двойной интеграл"><small>∬</small></button>
+                <button onclick="insertSpecialSymbol('\\Large\\unicode{x222D}')"
+                  title="Тройной интеграл"><small>∭</small></button>
+                <button onclick="insertSpecialSymbol('\\Large\\unicode{x222E}')"
+                  title="Контурный интеграл"><small>∮</small></button>
+                <button onclick="insertSpecialSymbol('\\LARGE\\unicode{x222F}')"
+                  title="Интеграл по поверхности"><small>∯</small></button>
+                <button onclick="insertSpecialSymbol('\\LARGE\\unicode{x2230}')"
+                  title="Интеграл по объёму"><small>∰</small></button>
+                <button onclick="insertSpecialSymbol('\\Large\\unicode{x2231}')"
+                  title="Интеграл по часовой стрелке"><small>∱</small></button>
+                <button onclick="insertSpecialSymbol('\\Large\\unicode{x2232}')"
+                  title="Контурный интеграл по часовой стрелке"><small>∲</small></button>
+                <button onclick="insertSpecialSymbol('\\Large\\unicode{x2233}')"
+                  title="Контурный интеграл против часовой стрелки"><small>∳</small></button>
+                <button onclick="insertSpecialSymbol('\\unicode{x220F}')"
+                  title="Знак произведения"><small>∏</small></button>
+                <button onclick="insertSpecialSymbol('\\unicode{x2210}')"
+                  title="Знак сопроизведения"><small>∐</small></button>
+                <button onclick="insertSpecialSymbol('\\unicode{x22C3}')"
+                  title="N-арное объединение"><small>⋃</small></button>
+                <button onclick="insertSpecialSymbol('\\unicode{x22C2}')"
+                  title="N-арное пересечение"><small>⋂</small></button>
+                <button onclick="insertSpecialSymbol('\\unicode{x22C0}')"
+                  title="N-арное логическое И"><small>⋀</small></button>
+                <button onclick="insertSpecialSymbol('\\unicode{x22C1}')"
+                  title="N-арное логическое ИЛИ"><small>⋁</small></button>
+                <button onclick="insertSpecialSymbol('\\scriptsize\\bigodot')"
+                  title="N-арный оператор: точка в кружке">⊙</button>
+                <button onclick="insertSpecialSymbol('\\scriptsize\\bigotimes')"
+                  title="N-арный оператор: знак умножения в кружке">⊗</button>
+                <button onclick="insertSpecialSymbol('\\scriptsize\\bigoplus')"
+                  title="N-арный оператор: плюс в кружке">⊕</button>
+                <button onclick="insertSpecialSymbol('\\scriptsize\\biguplus')"
+                  title="N-арный оператор объединения с плюсом">⊎</button>
+              </div>
+            </div>
+            <div class="subsection-title_2" onclick="toggleSection('complex_binary_op')">
+              Сложные бинарные операторы <span class="show-button" id="buttoncomplex_binary_op">▼</span>
+            </div>
+            <div class="buttons_main">
+              <div class="subsection-content_2" id="complex_binary_op">
+                <button onclick="insertSpecialSymbol('\\dotplus')" title="Точка и плюс">∔</button>
+                <button onclick="insertSpecialSymbol('\\unicode{x2238}')"
+                  title="Точка и минус(симметрическая разность)">∸</button>
+                <button onclick="insertSpecialSymbol('\\setminus')" title="Разность множеств">\</button>
+                <button onclick="insertSpecialSymbol('\\mathcal{\\Large\\unicode{x22D2}}')"
+                  title="Двойное пересечение">⋒</button>
+                <button onclick="insertSpecialSymbol('\\mathcal{\\Large\\unicode{x22D3}}')"
+                  title="Двойное объединение">⋓</button>
+                <button onclick="insertSpecialSymbol('\\boxminus')" title="Минус в квадрате">⊟</button>
+                <button onclick="insertSpecialSymbol('\\boxtimes')" title="Знак умножения в квадрате">⊠</button>
+                <button onclick="insertSpecialSymbol('\\boxdot')" title="Точка в квадрате">⊡</button>
+                <button onclick="insertSpecialSymbol('\\boxplus')" title="Плюс в квадрате">⊞</button>
+                <button onclick="insertSpecialSymbol('\\divideontimes')" title="Знак деления и умножения">⋇</button>
+                <button onclick="insertSpecialSymbol('\\ltimes')"
+                  title="Левый нормальный множитель полупрямого произведения">⋉</button>
+                <button onclick="insertSpecialSymbol('\\rtimes')"
+                  title="Правый нормальный множитель полупрямого произведения">⋊</button>
+                <button onclick="insertSpecialSymbol('\\leftthreetimes')"
+                  title="Левая часть полупрямого произведения">⋋</button>
+                <button onclick="insertSpecialSymbol('\\rightthreetimes')"
+                  title="Правая часть полупрямого произведения">⋌</button>
+                <button onclick="insertSpecialSymbol('\\curlywedge')" title="Изогнутое логическое И">⋏</button>
+                <button onclick="insertSpecialSymbol('\\curlyvee')" title="Изогнутое логическое ИЛИ">⋎</button>
+                <button onclick="insertSpecialSymbol('\\circleddash')" title="Тире в кружке">⊝</button>
+                <button onclick="insertSpecialSymbol('\\intercal')" title="Интерполировать">⊺</button>
+                <button onclick="insertSpecialSymbol('\\oplus')" title="Плюс в кружке">⊕</button>
+                <button onclick="insertSpecialSymbol('\\ominus')" title="Минус в кружке">⊖</button>
+                <button onclick="insertSpecialSymbol('\\otimes')" title="Знак умножения в кружке">⊗</button>
+                <button onclick="insertSpecialSymbol('\\oslash')" title="Знак деления в кружке">⊘</button>
+                <button onclick="insertSpecialSymbol('\\odot')" title="Точка в кружке">⊙</button>
+                <button onclick="insertSpecialSymbol('\\circledast')" title="Звездочка в кружке">⊛</button>
+                <button onclick="insertSpecialSymbol('\\circledcirc')" title="Кольцо в кружке">⊚</button>
+                <button onclick="insertSpecialSymbol('\\dagger')" title="Обелиск">†</button>
+                <button onclick="insertSpecialSymbol('\\ddagger')" title="Двойной обелиск">‡</button>
+                <button onclick="insertSpecialSymbol('\\star')" title="Оператор-звездочка">⋆</button>
+                <button onclick="insertSpecialSymbol('\\diamond')" title="Оператор-ромб">⋄</button>
+                <button onclick="insertSpecialSymbol('\\wr')" title="Веночное произведение">≀</button>
+                <button onclick="insertSpecialSymbol('\\bigtriangleup')"
+                  title="Белый треугольник углом вверх">△</button>
+                <button onclick="insertSpecialSymbol('\\unicode{x22C0}')"
+                  title="N-арное логическое И"><small>⋀</small></button>
+                <button onclick="insertSpecialSymbol('\\unicode{x22C1}')"
+                  title="N-арное логическое ИЛИ"><small>⋁</small></button>
+                <button onclick="insertSpecialSymbol('\\scriptsize\\bigodot')"
+                  title="N-арный оператор: точка в кружке">⊙</button>
+                <button onclick="insertSpecialSymbol('\\scriptsize\\bigotimes')"
+                  title="N-арный оператор: знак умножения в кружке">⊗</button>
+                <button onclick="insertSpecialSymbol('\\scriptsize\\bigoplus')"
+                  title="N-арный оператор: плюс в кружке">⊕</button>
+              </div>
+            </div>
+            <div class="subsection-title_2" onclick="toggleSection('complex_relational_op')">
+              Сложные реляционные операторы <span class="show-button" id="buttoncomplex_relational_op">▼</span>
+            </div>
+            <div class="buttons_main">
+              <div class="subsection-content_2" id="complex_relational_op">
+                <button onclick="insertSpecialSymbol('\\therefore')" title="Следовательно">∴</button>
+                <button onclick="insertSpecialSymbol('\\because')" title="Поскольку">∵</button>
+                <button onclick="insertSpecialSymbol('\\lll')" title="Существенно меньше"><small>⋘</small></button>
+                <button onclick="insertSpecialSymbol('\\ggg')" title="Существенно больше"><small>⋙</small></button>
+                <button onclick="insertSpecialSymbol('\\leqq')" title="Знак меньше над равно">≦</button>
+                <button onclick="insertSpecialSymbol('\\geqq')" title="Знак больше над равно">≧</button>
+                <button onclick="insertSpecialSymbol('\\lesssim')" title="Меньше или эквивалентно">≲</button>
+                <button onclick="insertSpecialSymbol('\\gtrsim')" title="Больше или эквивалентно">≳</button>
+                <button onclick="insertSpecialSymbol('\\lessdot')" title="Меньше с точкой">⋖</button>
+                <button onclick="insertSpecialSymbol('\\gtrdot')" title="Больше с точкой">⋗</button>
+                <button onclick="insertSpecialSymbol('\\lessgtr')" title="Меньше или больше">≶</button>
+                <button onclick="insertSpecialSymbol('\\lesseqgtr')"
+                  title="Меньше, равно или больше"><small>⋚</small></button>
+                <button onclick="insertSpecialSymbol('\\gtrless')" title="Больше или меньше">≷</button>
+                <button onclick="insertSpecialSymbol('\\gtreqless')"
+                  title="Больше, равно или меньше"><small>⋛</small></button>
+                <button onclick="insertSpecialSymbol('\\doteqdot')" title="Геометрически равно">≑</button>
+                <button onclick="insertSpecialSymbol('\\fallingdotseq')"
+                  title="Приблизительно равно или является образом">≒</button>
+                <button onclick="insertSpecialSymbol('\\risingdotseq')"
+                  title="Является образом или приблизительно равно">≓</button>
+                <button onclick="insertSpecialSymbol('\\backsim')" title="Обратная тильда">∽</button>
+                <button onclick="insertSpecialSymbol('\\approxeq')" title="Почти равно или равно">≊</button>
+                <button onclick="insertSpecialSymbol('\\backsimeq')" title="Обратная тильда равно">≃</button>
+                <button onclick="insertSpecialSymbol('\\preccurlyeq')" title="Предшествует или равно">≼</button>
+                <button onclick="insertSpecialSymbol('\\succcurlyeq')" title="Следует или равно">≽</button>
+                <button onclick="insertSpecialSymbol('\\curlyeqprec')" title="Равно или предшествует">⋞</button>
+                <button onclick="insertSpecialSymbol('\\curlyeqsucc')" title="Равно или следует">⋟</button>
+                <button onclick="insertSpecialSymbol('\\precsim')" title="Предшествует или эквивалентно">≾</button>
+                <button onclick="insertSpecialSymbol('\\succsim')" title="Следует или эквивалентно">≿</button>
+                <button onclick="insertSpecialSymbol('\\eqslantless')" title="Равно или меньше">
+                  <div class="icon-wrapper">
+                    <img src="img/equal to or less.png" alt="Равно или меньше">
+                  </div>
+                </button>
+                <button onclick="insertSpecialSymbol('\\eqslantgtr')" title="Равно или больше">
+                  <div class="icon-wrapper">
+                    <img src="img/equal to or greater.png" alt="Равно или больше">
+                  </div>
+                </button>
+                <button onclick="insertSpecialSymbol('\\subseteq')" title="Является подмножеством или равно">⊆</button>
+                <button onclick="insertSpecialSymbol('\\supseteq')"
+                  title="Является супермножеством или равно">⊇</button>
+                <button onclick="insertSpecialSymbol('\\lhd')" title="Является нормальной подгруппой">⊲</button>
+                <button onclick="insertSpecialSymbol('\\rhd')" title="Содержит как нормальную подгруппу">⊳</button>
+                <button onclick="insertSpecialSymbol('\\unlhd')"
+                  title="Является нормальной подгруппой или равно">⊴</button>
+                <button onclick="insertSpecialSymbol('\\unrhd')"
+                  title="Содержит как нормальную подгруппу или равно">⊵</button>
+                <button onclick="insertSpecialSymbol('\\vDash')" title="Истина">⊨</button>
+                <button onclick="insertSpecialSymbol('\\Subset')" title="Двойное подмножество">⋐</button>
+                <button onclick="insertSpecialSymbol('\\Supset')" title="Двойное супермножество">⋑</button>
+                <button onclick="insertSpecialSymbol('\\sqsubset')" title="Является квадратным образом">⊏</button>
+                <button onclick="insertSpecialSymbol('\\sqsupset')" title="Является квадратным оригиналом">⊐</button>
+                <button onclick="insertSpecialSymbol('\\sqsubseteq')"
+                  title="Является квадратным образом или равно">⊑</button>
+                <button onclick="insertSpecialSymbol('\\sqsupseteq')"
+                  title="Является квадратным оригиналом или равно">⊒</button>
+                <button onclick="insertSpecialSymbol('\\Vdash')" title="Заставляет">⊩</button>
+                <button onclick="insertSpecialSymbol('\\Vvdash')"
+                  title="Тройная вертикальная черта с постаментом справа">⊪</button>
+                <button onclick="insertSpecialSymbol('\\eqcirc')" title="Кружок в знаке равенства">≖</button>
+                <button onclick="insertSpecialSymbol('\\circeq')" title="Кружок над знаком равенства">≗</button>
+                <button onclick="insertSpecialSymbol('\\triangleq')" title="Дельта над знаком равенства">≜</button>
+                <button onclick="insertSpecialSymbol('\\bumpeq')" title="Разница между">≏</button>
+                <button onclick="insertSpecialSymbol('\\Bumpeq')" title="Геометрически эквивалентно">≎</button>
+                <button onclick="insertSpecialSymbol('\\propto')" title="Пропорционально">∝</button>
+                <button onclick="insertSpecialSymbol('\\between')" title="Между">≬</button>
+                <button onclick="insertSpecialSymbol('\\pitchfork')" title="Камертон">⋔</button>
+                <button onclick="insertSpecialSymbol('\\doteq')" title="Близко к пределу">≐</button>
+                <button onclick="insertSpecialSymbol('\\bowtie')" title="Соединение">⋈</button>
+              </div>
+            </div>
+          </div>
+          <div class="subsection-title" onclick="toggleSection('arrows')">
+            Стрелки <span class="show-button" id="buttonarrows">▼</span>
+          </div>
+          <div class="subsection-content" id="arrows">
+            <div class="buttons_main">
+              <button onclick="insertSpecialSymbol('\\gets')" title="Стрелка влево">←</button>
+              <button onclick="insertSpecialSymbol('\\to')" title="Стрелка вправо">→</button>
+              <button onclick="insertSpecialSymbol('\\uparrow')" title="Стрелка вверх">↑</button>
+              <button onclick="insertSpecialSymbol('\\downarrow')" title="Стрелка вниз">↓</button>
+              <button onclick="insertSpecialSymbol('\\leftrightarrow')" title="Стрелка влево-вправо">↔</button>
+              <button onclick="insertSpecialSymbol('\\updownarrow')" title="Стрелка вверх и вниз">↕</button>
+              <button onclick="insertSpecialSymbol('\\Leftarrow')" title="Двойная стрелка влево">⇐</button>
+              <button onclick="insertSpecialSymbol('\\Rightarrow')" title="Двойная стрелка вправо">⇒</button>
+              <button onclick="insertSpecialSymbol('\\Uparrow')" title="Двойная стрелка вверх">⇑</button>
+              <button onclick="insertSpecialSymbol('\\Downarrow')" title="Двойная стрелка вниз">⇓</button>
+              <button onclick="insertSpecialSymbol('\\Leftrightarrow')" title="Двойная стрелка влево-вправо">⇔</button>
+              <button onclick="insertSpecialSymbol('\\Updownarrow')" title="Двойная стрелка вверх и вниз">⇕</button>
+              <button onclick="insertSpecialSymbol('\\longleftarrow')" title="Длинная стрелка влево">⟵</button>
+              <button onclick="insertSpecialSymbol('\\longrightarrow')" title="Длинная трелка вправо">⟶</button>
+              <button onclick="insertSpecialSymbol('\\longleftrightarrow')"
+                title="Длинная стрелка влево-вправо">⟷</button>
+              <button onclick="insertSpecialSymbol('\\Longleftarrow')" title="Длинная двойная стрелка влево">⟸</button>
+              <button onclick="insertSpecialSymbol('\\Longrightarrow')"
+                title="Длинная двойная стрелка вправо">⟹</button>
+              <button onclick="insertSpecialSymbol('\\Longleftrightarrow')"
+                title="Длинная двойная стрелка влево-вправо">⟺</button>
+              <button onclick="insertSpecialSymbol('\\nearrow')" title="Стрелка вправо вверх">↗</button>
+              <button onclick="insertSpecialSymbol('\\nwarrow')" title="Стрелка влево вверх">↖</button>
+              <button onclick="insertSpecialSymbol('\\searrow')" title="Стрелка вправо вниз">↘</button>
+              <button onclick="insertSpecialSymbol('\\swarrow')" title="Стрелка влево вниз">↙</button>
+              <button onclick="insertSpecialSymbol('\\nleftarrow')" title="Зачеркнутая стрелка влево">
+                <div class="icon-wrapper">
+                  <img src="img/Crossed out left arrow.png" alt="Равно или больше">
+                </div>
+              </button>
+              <button onclick="insertSpecialSymbol('\\nrightarrow')" title="Зачеркнутая стрелка вправо">
+                <div class="icon-wrapper">
+                  <img src="img/Crossed out right arrow.png" alt="Равно или больше">
+                </div>
+              </button>
+              <button onclick="insertSpecialSymbol('\\nleftrightarrow')" title="Зачеркнутая стрелка влево и вправо">
+                <div class="icon-wrapper">
+                  <img src="img/Crossed out left and right arrow.png" alt="Равно или больше">
+                </div>
+              </button>
+              <button onclick="insertSpecialSymbol('\\nLeftarrow')" title="Зачеркнутая двойная стрелка влево">⇍</button>
+              <button onclick="insertSpecialSymbol('\\nRightarrow')"
+                title="Зачеркнутая двойная стрелка вправо">⇏</button>
+              <button onclick="insertSpecialSymbol('\\nLeftrightarrow')"
+                title="Зачеркнутая двойная стрелка влево-вправо">⇎</button>
+              <button onclick="insertSpecialSymbol('\\dashleftarrow')" title="Пунктирная стрелка влево">⇠</button>
+              <button onclick="insertSpecialSymbol('\\dashrightarrow')" title="Пунктирная стрелка вправо">⇢</button>
+              <button onclick="insertSpecialSymbol('\\mathrm{\\Large\\unicode{x21A4}}')"
+                title="Стрелка влево с чертой">↤</button>
+              <button onclick="insertSpecialSymbol('\\mapsto')" title="Стрелка вправо с чертой">↦</button>
+              <button onclick="insertSpecialSymbol('\\mathrm{\\Large\\unicode{x27FB}}')"
+                title="Длинная стрелка влево с чертой"><small>⟻</small></button>
+              <button onclick="insertSpecialSymbol('\\longmapsto')" title="Длинная стрелка вправо с чертой">⟼</button>
+              <button onclick="insertSpecialSymbol('\\hookleftarrow')" title="Стрелка влево с крюком">↩</button>
+              <button onclick="insertSpecialSymbol('\\hookrightarrow')" title="Стрелка вправо с крюком">↪</button>
+              <button onclick="insertSpecialSymbol('\\leftharpoonup')" title="Гарпун влево с крючком вверх">↼</button>
+              <button onclick="insertSpecialSymbol('\\leftharpoondown')" title="Гарпун влево с крючком вниз">↽</button>
+              <button onclick="insertSpecialSymbol('\\rightharpoonup')" title="Гарпун вправо с крючком вверх">⇀</button>
+              <button onclick="insertSpecialSymbol('\\rightharpoondown')"
+                title="Гарпун вправо с крючком вниз">⇁</button>
+              <button onclick="insertSpecialSymbol('\\upharpoonleft')" title="Гарпун вверх с крючком влево">↿</button>
+              <button onclick="insertSpecialSymbol('\\upharpoonright')" title="Гарпун вверх с крючком вправо">↾</button>
+              <button onclick="insertSpecialSymbol('\\downharpoonleft')" title="Гарпун вниз с крючком влево">⇃</button>
+              <button onclick="insertSpecialSymbol('\\downharpoonright')"
+                title="Гарпун вниз с крючком вправо">⇂</button>
+              <button onclick="insertSpecialSymbol('\\leftrightharpoons')"
+                title="Гарпун влево над гарпуном вправо">⇋</button>
+              <button onclick="insertSpecialSymbol('\\rightleftharpoons')"
+                title="Гарпун вправо над гарпуном влево">⇌</button>
+              <button onclick="insertSpecialSymbol('\\leftleftarrows')" title="Две стрелки влево">⇇</button>
+              <button onclick="insertSpecialSymbol('\\rightrightarrows')" title="Две стрелки вправо">⇉</button>
+              <button onclick="insertSpecialSymbol('\\upuparrows')" title="Две стрелки вверх">⇈</button>
+              <button onclick="insertSpecialSymbol('\\downdownarrows')" title="Две стрелки вниз">⇊</button>
+              <button onclick="insertSpecialSymbol('\\leftrightarrows')"
+                title="Стрелка влево над стрелкой вправо">⇆</button>
+              <button onclick="insertSpecialSymbol('\\rightleftarrows')"
+                title="Стрелка вправо над стрелкой влево">⇄</button>
+              <button onclick="insertSpecialSymbol('\\looparrowleft')" title="Стрелко влево с петлёй">↫</button>
+              <button onclick="insertSpecialSymbol('\\looparrowright')" title="Стрелка вправо с петлёй">↬</button>
+              <button onclick="insertSpecialSymbol('\\leftarrowtail')" title="Стрелка влево с хвостиком">↢</button>
+              <button onclick="insertSpecialSymbol('\\rightarrowtail')" title="Стрелка вправо с хвостиком">↣</button>
+              <button onclick="insertSpecialSymbol('\\Lsh')" title="Стрелка вверх с наконечником влево">↰</button>
+              <button onclick="insertSpecialSymbol('\\Rsh')" title="Стрелка вверх с наконечником вправо">↱</button>
+              <button onclick="insertSpecialSymbol('\\mathrm{\\unicode{x21B2}}')"
+                title="Стрелка вниз с наконечником влево">↲</button>
+              <button onclick="insertSpecialSymbol('\\mathrm{\\unicode{x21B3}}')"
+                title="Стрелка вниз с наконечником вправо">↳</button>
+              <button onclick="insertSpecialSymbol('\\Lleftarrow')" title="Тройная стрелка влево">⇚</button>
+              <button onclick="insertSpecialSymbol('\\Rrightarrow')" title="Тройная стрелка вправо">⇛</button>
+              <button onclick="insertSpecialSymbol('\\twoheadleftarrow')"
+                title="Стрелка влево с двумя наконечниками">↞</button>
+              <button onclick="insertSpecialSymbol('\\twoheadrightarrow')"
+                title="Стрелка вправо с двумя наконечниками">↠</button>
+              <button onclick="insertSpecialSymbol('\\curvearrowleft')"
+                title="Полукруглая стрелка вверх против часой стрелки">↶</button>
+              <button onclick="insertSpecialSymbol('\\curvearrowright')"
+                title="Полукруглая стрелка вверх по часой стрелке">↷</button>
+              <button onclick="insertSpecialSymbol('\\circlearrowleft')"
+                title="Стрелка с незамкнутым полукругом против часовой стрелки">⭯</button>
+              <button onclick="insertSpecialSymbol('\\circlearrowright')"
+                title="Стрелка с незамкнутым полукругом по часовой стрелке">⭮</button>
+              <button onclick="insertSpecialSymbol('\\multimap')" title="Мультиотображение">⊸</button>
+              <button onclick="insertSpecialSymbol('\\leftrightsquigarrow')"
+                title="Волнистая стрелка влево и вправо">↭</button>
+              <button onclick="insertSpecialSymbol('\\mathrm{\\large\\unicode{x219C}}')"
+                title="Волнистая стрелка влево">↜</button>
+              <button onclick="insertSpecialSymbol('\\mathrm{\\large\\unicode{x219D}}')"
+                title="Волнистая стрелка вправо">↝</button>
+              <button onclick="insertSpecialSymbol('\\mathrm{\\large\\unicode{x21DC}}')"
+                title="Извилистая стрелка влево">⇜</button>
+              <button onclick="insertSpecialSymbol('\\rightsquigarrow')" title="Извилистая стрелка вправо">⇝</button>
+            </div>
+
+          </div>
+          <div class="subsection-title" onclick="toggleSection('relationship_with_denial')">
+            Отношения с отрицанием <span class="show-button" id="buttonrelationship_with_denial">▼</span>
+          </div>
+          <div class="subsection-content" id="relationship_with_denial">
+            <div class="buttons_main">
+              <button onclick="insertSpecialSymbol('\\ne')" title="Не равно">≠</button>
+              <button onclick="insertSpecialSymbol('\\nless')" title="Не меньше">
+                <div class="icon-wrapper">
+                  <img src="img/no less.png" alt="Не меньше">
+                </div>
+              </button>
+              <button onclick="insertSpecialSymbol('\\ngtr')" title="Не больше">
+                <div class="icon-wrapper">
+                  <img src="img/no more.png" alt="Не больше">
+                </div>
+              </button>
+              <button onclick="insertSpecialSymbol('\\nleq')" title="Не меньше и не равно">
+                <div class="icon-wrapper">
+                  <img src="img/not less and not equal.png" alt="Не меньше и не равно">
+                </div>
+              </button>
+              <button onclick="insertSpecialSymbol('\\ngeq')" title="Не больше и не равно">
+                <div class="icon-wrapper">
+                  <img src="img/no more and no equal.png" alt="Не больше и не равно">
+                </div>
+              </button>
+              <button onclick="insertSpecialSymbol('\\not\\equiv')" title="Не тождественно">
+                <div class="icon-wrapper">
+                  <img src="img/not identical.png" alt="Не тождественно">
+                </div>
+              </button>
+              <button onclick="insertSpecialSymbol('\\nsim')" title="Не подобно">≁</button>
+              <button onclick="insertSpecialSymbol('\\not\\simeq')" title="Не асимптотически равно">≄</button>
+              <button onclick="insertSpecialSymbol('\\not\\approx')" title="Не почти равно">
+                <div class="icon-wrapper">
+                  <img src="img/not nearly equal.png" alt="Не почти равно">
+                </div>
+              </button>
+              <button onclick="insertSpecialSymbol('\\ncong')" title="Не равно ни приблизительно, ни точно">≇</button>
+              <button onclick="insertSpecialSymbol('\\not\\asymp')" title="Не эквивалентно">≭</button>
+              <button onclick="insertSpecialSymbol('\\lvertneqq')" title="Меньше, но не равно">≨</button>
+              <button onclick="insertSpecialSymbol('\\gvertneqq')" title="Больше, но не равно">≩</button>
+              <button onclick="insertSpecialSymbol('\\nprec')" title="Не предшествует">⊀</button>
+              <button onclick="insertSpecialSymbol('\\nsucc')" title="Не следует">⊁</button>
+              <button onclick="insertSpecialSymbol('\\not\\preccurlyeq')" title="Не предшествует и не равно">⋠</button>
+              <button onclick="insertSpecialSymbol('\\not\\succcurlyeq')" title="Не следует и не равно">⋡</button>
+              <button onclick="insertSpecialSymbol('\\notin')" title="Не является элементом/не принадлежит">∉</button>
+              <button onclick="insertSymbol('∌')" title="Не содержит как элемент">∌</button>
+              <button onclick="insertSpecialSymbol('\\not\\subset')" title="Не является подмножеством">⊄</button>
+              <button onclick="insertSpecialSymbol('\\not\\supset')" title="Не является супермножеством">⊅</button>
+              <button onclick="insertSpecialSymbol('\\nsubseteq')"
+                title="Не является подмножеством и не равно">⊈</button>
+              <button onclick="insertSpecialSymbol('\\nsupseteq')"
+                title="Не является супермножеством и не равно">⊉</button>
+              <button onclick="insertSpecialSymbol('\\subsetneq')" title="Является подмножеством и не равно">⊊</button>
+              <button onclick="insertSpecialSymbol('\\supsetneq')"
+                title="Является супермножеством и не равно">⊋</button>
+              <button onclick="insertSpecialSymbol('\\not\\sqsubseteq')"
+                title="Не является квадратным образом или равно">⋢</button>
+              <button onclick="insertSpecialSymbol('\\not\\sqsupseteq')"
+                title="Не является квадратным оригиналом или равно">⋣</button>
+              <button onclick="insertSpecialSymbol('\\lnsim')" title="Меньше, но не эквивалентно">⋦</button>
+              <button onclick="insertSpecialSymbol('\\gnsim')" title="Больше, но не эквивалентно">⋧</button>
+              <button onclick="insertSpecialSymbol('\\precnsim')" title="Предшествует, но не экивалентно">⋨</button>
+              <button onclick="insertSpecialSymbol('\\succnsim')" title="Следует, но не эквивалентно">⋩</button>
+              <button onclick="insertSpecialSymbol('\\ntriangleleft')"
+                title="Не является нормальной подгруппой">⋪</button>
+              <button onclick="insertSpecialSymbol('\\ntriangleright')"
+                title="Не содержит как нормальную подгруппу">⋫</button>
+              <button onclick="insertSpecialSymbol('\\ntrianglelefteq')"
+                title="Не является нормальной подгруппой или равно">⋬</button>
+              <button onclick="insertSpecialSymbol('\\ntrianglerighteq')"
+                title="Не содержит как нормальную подгруппу или равно">⋭</button>
+              <button onclick="insertSpecialSymbol('\\nmid')" title="Не делит">∤</button>
+              <button onclick="insertSpecialSymbol('\\nparallel')" title="Не параллельно">∦</button>
+              <button onclick="insertSpecialSymbol('\\nvdash')" title="Не доказывает">⊬</button>
+              <button onclick="insertSpecialSymbol('\\nvDash')" title="Не истина">⊭</button>
+              <button onclick="insertSpecialSymbol('\\nVdash')" title="Не заставляет">⊮</button>
+              <button onclick="insertSpecialSymbol('\\nVDash')"
+                title="Двойная вертикальная черта с отрицанием и двойным постаментом справа">⊯</button>
+              <button onclick="insertSpecialSymbol('\\nexists')" title="Не существует">∄</button>
+            </div>
+          </div>
+          <div class="subsection-title" onclick="toggleSection('handwritten')">
+            Рукописные <span class="show-button" id="buttonhandwritten">▼</span>
+          </div>
+          <div class="subsection-content" id="handwritten">
+            <div class="subsection-title_2" onclick="toggleSection('handwritten_sub')">
+              Рукописные <span class="show-button" id="buttonhandwritten_sub">▲</span>
+            </div>
+            <div class="buttons_main">
+              <div class="subsection-content_1" id="handwritten_sub">
+                <button onclick="insertSpecialSymbol('\\mathcal{A}')" title="Рукописная прописная A">𝓐</button>
+                <button onclick="insertSpecialSymbol('\\mathcal{B}')" title="Рукописная прописная B">𝓑</button>
+                <button onclick="insertSpecialSymbol('\\mathcal{C}')" title="Рукописная прописная C">𝓒</button>
+                <button onclick="insertSpecialSymbol('\\mathcal{D}')" title="Рукописная прописная D">𝓓</button>
+                <button onclick="insertSpecialSymbol('\\mathcal{E}')" title="Рукописная прописная E">𝓔</button>
+                <button onclick="insertSpecialSymbol('\\mathcal{F}')" title="Рукописная прописная F">𝓕</button>
+                <button onclick="insertSpecialSymbol('\\mathcal{G}')" title="Рукописная прописная G">𝓖</button>
+                <button onclick="insertSpecialSymbol('\\mathcal{H}')" title="Рукописная прописная H">ℌ</button>
+                <button onclick="insertSpecialSymbol('\\mathcal{I}')" title="Рукописная прописная I">𝓘</button>
+                <button onclick="insertSpecialSymbol('\\mathcal{J}')" title="Рукописная прописная J">𝓙</button>
+                <button onclick="insertSpecialSymbol('\\mathcal{K}')" title="Рукописная прописная K">𝓚</button>
+                <button onclick="insertSpecialSymbol('\\mathcal{L}')" title="Рукописная прописная L">𝓛</button>
+                <button onclick="insertSpecialSymbol('\\mathcal{M}')" title="Рукописная прописная M">𝓜</button>
+                <button onclick="insertSpecialSymbol('\\mathcal{N}')" title="Рукописная прописная N">𝓝</button>
+                <button onclick="insertSpecialSymbol('\\mathcal{O}')" title="Рукописная прописная O">𝓞</button>
+                <button onclick="insertSpecialSymbol('\\mathcal{P}')" title="Рукописная прописная P">𝓟</button>
+                <button onclick="insertSpecialSymbol('\\mathcal{Q}')" title="Рукописная прописная Q">𝓠</button>
+                <button onclick="insertSpecialSymbol('\\mathcal{R}')" title="Рукописная прописная R">𝓡</button>
+                <button onclick="insertSpecialSymbol('\\mathcal{S}')" title="Рукописная прописная S">𝓢</button>
+                <button onclick="insertSpecialSymbol('\\mathcal{T}')" title="Рукописная прописная T">𝓣</button>
+                <button onclick="insertSpecialSymbol('\\mathcal{U}')" title="Рукописная прописная U">𝓤</button>
+                <button onclick="insertSpecialSymbol('\\mathcal{V}')" title="Рукописная прописная V">𝓥</button>
+                <button onclick="insertSpecialSymbol('\\mathcal{W}')" title="Рукописная прописная W">𝓦</button>
+                <button onclick="insertSpecialSymbol('\\mathcal{X}')" title="Рукописная прописная X">𝓧</button>
+                <button onclick="insertSpecialSymbol('\\mathcal{Y}')" title="Рукописная прописная Y">𝓨</button>
+                <button onclick="insertSpecialSymbol('\\mathcal{Z}')" title="Рукописная прописная Z">𝓩</button>
+                <button onclick="insertSpecialSymbol('\\mathscr{a}')" title="Рукописная строчная A">𝓪</button>
+                <button onclick="insertSpecialSymbol('\\mathscr{b}')" title="Рукописная строчная B">𝓫</button>
+                <button onclick="insertSpecialSymbol('\\mathscr{c}')" title="Рукописная строчная C">𝓬</button>
+                <button onclick="insertSpecialSymbol('\\mathscr{d}')" title="Рукописная строчная D">𝓭</button>
+                <button onclick="insertSpecialSymbol('\\mathscr{e}')" title="Рукописная строчная E">𝓮</button>
+                <button onclick="insertSpecialSymbol('\\mathscr{f}')" title="Рукописная строчная F">𝓯</button>
+                <button onclick="insertSpecialSymbol('\\mathscr{g}')" title="Рукописная строчная G">𝓰</button>
+                <button onclick="insertSpecialSymbol('\\mathscr{h}')" title="Рукописная строчная H">𝓱</button>
+                <button onclick="insertSpecialSymbol('\\mathscr{i}')" title="Рукописная строчная I">𝓲</button>
+                <button onclick="insertSpecialSymbol('\\mathscr{j}')" title="Рукописная строчная J">𝓳</button>
+                <button onclick="insertSpecialSymbol('\\mathscr{k}')" title="Рукописная строчная K">𝓴</button>
+                <button onclick="insertSpecialSymbol('\\mathscr{l}')" title="Рукописная строчная L">𝓵</button>
+                <button onclick="insertSpecialSymbol('\\mathscr{m}')" title="Рукописная строчная M">𝓶</button>
+                <button onclick="insertSpecialSymbol('\\mathscr{n}')" title="Рукописная строчная N">𝓷</button>
+                <button onclick="insertSpecialSymbol('\\mathscr{o}')" title="Рукописная строчная O">𝓸</button>
+                <button onclick="insertSpecialSymbol('\\mathscr{p}')" title="Рукописная строчная P">𝓹</button>
+                <button onclick="insertSpecialSymbol('\\mathscr{q}')"
+                  title="Рукописная строчная Q"><small>𝓺</small></button>
+                <button onclick="insertSpecialSymbol('\\mathscr{r}')" title="Рукописная строчная R">𝓻</button>
+                <button onclick="insertSpecialSymbol('\\mathscr{s}')" title="Рукописная строчная S">𝓼</button>
+                <button onclick="insertSpecialSymbol('\\mathscr{t}')" title="Рукописная строчная T">𝓽</button>
+                <button onclick="insertSpecialSymbol('\\mathscr{u}')" title="Рукописная строчная U">𝓾</button>
+                <button onclick="insertSpecialSymbol('\\mathscr{v}')" title="Рукописная строчная V">𝓿</button>
+                <button onclick="insertSpecialSymbol('\\mathscr{w}')" title="Рукописная строчная W">𝔀</button>
+                <button onclick="insertSpecialSymbol('\\mathscr{x}')" title="Рукописная строчная X">𝔁</button>
+                <button onclick="insertSpecialSymbol('\\mathscr{y}')" title="Рукописная строчная Y">𝔂</button>
+                <button onclick="insertSpecialSymbol('\\mathscr{z}')" title="Рукописная строчная Z">𝔃</button>
+              </div>
+            </div>
+            <div class="subsection-title_2" onclick="toggleSection('gothic')">
+              Готические <span class="show-button" id="buttongothic">▼</span>
+            </div>
+            <div class="buttons_main">
+              <div class="subsection-content_2" id="gothic">
+                <button onclick="insertSpecialSymbol('\\mathfrak{A}')" title="Готическая прописная A">𝔄</button>
+                <button onclick="insertSpecialSymbol('\\mathfrak{B}')" title="Готическая прописная B">𝔅</button>
+                <button onclick="insertSpecialSymbol('\\mathfrak{C}')" title="Готическая прописная C">ℭ</button>
+                <button onclick="insertSpecialSymbol('\\mathfrak{D}')" title="Готическая прописная D">𝔇</button>
+                <button onclick="insertSpecialSymbol('\\mathfrak{E}')" title="Готическая прописная E">𝔈</button>
+                <button onclick="insertSpecialSymbol('\\mathfrak{F}')" title="Готическая прописная F">𝔉</button>
+                <button onclick="insertSpecialSymbol('\\mathfrak{G}')" title="Готическая прописная G">𝔊</button>
+                <button onclick="insertSpecialSymbol('\\mathfrak{H}')" title="Готическая прописная H">𝕳</button>
+                <button onclick="insertSpecialSymbol('\\mathfrak{I}')" title="Готическая прописная I">𝕴</button>
+                <button onclick="insertSpecialSymbol('\\mathfrak{J}')" title="Готическая прописная J">𝔍</button>
+                <button onclick="insertSpecialSymbol('\\mathfrak{K}')" title="Готическая прописная K">𝔎</button>
+                <button onclick="insertSpecialSymbol('\\mathfrak{L}')" title="Готическая прописная L">𝔏</button>
+                <button onclick="insertSpecialSymbol('\\mathfrak{M}')" title="Готическая прописная M">𝔐</button>
+                <button onclick="insertSpecialSymbol('\\mathfrak{N}')" title="Готическая прописная N">𝔑</button>
+                <button onclick="insertSpecialSymbol('\\mathfrak{O}')" title="Готическая прописная O">𝔒</button>
+                <button onclick="insertSpecialSymbol('\\mathfrak{P}')" title="Готическая прописная P">𝔓</button>
+                <button onclick="insertSpecialSymbol('\\mathfrak{Q}')" title="Готическая прописная Q">𝔔</button>
+                <button onclick="insertSpecialSymbol('\\mathfrak{R}')" title="Готическая прописная R">𝕽</button>
+                <button onclick="insertSpecialSymbol('\\mathfrak{S}')" title="Готическая прописная S">𝔖</button>
+                <button onclick="insertSpecialSymbol('\\mathfrak{T}')" title="Готическая прописная T">𝔗</button>
+                <button onclick="insertSpecialSymbol('\\mathfrak{U}')" title="Готическая прописная U">𝔘</button>
+                <button onclick="insertSpecialSymbol('\\mathfrak{V}')" title="Готическая прописная V">𝔙</button>
+                <button onclick="insertSpecialSymbol('\\mathfrak{W}')" title="Готическая прописная W">𝔚</button>
+                <button onclick="insertSpecialSymbol('\\mathfrak{X}')" title="Готическая прописная X">𝔛</button>
+                <button onclick="insertSpecialSymbol('\\mathfrak{Y}')" title="Готическая прописная Y">𝔜</button>
+                <button onclick="insertSpecialSymbol('\\mathfrak{Z}')" title="Готическая прописная Z">ℨ</button>
+                <button onclick="insertSpecialSymbol('\\mathfrak{a}')" title="Готическая строчная A">𝔞</button>
+                <button onclick="insertSpecialSymbol('\\mathfrak{b}')" title="Готическая строчная B">𝔟</button>
+                <button onclick="insertSpecialSymbol('\\mathfrak{c}')" title="Готическая строчная C">𝔠</button>
+                <button onclick="insertSpecialSymbol('\\mathfrak{d}')" title="Готическая строчная D">𝔡</button>
+                <button onclick="insertSpecialSymbol('\\mathfrak{e}')" title="Готическая строчная E">𝔢</button>
+                <button onclick="insertSpecialSymbol('\\mathfrak{f}')" title="Готическая строчная F">𝔣</button>
+                <button onclick="insertSpecialSymbol('\\mathfrak{g}')" title="Готическая строчная G">𝔤</button>
+                <button onclick="insertSpecialSymbol('\\mathfrak{h}')" title="Готическая строчная H">𝔥</button>
+                <button onclick="insertSpecialSymbol('\\mathfrak{i}')" title="Готическая строчная I">𝔦</button>
+                <button onclick="insertSpecialSymbol('\\mathfrak{j}')" title="Готическая строчная J">𝔧</button>
+                <button onclick="insertSpecialSymbol('\\mathfrak{k}')" title="Готическая строчная K">𝔨</button>
+                <button onclick="insertSpecialSymbol('\\mathfrak{l}')" title="Готическая строчная L">𝔩</button>
+                <button onclick="insertSpecialSymbol('\\mathfrak{m}')" title="Готическая строчная M">𝔪</button>
+                <button onclick="insertSpecialSymbol('\\mathfrak{n}')" title="Готическая строчная N">𝔫</button>
+                <button onclick="insertSpecialSymbol('\\mathfrak{o}')" title="Готическая строчная O">𝔬</button>
+                <button onclick="insertSpecialSymbol('\\mathfrak{p}')" title="Готическая строчная P">𝔭</button>
+                <button onclick="insertSpecialSymbol('\\mathfrak{q}')" title="Готическая строчная Q">𝔮</button>
+                <button onclick="insertSpecialSymbol('\\mathfrak{r}')" title="Готическая строчная R">𝔯</button>
+                <button onclick="insertSpecialSymbol('\\mathfrak{s}')" title="Готическая строчная S">𝔰</button>
+                <button onclick="insertSpecialSymbol('\\mathfrak{t}')" title="Готическая строчная T">𝔱</button>
+                <button onclick="insertSpecialSymbol('\\mathfrak{u}')" title="Готическая строчная U">𝔲</button>
+                <button onclick="insertSpecialSymbol('\\mathfrak{v}')" title="Готическая строчная V">𝔳</button>
+                <button onclick="insertSpecialSymbol('\\mathfrak{w}')" title="Готическая строчная W">𝔴</button>
+                <button onclick="insertSpecialSymbol('\\mathfrak{x}')" title="Готическая строчная X">𝔵</button>
+                <button onclick="insertSpecialSymbol('\\mathfrak{y}')" title="Готическая строчная Y">𝔶</button>
+                <button onclick="insertSpecialSymbol('\\mathfrak{z}')" title="Готическая строчная Z">𝔷</button>
+              </div>
+            </div>
+            <div class="subsection-title_2" onclick="toggleSection('fishnet')">
+              Ажурные <span class="show-button" id="buttonfishnet">▼</span>
+            </div>
+            <div class="buttons_main">
+              <div class="subsection-content_2" id="fishnet">
+                <button onclick="insertSpecialSymbol('\\mathbb{A}')" title="Прописная A в два подхода">𝔸</button>
+                <button onclick="insertSpecialSymbol('\\mathbb{B}')" title="Прописная B в два подхода">𝔹</button>
+                <button onclick="insertSpecialSymbol('\\mathbb{C}')" title="Прописная C в два подхода">ℂ</button>
+                <button onclick="insertSpecialSymbol('\\mathbb{D}')" title="Прописная D в два подхода">𝔻</button>
+                <button onclick="insertSpecialSymbol('\\mathbb{E}')" title="Прописная E в два подхода">𝔼</button>
+                <button onclick="insertSpecialSymbol('\\mathbb{F}')" title="Прописная F в два подхода">𝔽</button>
+                <button onclick="insertSpecialSymbol('\\mathbb{G}')" title="Прописная G в два подхода">𝔾</button>
+                <button onclick="insertSpecialSymbol('\\mathbb{H}')" title="Прописная H в два подхода">ℍ</button>
+                <button onclick="insertSpecialSymbol('\\mathbb{I}')" title="Прописная I в два подхода">𝕀</button>
+                <button onclick="insertSpecialSymbol('\\mathbb{J}')" title="Прописная J в два подхода">𝕁</button>
+                <button onclick="insertSpecialSymbol('\\mathbb{K}')" title="Прописная K в два подхода">𝕂</button>
+                <button onclick="insertSpecialSymbol('\\mathbb{L}')" title="Прописная L в два подхода">𝕃</button>
+                <button onclick="insertSpecialSymbol('\\mathbb{M}')" title="Прописная M в два подхода">𝕄</button>
+                <button onclick="insertSpecialSymbol('\\mathbb{N}')" title="Прописная N в два подхода">ℕ</button>
+                <button onclick="insertSpecialSymbol('\\mathbb{O}')" title="Прописная O в два подхода">𝕆</button>
+                <button onclick="insertSpecialSymbol('\\mathbb{P}')" title="Прописная P в два подхода">ℙ</button>
+                <button onclick="insertSpecialSymbol('\\mathbb{Q}')" title="Прописная Q в два подхода">ℚ</button>
+                <button onclick="insertSpecialSymbol('\\mathbb{R}')" title="Прописная R в два подхода">ℝ</button>
+                <button onclick="insertSpecialSymbol('\\mathbb{S}')" title="Прописная S в два подхода">𝕊</button>
+                <button onclick="insertSpecialSymbol('\\mathbb{T}')" title="Прописная T в два подхода">𝕋</button>
+                <button onclick="insertSpecialSymbol('\\mathbb{U}')" title="Прописная U в два подхода">𝕌</button>
+                <button onclick="insertSpecialSymbol('\\mathbb{V}')" title="Прописная V в два подхода">𝕍</button>
+                <button onclick="insertSpecialSymbol('\\mathbb{W}')" title="Прописная W в два подхода">𝕎</button>
+                <button onclick="insertSpecialSymbol('\\mathbb{X}')" title="Прописная X в два подхода">𝕏</button>
+                <button onclick="insertSpecialSymbol('\\mathbb{Y}')" title="Прописная Y в два подхода">𝕐</button>
+                <button onclick="insertSpecialSymbol('\\mathbb{Z}')" title="Прописная Z в два подхода">ℤ</button>
+                <button onclick="insertSpecialSymbol('\\mathbb{a}')" title="Строчная A в два подхода">𝕒</button>
+                <button onclick="insertSpecialSymbol('\\mathbb{b}')" title="Строчная B в два подхода">𝕓</button>
+                <button onclick="insertSpecialSymbol('\\mathbb{c}')" title="Строчная C в два подхода">𝕔</button>
+                <button onclick="insertSpecialSymbol('\\mathbb{d}')" title="Строчная D в два подхода">𝕕</button>
+                <button onclick="insertSpecialSymbol('\\mathbb{e}')" title="Строчная E в два подхода">𝕖</button>
+                <button onclick="insertSpecialSymbol('\\mathbb{f}')" title="Строчная F в два подхода">𝕗</button>
+                <button onclick="insertSpecialSymbol('\\mathbb{g}')" title="Строчная G в два подхода">𝕘</button>
+                <button onclick="insertSpecialSymbol('\\mathbb{h}')" title="Строчная H в два подхода">𝕙</button>
+                <button onclick="insertSpecialSymbol('\\mathbb{i}')" title="Строчная I в два подхода">𝕚</button>
+                <button onclick="insertSpecialSymbol('\\mathbb{j}')" title="Строчная J в два подхода">𝕛</button>
+                <button onclick="insertSpecialSymbol('\\mathbb{k}')" title="Строчная K в два подхода">𝕜</button>
+                <button onclick="insertSpecialSymbol('\\mathbb{l}')" title="Строчная L в два подхода">𝕝</button>
+                <button onclick="insertSpecialSymbol('\\mathbb{m}')" title="Строчная M в два подхода">𝕞</button>
+                <button onclick="insertSpecialSymbol('\\mathbb{n}')" title="Строчная N в два подхода">𝕟</button>
+                <button onclick="insertSpecialSymbol('\\mathbb{o}')" title="Строчная O в два подхода">𝕠</button>
+                <button onclick="insertSpecialSymbol('\\mathbb{p}')" title="Строчная P в два подхода">𝕡</button>
+                <button onclick="insertSpecialSymbol('\\mathbb{q}')" title="Строчная Q в два подхода">𝕢</button>
+                <button onclick="insertSpecialSymbol('\\mathbb{r}')" title="Строчная R в два подхода">𝕣</button>
+                <button onclick="insertSpecialSymbol('\\mathbb{s}')" title="Строчная S в два подхода">𝕤</button>
+                <button onclick="insertSpecialSymbol('\\mathbb{t}')" title="Строчная T в два подхода">𝕥</button>
+                <button onclick="insertSpecialSymbol('\\mathbb{u}')" title="Строчная U в два подхода">𝕦</button>
+                <button onclick="insertSpecialSymbol('\\mathbb{v}')" title="Строчная V в два подхода">𝕧</button>
+                <button onclick="insertSpecialSymbol('\\mathbb{w}')" title="Строчная W в два подхода">𝕨</button>
+                <button onclick="insertSpecialSymbol('\\mathbb{x}')" title="Строчная X в два подхода">𝕩</button>
+                <button onclick="insertSpecialSymbol('\\mathbb{y}')" title="Строчная Y в два подхода">𝕪</button>
+                <button onclick="insertSpecialSymbol('\\mathbb{z}')" title="Строчная Z в два подхода">𝕫</button>
+              </div>
+            </div>
+          </div>
+          <div class="subsection-title" onclick="toggleSection('Geometry')">
+            Геометрия <span class="show-button" id="buttonGeometry">▼</span>
+          </div>
+          <div class="subsection-content" id="Geometry">
+            <div class="buttons_main">
+              <button onclick="insertSpecialSymbol('\\llcorner')" title="Прямой угол">∟</button>
+              <button onclick="insertSpecialSymbol('\\angle')" title="Угол">∠</button>
+              <button onclick="insertSpecialSymbol('\\measuredangle')" title="Измеренный угол">∡</button>
+              <button onclick="insertSpecialSymbol('\\sphericalangle')" title="Сферический угол">∢</button>
+              <button onclick="insertSpecialSymbol('\\unicode{x22BE}')" title="Прямой угол с дугой">⊾</button>
+              <button onclick="insertSpecialSymbol('\\unicode{x22BF}')" title="Прямоугольный треугольник">⊿</button>
+              <button onclick="insertSpecialSymbol('\\⋕')" title="Равно и параллельно">⋕</button>
+              <button onclick="insertSpecialSymbol('\\bot')" title="Перпендикулярно(ортогонально)">⊥</button>
+              <button onclick="insertSpecialSymbol('\\nmid')" title="Не делит">∤</button>
+              <button onclick="insertSpecialSymbol('\\parallel')" title="Параллельно">∥</button>
+              <button onclick="insertSpecialSymbol('\\nparallel')" title="Не параллельно">∦</button>
+              <button onclick="insertSpecialSymbol('\\unicode{x2236}')" title="Отношение">∶</button>
+              <button onclick="insertSpecialSymbol('\\unicode{x2237}')" title="Пропорция">∷</button>
+              <button onclick="insertSpecialSymbol('\\therefore')" title="Следовательно">∴</button>
+              <button onclick="insertSpecialSymbol('\\because')" title="Поскольку">∵</button>
+              <button onclick="insertSpecialSymbol('\\small\\blacksquare')"
+                title="Что и требовалось доказать">∎</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="main-section_2">
+        <h2 style="cursor: default;">Пробелы</h2>
+        <div class="buttons_main_2">
+          <button onclick="insertSpecialSymbol('\\!')" title="Узкий пробел">
+            <div class="icon-wrapper">
+              <img src="img/space_variant_1.png" alt="Узкий пробел">
+            </div>
+          </button>
+          <button onclick="insertSpecialSymbol(' ')" title="Обычный пробел">
+            <div class="icon-wrapper">
+              <img src="img/space_variant_2.png" alt="Обычный пробел">
+            </div>
+          </button>
+          <button onclick="insertSpecialSymbol('\\,')" title="Пробел побольше версия 1">
+            <div class="icon-wrapper">
+              <img src="img/space_variant_3.png" alt="Пробел побольше версия 1">
+            </div>
+          </button>
+          <button onclick="insertSpecialSymbol('\\:')" title="Пробел побольше версия 2">
+            <div class="icon-wrapper">
+              <img src="img/space_variant_4.png" alt="Пробел побольше версия 2">
+            </div>
+          </button>
+          <button onclick="insertSpecialSymbol('\\;')" title="Пробел побольше версия 3">
+            <div class="icon-wrapper">
+              <img src="img/space_variant_5.png" alt="Пробел побольше версия 3">
+            </div>
+          </button>
+          <button onclick="insertSpecialSymbol('\\ ')" title="Пробел побольше версия 4">
+            <div class="icon-wrapper">
+              <img src="img/space_variant_6.png" alt="Пробел побольше версия 4">
+            </div>
+          </button>
+          <button onclick="insertSpecialSymbol('\\quad')" title="Пробел побольше версия 5">
+            <div class="icon-wrapper">
+              <img src="img/space_variant_7.png" alt="Пробел побольше версия 5">
+            </div>
+          </button>
+          <button onclick="insertSpecialSymbol('\\qquad')" title="Пробел побольше версия 6">
+            <div class="icon-wrapper">
+              <img src="img/space_variant_8.png" alt="Пробел побольше версия 6">
+            </div>
+          </button>
+        </div>
+      </div>
+      <div class="main-section_2">
+        <h2 style="cursor: default; font-size: 14px;">Размер шрифта для формул</h2>
+        <div class="buttons_main_2">
+          <button onclick="change_size('\\tiny')" title="Очень маленький шрифт">
+            <size_1>Abc</size_1>
+          </button>
+          <button onclick="change_size('\\scriptsize')" title="Маленький шрифт">
+            <size_2>Abc</size_2>
+          </button>
+          <button onclick="change_size('\\small')" title="Небольшой шрифт">
+            <size_3>Abc</size_3>
+          </button>
+          <button onclick="change_size('\\large')" title="Большой шрифт">
+            <size_4>Abc</size_4>
+          </button>
+          <button onclick="change_size('\\Large')" title="Шрифт побольше 1">
+            <size_5>Abc</size_5>
+          </button>
+          <button onclick="change_size('\\LARGE')" title="Шрифт побольше 2">
+            <size_6>Abc</size_6>
+          </button>
+          <button onclick="change_size('\\huge')" title="Шрифт побольше 3">
+            <size_7>Abc</size_7>
+          </button>
+          <button onclick="change_size('\\Huge')" title="Очень большой шрифт">
+            <size_8>Abc</size_8>
+          </button>
+        </div>
+      </div>
+      <div class="main-section_2">
+        <h2 style="cursor: default; font-size: 14px;">Размер шрифта для ввода</h2>
+        <div class="buttons_main_2">
+          <button onclick="changeFontSize()" title="Пользовательский размер шрифта"><small>Ввести</small></button>
+          <button onclick="changing_size_output('8')" title="Размер шрифта 8"><small>8</small></button>
+          <button onclick="changing_size_output('10')" title="Размер шрифта 10"><small>10</small></button>
+          <button onclick="changing_size_output('12')" title="Размер шрифта 12"><small>12</small></button>
+          <button onclick="changing_size_output('14')" title="Размер шрифта 14"><small>14</small></button>
+          <button onclick="changing_size_output('18')" title="Размер шрифта 18"><small>18</small></button>
+          <button onclick="changing_size_output('20')" title="Размер шрифта 20"><small>20</small></button>
+          <button onclick="changing_size_output('22')" title="Размер шрифта 22"><small>22</small></button>
+        </div>
+      </div>
+      <div class="main-section_2">
+        <h2 style="cursor: default; font-size: 14px;">Нажмите для ввода текста</h2>
+        <div class="buttons_main_3">
+          <button onclick="text_input('\\text')" title="Ввод обычного текста">Ввести</button>
+          <button onclick="text_input_bold('\\textbf')" title="Ввод жирного текста"><b>Ввести</b></button>
+        </div>
+      </div>
+
+
+
+
+
+    </div>
+
+    <textarea id="equationInput" placeholder="Введите уравнение в LaTeX"></textarea>
+    <br>
+    <div class="save-button">
+      <button id="save-button" onclick="saveAsImage()">Сохранить как изображение</button>
+    </div>
+  </div>
+
+  <div id="renderedEquation"></div>
+
+  <script type="text/javascript">
+    var equationInput = document.getElementById("equationInput");
+    var outputElement = document.getElementById("renderedEquation");
+
+    equationInput.addEventListener("input", function () {
+      renderEquation();
+    });
+
+    function renderEquation() {
+      var equation = '$$' + equationInput.value + '$$';
+      outputElement.innerHTML = equation;
+
+      MathJax.typesetPromise([outputElement])
+        .catch(function (err) {
+          console.log(err.message);
+        });
+    }
+
+    function toggleSection(sectionId) {
+      var section = document.getElementById(sectionId);
+      var button = document.getElementById('button' + sectionId);
+      if (window.getComputedStyle(section).display === 'none') {
+        section.style.display = 'block';
+        button.innerText = '▲';
+      } else {
+        section.style.display = 'none';
+        button.innerText = '▼';
+      }
+    }
+
+    function saveAsImage() {
+      var svgString = outputElement.querySelector('svg').outerHTML;
+      scaleFactor = 4.5;
+      var scaledSvgString = scaleSvg(svgString, 2);
+      var tempContainer = document.createElement('div');
+      tempContainer.innerHTML = scaledSvgString;
+      var svgElement = tempContainer.querySelector('svg');
+      var canvas = document.createElement('canvas');
+      canvas.width = parseFloat(svgElement.getAttribute('width')) * scaleFactor;
+      canvas.height = parseFloat(svgElement.getAttribute('height')) * scaleFactor;
+      var ctx = canvas.getContext('2d');
+      ctx.scale(scaleFactor, scaleFactor);
+      var svgStringData = new XMLSerializer().serializeToString(svgElement);
+      var img = new Image();
+      img.src = 'data:image/svg+xml; charset=utf8, ' + encodeURIComponent(svgStringData);
+      img.onload = function () {
+        ctx.drawImage(img, 0, 0);
+        window.chrome.webview.postMessage(canvas.toDataURL('image/png').split(',')[1]);
+      };
+    }
+
+    function scaleSvg(svgString, scaleFactor) {
+      var parser = new DOMParser();
+      var svgDoc = parser.parseFromString(svgString, 'image/svg+xml');
+      var svgElement = svgDoc.documentElement;
+      svgElement.setAttribute('width', parseFloat(svgElement.getAttribute('width')) * scaleFactor);
+      svgElement.setAttribute('height', parseFloat(svgElement.getAttribute('height')) * scaleFactor);
+      var scaledSvgString = new XMLSerializer().serializeToString(svgElement);
+      return scaledSvgString;
+    }
+
+
+    /* Ввод матриц */
+    function addMatrix(type_matrix) {
+      var input = prompt("Введите количество строк и столбцов через запятую (например, 3,4):");
+      if (input !== null) {
+        var values = input.split(',');
+        if (values.length === 2) {
+          var rows = parseInt(values[0], 10);
+          var cols = parseInt(values[1], 10);
+          if (!isNaN(rows) && !isNaN(cols)) {
+            var matrixCode = "\\begin{" + type_matrix + "}\n";
+            for (var i = 0; i < rows; i++) {
+              for (var j = 0; j < cols; j++) {
+                matrixCode += " ";
+                if (j < cols - 1) matrixCode += " &";
+              }
+              if (i < rows - 1) matrixCode += " \\\\\n";
+            }
+            matrixCode += "\n\\end{" + type_matrix + "}";
+            insertSymbol(matrixCode);
+          }
+        } else {
+          alert("Некорректный ввод. Введите два числа через запятую.");
+        }
+      }
+    }
+
+    function addSingle_matrix(type_matrix) {
+      var order = prompt("Введите порядок матрицы (количество строк или столбцов):");
+      if (order !== null) {
+        var n = parseInt(order, 10);
+        if (!isNaN(n) && n > 0) {
+          var matrixCode = "\\begin{" + type_matrix + "}\n";
+          for (var i = 0; i < n; i++) {
+            for (var j = 0; j < n; j++) {
+              matrixCode += i === j ? "1" : "0";
+              if (j < n - 1) matrixCode += " & ";
+            }
+            matrixCode += " \\\\\n";
+          }
+          matrixCode += "\\end{" + type_matrix + "}";
+          insertSymbol(matrixCode);
+        } else {
+          alert("Некорректный ввод. Введите положительное целое число.");
+        }
+      }
+    }
+
+    function addSparse_matrix(type_matrix) {
+      var matrixCode = "\\begin{" + type_matrix + "}\n";
+      matrixCode += "         & \\cdots &        \\\\\n \\vdots  & \\ddots & \\vdots \\\\\n         & \\cdots &        \\\\\n"
+      matrixCode += "\\end{" + type_matrix + "}";
+      insertSymbol(matrixCode);
+    }
+
+    function addLeftRightDoubleVerticalStripes() {
+      var textarea = document.getElementById("equationInput");
+      var selectedText = textarea.value.substring(textarea.selectionStart, textarea.selectionEnd);
+      var selectionStart = textarea.selectionStart;
+      var fullText = textarea.value;
+      if (selectedText.length > 0) {
+        var newText = '{\\left\\| ' + selectedText + ' \\right\\|}';
+        textarea.setRangeText(newText);
+        var cursorPosition = selectionStart + selectedText.length + 19;
+      }
+      else {
+        var newText = fullText.substring(0, selectionStart) + '{\\left\\|  \\right\\|}' + fullText.substring(selectionStart);
+        textarea.value = newText;
+        var cursorPosition = selectionStart + 9;
+      }
+      textarea.focus();
+      textarea.setSelectionRange(cursorPosition, cursorPosition);
+      renderEquation();
+    }
+
+    function addLeftRightAngleBrackets() {
+      var textarea = document.getElementById("equationInput");
+      var selectedText = textarea.value.substring(textarea.selectionStart, textarea.selectionEnd);
+      var selectionStart = textarea.selectionStart;
+      var fullText = textarea.value;
+      if (selectedText.length > 0) {
+        var newText = '{\\left\\langle ' + selectedText + ' \\right\\rangle}';
+        textarea.setRangeText(newText);
+        var cursorPosition = selectionStart + selectedText.length + 29;
+      }
+      else {
+        var newText = fullText.substring(0, selectionStart) + '{\\left\\langle  \\right\\rangle}' + fullText.substring(selectionStart);
+        textarea.value = newText;
+        var cursorPosition = selectionStart + 14;
+      }
+      textarea.focus();
+      textarea.setSelectionRange(cursorPosition, cursorPosition);
+      renderEquation();
+    }
+
+    function addLeftRightsemiSquareBottom() {
+      var textarea = document.getElementById("equationInput");
+      var selectedText = textarea.value.substring(textarea.selectionStart, textarea.selectionEnd);
+      var selectionStart = textarea.selectionStart;
+      var fullText = textarea.value;
+      if (selectedText.length > 0) {
+        var newText = '{\\left\\lfloor ' + selectedText + ' \\right\\rfloor}';
+        textarea.setRangeText(newText);
+        var cursorPosition = selectionStart + selectedText.length + 29;
+      }
+      else {
+        var newText = fullText.substring(0, selectionStart) + '{\\left\\lfloor  \\right\\rfloor}' + fullText.substring(selectionStart);
+        textarea.value = newText;
+        var cursorPosition = selectionStart + 14;
+      }
+      textarea.focus();
+      textarea.setSelectionRange(cursorPosition, cursorPosition);
+      renderEquation();
+    }
+
+    function addLeftRightsemiSquareUpper() {
+      var textarea = document.getElementById("equationInput");
+      var selectedText = textarea.value.substring(textarea.selectionStart, textarea.selectionEnd);
+      var selectionStart = textarea.selectionStart;
+      var fullText = textarea.value;
+      if (selectedText.length > 0) {
+        var newText = '{\\left\\lceil ' + selectedText + ' \\right\\rceil}';
+        textarea.setRangeText(newText);
+        var cursorPosition = selectionStart + selectedText.length + 27;
+      }
+      else {
+        var newText = fullText.substring(0, selectionStart) + '{\\left\\lceil  \\right\\rceil}' + fullText.substring(selectionStart);
+        textarea.value = newText;
+        var cursorPosition = selectionStart + 13;
+      }
+      textarea.focus();
+      textarea.setSelectionRange(cursorPosition, cursorPosition);
+      renderEquation();
+    }
+
+    function addLeftRightBraces() {
+      var textarea = document.getElementById("equationInput");
+      var selectedText = textarea.value.substring(textarea.selectionStart, textarea.selectionEnd);
+      var selectionStart = textarea.selectionStart;
+      var fullText = textarea.value;
+      if (selectedText.length > 0) {
+        var newText = '{\\left\\{ ' + selectedText + ' \\right\\}}';
+        textarea.setRangeText(newText);
+        var cursorPosition = selectionStart + selectedText.length + 19;
+      }
+      else {
+        var newText = fullText.substring(0, selectionStart) + '{\\left\\{  \\right\\}}' + fullText.substring(selectionStart);
+        textarea.value = newText;
+        var cursorPosition = selectionStart + 9;
+      }
+      textarea.focus();
+      textarea.setSelectionRange(cursorPosition, cursorPosition);
+      renderEquation();
+    }
+    //Вставка вставка верхнего и нижнего индекса слева
+    function InsertUpperLowerIndexesLeft() {
+      var textarea = document.getElementById("equationInput");
+      var selectedText = textarea.value.substring(textarea.selectionStart, textarea.selectionEnd);
+      var newText = '_{ }^{ }\\textrm{ ' + (selectedText || '') + ' }';
+      textarea.setRangeText(newText);
+      var cursorPosition = textarea.selectionStart + 17;
+      textarea.focus();
+      textarea.setSelectionRange(cursorPosition, cursorPosition);
+      renderEquation();
+    }
+    //Вставка в степень
+    function InserDegree(func) {
+      var textarea = document.getElementById("equationInput");
+      var selectedText = textarea.value.substring(textarea.selectionStart, textarea.selectionEnd);
+      var selectionStart = textarea.selectionStart;
+      var fullText = textarea.value;
+      var selectionEnd = textarea.selectionEnd;
+      if (selectedText.length > 0) {
+        var newText = '(' + selectedText + ')' + func;
+        textarea.setRangeText(newText);
+        var cursorPosition = selectionStart + selectedText.length + func.length + 2;
+      }
+      else {
+        var newText = fullText.substring(0, selectionEnd) + func + fullText.substring(selectionEnd);
+        textarea.value = newText;
+        var cursorPosition = selectionStart + func.length - 2;
+      }
+      textarea.focus();
+      textarea.setSelectionRange(cursorPosition, cursorPosition);
+      renderEquation();
+    }
+    //Изменение размера
+    function change_size(size) {
+      var textarea = document.getElementById("equationInput");
+      var selectedText = textarea.value.substring(textarea.selectionStart, textarea.selectionEnd);
+      var selectionStart = textarea.selectionStart;
+      var fullText = textarea.value;
+      if (selectedText.length > 0) {
+        var newText = size + '{' + selectedText + '}';
+        textarea.setRangeText(newText);
+        var cursorPosition = selectionStart + selectedText.length + size.length + 2;
+      }
+      else {
+        var newText = fullText.substring(0, selectionStart) + size + '{ }' + fullText.substring(selectionStart);
+        textarea.value = newText;
+        var cursorPosition = selectionStart + size.length + 1;
+      }
+      textarea.focus();
+      textarea.setSelectionRange(cursorPosition, cursorPosition);
+      renderEquation();
+    }
+    function changeFontSize() {
+      var newSize = prompt("Введите новый размер шрифта:");
+
+      if (newSize !== null) {
+        newSize = parseInt(newSize);
+
+        if (!isNaN(newSize) && newSize > 0) {
+          document.getElementById("equationInput").style.fontSize = newSize + "px";
+        } else {
+          alert("Некорректный ввод. Введите положительное число.");
+        }
+      }
+    }
+    function changing_size_output(size) {
+      var equationInput = document.getElementById("equationInput");
+      equationInput.style.fontSize = size + "px";
+    }
+    //Ввод текста
+    function text_input(text_style) {
+      var textarea = document.getElementById("equationInput");
+      var selectedText = textarea.value.substring(textarea.selectionStart, textarea.selectionEnd);
+      var selectionStart = textarea.selectionStart;
+      var fullText = textarea.value;
+      if (selectedText.length > 0) {
+        var newText = text_style + '{' + selectedText + '}';
+        textarea.setRangeText(newText);
+        var cursorPosition = selectionStart + selectedText.length + text_style.length + 2;
+      }
+      else {
+        var newText = fullText.substring(0, selectionStart) + text_style + '{ }' + fullText.substring(selectionStart);
+        textarea.value = newText;
+        var cursorPosition = selectionStart + text_style.length + 1;
+      }
+      textarea.focus();
+      textarea.setSelectionRange(cursorPosition, cursorPosition);
+      renderEquation();
+    }
+    function text_input_bold(text_style) {
+      var textarea = document.getElementById("equationInput");
+      var selectedText = textarea.value.substring(textarea.selectionStart, textarea.selectionEnd);
+      var selectionStart = textarea.selectionStart;
+      var fullText = textarea.value;
+      if (selectedText.length > 0) {
+        var newText = text_style + '{' + selectedText + '}';
+        textarea.setRangeText(newText);
+        var cursorPosition = selectionStart + selectedText.length + text_style.length + 2;
+      }
+      else {
+        var newText = fullText.substring(0, selectionStart) + text_style + '{ }' + fullText.substring(selectionStart);
+        textarea.value = newText;
+        var cursorPosition = selectionStart + text_style.length + 1;
+      }
+      textarea.focus();
+      textarea.setSelectionRange(cursorPosition, cursorPosition);
+      renderEquation();
+    }
+    //Вставка корня
+    function InserRoot(func) {
+      var textarea = document.getElementById("equationInput");
+      var selectedText = textarea.value.substring(textarea.selectionStart, textarea.selectionEnd);
+      var selectionStart = textarea.selectionStart;
+      var fullText = textarea.value;
+      if (selectedText.length > 0) {
+        var newText = func + '{' + selectedText + '}';
+        textarea.setRangeText(newText);
+        var cursorPosition = selectionStart + selectedText.length + func.length + 2;
+      }
+      else {
+        var newText = fullText.substring(0, selectionStart) + func + '{ }' + fullText.substring(selectionStart);
+        textarea.value = newText;
+        var cursorPosition = selectionStart + func.length + 1;
+      }
+      textarea.focus();
+      textarea.setSelectionRange(cursorPosition, cursorPosition);
+      renderEquation();
+    }
+    //Вставка корня со степенью
+    function InserRootWithDegree(func) {
+      var textarea = document.getElementById("equationInput");
+      var selectedText = textarea.value.substring(textarea.selectionStart, textarea.selectionEnd);
+      var selectionStart = textarea.selectionStart;
+      var fullText = textarea.value;
+      if (selectedText.length > 0) {
+        var newText = func + '{' + selectedText + '}';
+        textarea.setRangeText(newText);
+        var cursorPosition = selectionStart + selectedText.length + func.length + 2;
+      }
+      else {
+        var newText = fullText.substring(0, selectionStart) + func + '{ }' + fullText.substring(selectionStart);
+        textarea.value = newText;
+        var cursorPosition = selectionStart + func.length + 1;
+      }
+      textarea.focus();
+      textarea.setSelectionRange(cursorPosition, cursorPosition);
+      renderEquation();
+    }
+    //Вставка дроби
+    function InserFraction(func) {
+      var textarea = document.getElementById("equationInput");
+      var selectedText = textarea.value.substring(textarea.selectionStart, textarea.selectionEnd);
+      var selectionStart = textarea.selectionStart;
+      var fullText = textarea.value;
+      if (selectedText.length > 0) {
+        if (selectedText.includes('/')) {
+          var parts = selectedText.split('/');
+          var newText = func + '{' + parts[0] + '}{' + parts[1] + '}';
+          textarea.setRangeText(newText);
+          var cursorPosition = selectionStart + func.length + selectedText.length + 4;
+        }
+        else {
+          var newText = func + '{ }{ }' + selectedText;
+          textarea.setRangeText(newText);
+          var cursorPosition = selectionStart + func.length + 1;
+        }
+      }
+      else {
+        var newText = fullText.substring(0, selectionStart) + func + '{ }{ }' + fullText.substring(selectionStart);
+        textarea.value = newText;
+        var cursorPosition = selectionStart + func.length + 1;
+      }
+      textarea.focus();
+      textarea.setSelectionRange(cursorPosition, cursorPosition);
+      renderEquation();
+    }
+    //Вставка оператора
+    function InsertOperator(func, character_type) {
+      var textarea = document.getElementById("equationInput");
+      var selectedText = textarea.value.substring(textarea.selectionStart, textarea.selectionEnd);
+      var selectionStart = textarea.selectionStart;
+      var fullText = textarea.value;
+      if (selectedText.length > 0) {
+        var newText = func + '{' + selectedText + '}' + character_type;
+        textarea.setRangeText(newText);
+        var cursorPosition = selectionStart + selectedText.length + func.length + character_type.length + 2;
+      }
+      else {
+        var newText = fullText.substring(0, selectionStart) + func + '{ }' + character_type + fullText.substring(selectionStart);
+        textarea.value = newText;
+        var cursorPosition = selectionStart + func.length + 1;
+      }
+      textarea.focus();
+      textarea.setSelectionRange(cursorPosition, cursorPosition);
+      renderEquation();
+    }
+
+    function addLeftRightsemiSquareUpper() {
+      var textarea = document.getElementById("equationInput");
+      var selectedText = textarea.value.substring(textarea.selectionStart, textarea.selectionEnd);
+      var selectionStart = textarea.selectionStart;
+      var fullText = textarea.value;
+      if (selectedText.length > 0) {
+        var newText = '{\\left\\lceil ' + selectedText + ' \\right\\rceil}';
+        textarea.setRangeText(newText);
+        var cursorPosition = selectionStart + selectedText.length + 27;
+      }
+      else {
+        var newText = fullText.substring(0, selectionStart) + '{\\left\\lceil  \\right\\rceil}' + fullText.substring(selectionStart);
+        textarea.value = newText;
+        var cursorPosition = selectionStart + 13;
+      }
+      textarea.focus();
+      textarea.setSelectionRange(cursorPosition, cursorPosition);
+      renderEquation();
+    }
+
+
+    function addLeftRight(brackets) {
+      var textarea = document.getElementById("equationInput");
+      var selectedText = textarea.value.substring(textarea.selectionStart, textarea.selectionEnd);
+      var selectionStart = textarea.selectionStart;
+      var fullText = textarea.value;
+      if (selectedText.length > 0) {
+        var newText = '{\\left' + brackets[0] + selectedText + ' \\right' + brackets[1] + "}";
+        textarea.setRangeText(newText);
+        var cursorPosition = selectionStart + selectedText.length + 16;
+      }
+      else {
+        var newText = fullText.substring(0, selectionStart) + '{\\left' + brackets[0] + '  \\right' + brackets[1] + "}" + fullText.substring(selectionStart);
+        textarea.value = newText;
+        var cursorPosition = selectionStart + 8;
+      }
+      textarea.focus();
+      textarea.setSelectionRange(cursorPosition, cursorPosition);
+      renderEquation();
+    }
+
+    function insertSymbol(func) {
+      var textarea = document.getElementById("equationInput");
+      var fullText = textarea.value;
+      var selectionStart = textarea.selectionStart;
+      var newText = fullText.substring(0, selectionStart) + func + fullText.substring(selectionStart);
+      textarea.value = newText;
+      var cursorPosition = selectionStart + func.length;
+      textarea.focus();
+      textarea.setSelectionRange(cursorPosition, cursorPosition);
+      renderEquation();
+    }
+
+    function insertSpecialSymbol(func) {
+      var textarea = document.getElementById("equationInput");
+      var fullText = textarea.value;
+      var selectionStart = textarea.selectionStart;
+      var newText = fullText.substring(0, selectionStart) + "{" + func + "}" + fullText.substring(selectionStart);
+      textarea.value = newText;
+      var cursorPosition = selectionStart + func.length + 2;
+      textarea.focus();
+      textarea.setSelectionRange(cursorPosition, cursorPosition);
+      renderEquation();
+    }
+
+    function insertSymbolTrig_Lim_log(func) {
+      var textarea = document.getElementById("equationInput");
+      var fullText = textarea.value;
+      var selectionStart = textarea.selectionStart;
+      var selectedText = textarea.value.substring(textarea.selectionStart, textarea.selectionEnd);
+      if (selectedText.length > 0) {
+        var newText = func + '(' + (selectedText) + ')';
+        textarea.setRangeText(newText);
+        var cursorPosition = selectionStart + func.length + selectedText.length + 2;
+      } else {
+        var newText = fullText.substring(0, selectionStart) + func + fullText.substring(selectionStart);
+        textarea.value = newText;
+        var cursorPosition = selectionStart + func.length;
+      }
+      textarea.focus();
+      textarea.setSelectionRange(cursorPosition, cursorPosition);
+      renderEquation();
+    }
+
+    function insertSymbolDiacrMarks(func) {
+      var textarea = document.getElementById("equationInput");
+      var fullText = textarea.value;
+      var selectionStart = textarea.selectionStart;
+      var selectedText = textarea.value.substring(textarea.selectionStart, textarea.selectionEnd);
+      if (selectedText.length > 0) {
+        var newText = func + '{' + (selectedText) + '}';
+        textarea.setRangeText(newText);
+        var cursorPosition = selectionStart + func.length + (selectedText.length) + 2;
+      } else {
+        var newText = fullText.substring(0, selectionStart) + func + '{ }' + fullText.substring(selectionStart);
+        textarea.value = newText;
+        var cursorPosition = selectionStart + func.length + 1;
+      }
+      textarea.focus();
+      textarea.setSelectionRange(cursorPosition, cursorPosition);
+      renderEquation();
+    }
+
+    function insertSymbolDiacrMarksGroup(func, type) {
+      var textarea = document.getElementById("equationInput");
+      var fullText = textarea.value;
+      var selectionStart = textarea.selectionStart;
+      var selectedText = textarea.value.substring(textarea.selectionStart, textarea.selectionEnd);
+      if (selectedText.length > 0) {
+        var newText = func + '{' + (selectedText) + '}' + type;
+        textarea.setRangeText(newText);
+        var cursorPosition = selectionStart + func.length + selectedText.length + 4;
+      } else {
+        var newText = fullText.substring(0, selectionStart) + func + '{ }' + type + fullText.substring(selectionStart);
+        textarea.value = newText;
+        var cursorPosition = selectionStart + func.length + 1;
+      }
+      textarea.focus();
+      textarea.setSelectionRange(cursorPosition, cursorPosition);
+      renderEquation();
+    }
+
+    function insertSymbolAfter(func) {
+      var textarea = document.getElementById("equationInput");
+      var fullText = textarea.value;
+      var selectionStart = textarea.selectionStart;
+      var selectionEnd = textarea.selectionEnd;
+      var newText = fullText.substring(0, selectionEnd) + func + fullText.substring(selectionEnd);
+      textarea.value = newText;
+      var cursorPosition = selectionEnd + func.length;
+      textarea.focus();
+      textarea.setSelectionRange(cursorPosition, cursorPosition);
+      renderEquation();
+    }
+
+    function addBrackets(left, right) {
+      var textarea = document.getElementById("equationInput");
+      var selectedText = textarea.value.substring(textarea.selectionStart, textarea.selectionEnd);
+      var selectionStart = textarea.selectionStart;
+      var fullText = textarea.value;
+      if (selectedText.length > 0) {
+        var newText = '{' + left + " " + selectedText + " " + right + '}';
+        textarea.setRangeText(newText);
+        var cursorPosition = selectionStart + selectedText.length + 4 + left.length + right.length;
+      }
+      else {
+        var newText = fullText.substring(0, selectionStart) + '{' + left + " " + " " + right + '}' + fullText.substring(selectionStart);
+        textarea.value = newText;
+        var cursorPosition = selectionStart + 2 + left.length;
+      }
+      textarea.focus();
+      textarea.setSelectionRange(cursorPosition, cursorPosition);
+      renderEquation();
+    }
+
+    renderEquation();
+  </script>
+
+</body>
+
+</html>
