@@ -1083,5 +1083,4 @@ function createsolution_Steps_HTML_for_first_remarkable_limit(formula, value_x, 
         html += `<div>К сожалению, текущие вычислительные возможности ещё не позволяют решить данный предел, т.к. необходимо, чтобы x стремился к 0.</div>`;
         return html;
     }
-
 }
