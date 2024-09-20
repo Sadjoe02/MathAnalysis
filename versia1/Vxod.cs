@@ -181,7 +181,6 @@ namespace versia1
                     Close();
                 }
             }
-
         }
     }
 }

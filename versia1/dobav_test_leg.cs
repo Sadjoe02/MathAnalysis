@@ -1166,6 +1166,5 @@ namespace versia1
                 return $"{text} ({(correct ? "Верный" : "Неверный")})";
             }
         }
-
     }
 }

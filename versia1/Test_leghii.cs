@@ -886,7 +886,5 @@ namespace versia1
             }
             return id_tem;
         }
-
-
     }
 }

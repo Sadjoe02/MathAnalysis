@@ -223,6 +223,5 @@ namespace versia1
             MyNachalo.ShowDialog();
             Close();
         }
-
     }
 }

@@ -15,7 +15,6 @@ namespace versia1
     {
         private MySqlConnection connection;
         private string connectionString = "server=localhost;uid=root;password=Integral20S0lve24!;database=mathematical_analysis;port=3306;charset=utf8mb4";
-
         public add_lecture()
         {
             InitializeComponent();
@@ -24,7 +23,6 @@ namespace versia1
         string type_input;
         string name_raz, name_lec;
         int id_raz, id_nam_lec;
-
         #region Обработчики событий
         private void introduce_lecture_Click(object sender, EventArgs e) // Ввод лекции с помощью текстового редактора
         {
@@ -77,7 +75,6 @@ namespace versia1
             };
             MyEditor.Show();
         }
-
         private void OK_razdel_Click(object sender, EventArgs e) // Добавление нового раздела
         {
             name_raz = name_razdel_text.Text;
@@ -104,7 +101,6 @@ namespace versia1
             razdel_lec.Text = name_raz;
             name_razdel_text.Clear();
         }
-
         private void выходToolStripMenuItem_Click(object sender, EventArgs e) 
         {
             add_lecture.ActiveForm.Hide();
@@ -112,13 +108,11 @@ namespace versia1
             MyVxod.ShowDialog();
             Close();
         }
-
         private void оПрограммеToolStripMenuItem_Click(object sender, EventArgs e)
         {
             About_program MyAbout_program = new About_program();
             MyAbout_program.ShowDialog();
         }
-
         private void назадНаНачальнокОкноToolStripMenuItem_Click(object sender, EventArgs e)
         {
             add_lecture.ActiveForm.Hide();
@@ -126,11 +120,8 @@ namespace versia1
             MyNachalo.ShowDialog();
             Close();
         }
-
         #endregion
-
         #region Заполнение комбобоксов
-
         private void combobox_raz() // Заполнение комбобокса названиями разделов
         {
             razdel_lec.Items.Clear();
@@ -170,9 +161,7 @@ namespace versia1
                 }
             }
         }
-
         #endregion
-
         #region Запросы к базе данных
         private int id_razd(string name_raz) // Запрос на получение ID раздела
         {
@@ -200,6 +189,5 @@ namespace versia1
             return id_ra;
         }
         #endregion
-
     }
 }

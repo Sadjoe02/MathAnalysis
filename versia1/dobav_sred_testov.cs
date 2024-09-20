@@ -1002,12 +1002,10 @@ namespace versia1
         {
             public string text { get; set; }
             public bool correct { get; set; }
-
             public override string ToString()
             {
                 return $"{text} ({(correct ? "Верный" : "Неверный")})";
             }
         }
-
     }
 }
